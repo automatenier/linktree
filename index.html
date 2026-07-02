@@ -8,6 +8,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Geist:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Poppins:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
       tailwind.config = {
@@ -61,7 +62,23 @@
                     "on-surface-variant": "#b9cacb",
                     "on-tertiary-fixed-variant": "#3c475a",
                     "on-secondary-container": "#f7e6ff",
-                    "surface-bright": "#33394c"
+                    "surface-bright": "#33394c",
+                    "linear": {
+                        "canvas": "#010102",
+                        "primary": "#5e6ad2",
+                        "primaryHover": "#828fff",
+                        "primaryFocus": "#5e69d1",
+                        "surface1": "#0f1011",
+                        "surface2": "#141516",
+                        "surface3": "#18191a",
+                        "surface4": "#191a1b",
+                        "hairline": "#23252a",
+                        "hairlineStrong": "#34343a",
+                        "ink": "#f7f8f8",
+                        "inkMuted": "#d0d6e0",
+                        "inkSubtle": "#8a8f98",
+                        "inkTertiary": "#62666d"
+                    }
             },
             "borderRadius": {
                     "DEFAULT": "0.25rem",
@@ -203,30 +220,118 @@
     </div>
     <span class="material-symbols-outlined text-on-surface-variant text-sm">chevron_right</span>
   </a>
+<!-- Email & Social Icons -->
+<div class="flex flex-col items-center gap-xs mt-xl mb-lg">
+  <a href="mailto:jordanmathew1223@gmail.com" class="font-body-md text-on-surface-variant hover:text-primary transition-colors mb-base text-center">jordanmathew1223@gmail.com</a>
+  <div class="flex gap-lg">
+    <a class="text-on-surface-variant hover:text-primary transition-colors" href="https://www.youtube.com/@jordanengolo" target="_blank">
+      <svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+    </a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" href="https://www.instagram.com/jordan_engo/" target="_blank">
+      <svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.063 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.063-2.633-.333-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.063-1.366.333-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.353 2.612 6.766 6.97 6.97 1.28.057 1.688.072 4.958.072s3.678-.014 4.958-.072c4.354-.2 6.765-2.613 6.97-6.97.058-1.28.072-1.688.072-4.958s-.014-3.678-.072-4.958c-.2-4.354-2.613-6.765-6.97-6.97C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"></path></svg>
+    </a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" href="https://www.linkedin.com/in/jordan-engo/" target="_blank">
+      <svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+    </a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" href="https://www.tiktok.com/@jordan_engo" target="_blank">
+      <svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.25-1.31 2.1-.05.56.06 1.15.31 1.65.58.93 1.7 1.46 2.76 1.33.74-.03 1.44-.35 1.96-.88.63-.59.98-1.42 1.03-2.27.02-3.96.01-7.92.01-11.88z"></path></svg>
+    </a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" href="https://x.com/jordan_engo" target="_blank">
+      <svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+    </a>
+  </div>
 </div>
+</main>
+<div class="fixed bottom-24 w-full max-w-md px-gutter z-40">
+  <a class="primary-gradient w-full flex items-center justify-center p-md rounded-xl shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:shadow-[0_0_40px_rgba(157,5,255,0.4)] transition-all active:scale-95" href="#">
+    <span class="font-body-lg font-bold text-on-primary">Book a Discovery Call</span>
+    <span class="material-symbols-outlined ml-base text-on-primary">call</span>
+  </a>
 </div>
-<!-- Social Icons -->
-<div class="flex gap-lg mt-xl mb-lg"><a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg></a><a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.063 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.063-2.633-.333-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.063-1.366.333-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.353 2.612 6.766 6.97 6.97 1.28.057 1.688.072 4.958.072s3.678-.014 4.958-.072c4.354-.2 6.765-2.613 6.97-6.97.058-1.28.072-1.688.072-4.958s-.014-3.678-.072-4.958c-.2-4.354-2.613-6.765-6.97-6.97C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"></path></svg></a><a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a><a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.25-1.31 2.1-.05.56.06 1.15.31 1.65.58.93 1.7 1.46 2.76 1.33.74-.03 1.44-.35 1.96-.88.63-.59.98-1.42 1.03-2.27.02-3.96.01-7.92.01-11.88z"></path></svg></a><a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a></div>
-</main><div class="fixed bottom-24 w-full max-w-md px-gutter z-40"><a class="primary-gradient w-full flex items-center justify-center p-md rounded-xl shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:shadow-[0_0_40px_rgba(157,5,255,0.4)] transition-all active:scale-95" href="#"><span class="font-body-lg font-bold text-on-primary">Book a Discovery Call</span><span class="material-symbols-outlined ml-base text-on-primary">call</span></a></div>
+
 <!-- Navigation Shell (Bottom Bar for Mobile) -->
 <nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container-low/90 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.5)] flex justify-around items-center h-20 pb-safe px-4">
-<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="home">home</span>
-<span class="font-label-sm text-label-sm">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-all duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
-<span class="font-label-sm text-label-sm">Services</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-all duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-<span class="font-label-sm text-label-sm">Portfolio</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-all duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="mail">mail</span>
-<span class="font-label-sm text-label-sm">Contact</span>
-</a>
-</nav><div class="fixed right-4 bottom-44 z-50 flex flex-col items-end gap-2 group"><div class="bg-surface-container-high text-on-surface text-xs py-1.5 px-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap mb-2">Konsultasi sekarang</div><a class="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-transform" href="#"><svg class="w-8 h-8 fill-white" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg></a></div>
+  <a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-200" href="#">
+    <span class="material-symbols-outlined" data-icon="home">home</span>
+    <span class="font-label-sm text-label-sm">Home</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-all duration-200" href="#">
+    <span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+    <span class="font-label-sm text-label-sm">Services</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-all duration-200" href="#">
+    <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+    <span class="font-label-sm text-label-sm">Portfolio</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-all duration-200" href="#">
+    <span class="material-symbols-outlined" data-icon="mail">mail</span>
+    <span class="font-label-sm text-label-sm">Contact</span>
+  </a>
+</nav>
+
+<!-- Cloned Floating WhatsApp Chat Widget from AGentZ -->
+<div class="fixed bottom-24 md:bottom-6 right-6 z-50 flex flex-col items-end">
+    <!-- Chat Popup Window -->
+    <div id="wa-chat-window" class="absolute bottom-20 right-0 w-[340px] md:w-[360px] bg-linear-surface1 border border-linear-hairline rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 transform scale-95 translate-y-4 opacity-0 pointer-events-none flex flex-col z-50">
+        <!-- Header -->
+        <div class="bg-linear-surface2 px-5 py-4 border-b border-linear-hairline flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <img src="https://github.com/automatenier/AGentZ/raw/main/logo.png" class="w-10 h-10 object-contain rounded-full border border-linear-hairline bg-linear-surface1" alt="AI Appointment System Avatar">
+                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-linear-surface2 animate-pulse"></span>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-linear-ink">AI Appointment Agent</h4>
+                    <span class="text-[9px] text-emerald-400 font-bold uppercase tracking-wider">Online (24/7 Response)</span>
+                </div>
+            </div>
+            <button onclick="toggleWhatsAppChat()" class="text-linear-inkSubtle hover:text-linear-ink font-bold text-xl p-1">×</button>
+        </div>
+
+        <!-- Body -->
+        <div class="p-6 bg-gradient-to-b from-[#070709] to-[#0d0e12] min-h-[140px] flex flex-col justify-center">
+            <div class="bg-linear-surface2 border border-linear-hairline p-4 rounded-2xl rounded-tl-none max-w-[90%] text-xs md:text-sm text-linear-inkMuted leading-relaxed shadow-md">
+                <p class="font-bold text-[10px] text-linear-primary mb-1 uppercase tracking-wider">AI Appointment Bot</p>
+                Halo! Saya AI Agent dari AI Appointment System. Ingin konsultasi setup appointment system otomatis langsung dari WhatsApp? Silakan klik tombol di bawah untuk langsung terhubung. 🤖
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="p-4 bg-linear-surface2 border-t border-linear-hairline">
+            <a href="https://wa.me/15556523818?text=Konsultasi%20dengan%20AI%20Agent" target="_blank" onclick="closeWaTooltip()" class="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-black font-bold py-3.5 px-4 rounded-xl transition-all uppercase text-xs tracking-widest shadow-[0_4px_15px_rgba(37,211,102,0.3)] hover:scale-[1.02] active:scale-[0.98]">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.114-2.905-6.99C16.559 1.87 14.09 .836 11.455.836 6.023.836 1.6 5.253 1.597 10.687c0 1.682.44 3.324 1.278 4.757L1.87 21.644l6.326-1.658-1.549-.832zm8.796-6.195c-.328-.164-1.94-.956-2.24-1.066-.3-.11-.518-.164-.737.164-.219.328-.847 1.066-1.038 1.285-.19.219-.383.246-.71.082-.328-.164-1.385-.51-2.637-1.627-.975-.87-1.632-1.946-1.824-2.274-.192-.328-.02-.505.143-.668.148-.146.328-.383.493-.574.164-.19.219-.328.328-.547.11-.219.055-.41-.027-.574-.082-.164-.737-1.777-1.01-2.434-.268-.65-.54-.56-.737-.57-.19-.01-.41-.01-.628-.01-.219 0-.574.082-.876.41-.302.328-1.148 1.12-1.148 2.73 0 1.61 1.175 3.167 1.339 3.386.164.219 2.313 3.532 5.6 4.95.782.338 1.39.54 1.868.692.787.25 1.5.215 2.065.13.63-.095 1.94-.794 2.215-1.56.273-.765.273-1.42.19-1.56-.083-.14-.3-.219-.63-.383z"/>
+            </svg>
+            Konsultasi dengan AI Agent
+        </a>
+    </div>
+</div>
+
+<!-- Trigger Button & Horizontal Tooltip Container -->
+<div class="flex items-center gap-3 relative">
+    <!-- Chat Tooltip / Notification Bubble -->
+    <div id="wa-tooltip" class="bg-linear-surface1 border border-linear-primary/30 px-4 py-2.5 rounded-xl shadow-2xl text-xs font-medium text-linear-ink flex items-center gap-2 max-w-[280px] transition-all duration-300 translate-x-4 opacity-0 pointer-events-none whitespace-nowrap">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping shrink-0"></span>
+        <span>Konsultasi dengan AI Agent di WA? 👋</span>
+        <button onclick="closeWaTooltip()" class="text-linear-inkSubtle hover:text-linear-ink font-bold ml-1">×</button>
+    </div>
+
+    <!-- Float Trigger Button -->
+    <button onclick="toggleWhatsAppChat()" class="relative w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-black flex items-center justify-center shadow-[0_4px_25px_rgba(37,211,102,0.4)] transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none shrink-0">
+        <!-- Pulsing Notification Ring -->
+        <span class="absolute -inset-1.5 rounded-full border border-[#25D366]/40 animate-ping opacity-60"></span>
+        
+        <!-- WhatsApp SVG Icon -->
+        <svg class="w-7 h-7 fill-black" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.114-2.905-6.99C16.559 1.87 14.09 .836 11.455.836 6.023.836 1.6 5.253 1.597 10.687c0 1.682.44 3.324 1.278 4.757L1.87 21.644l6.326-1.658-1.549-.832zm8.796-6.195c-.328-.164-1.94-.956-2.24-1.066-.3-.11-.518-.164-.737.164-.219.328-.847 1.066-1.038 1.285-.19.219-.383.246-.71.082-.328-.164-1.385-.51-2.637-1.627-.975-.87-1.632-1.946-1.824-2.274-.192-.328-.02-.505.143-.668.148-.146.328-.383.493-.574.164-.19.219-.328.328-.547.11-.219.055-.41-.027-.574-.082-.164-.737-1.777-1.01-2.434-.268-.65-.54-.56-.737-.57-.19-.01-.41-.01-.628-.01-.219 0-.574.082-.876.41-.302.328-1.148 1.12-1.148 2.73 0 1.61 1.175 3.167 1.339 3.386.164.219 2.313 3.532 5.6 4.95.782.338 1.39.54 1.868.692.787.25 1.5.215 2.065.13.63-.095 1.94-.794 2.215-1.56.273-.765.273-1.42.19-1.56-.083-.14-.3-.219-.63-.383z"/>
+        </svg>
+        
+        <!-- Red Notification Dot -->
+        <span class="absolute top-0 right-0 w-3.5 h-3.5 bg-rose-500 border border-[#010102] rounded-full flex items-center justify-center text-[8px] font-extrabold text-white animate-pulse">1</span>
+    </button>
+</div>
+</div>
+
 <!-- Footer -->
 <footer class="w-full py-xl border-t border-white/5 mt-xl flex flex-col items-center gap-sm text-center px-gutter mb-24 bg-transparent text-on-surface-variant">
 </footer>
@@ -258,6 +363,47 @@
             link.addEventListener('touchend', () => {
                 link.classList.remove('scale-[0.98]');
             });
+        });
+
+        // WhatsApp widget toggle scripts
+        function toggleWhatsAppChat() {
+            const win = document.getElementById('wa-chat-window');
+            if (win) {
+                const isOpen = !win.classList.contains('pointer-events-none');
+                if (isOpen) {
+                    win.classList.add('scale-95', 'opacity-0', 'pointer-events-none', 'translate-y-4');
+                    win.classList.remove('scale-100', 'opacity-100', 'translate-y-0');
+                } else {
+                    win.classList.remove('scale-95', 'opacity-0', 'pointer-events-none', 'translate-y-4');
+                    win.classList.add('scale-100', 'opacity-100', 'translate-y-0');
+                    closeWaTooltip();
+                }
+            }
+        }
+
+        function closeWaTooltip() {
+            const tooltip = document.getElementById('wa-tooltip');
+            if (tooltip) {
+                tooltip.classList.add('opacity-0', 'pointer-events-none', 'translate-x-4');
+                tooltip.classList.remove('opacity-100', 'translate-x-0');
+            }
+        }
+
+        // Show welcome tooltip after 4 seconds
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const win = document.getElementById('wa-chat-window');
+                if (win) {
+                    const isOpen = !win.classList.contains('pointer-events-none');
+                    if (!isOpen) {
+                        const tooltip = document.getElementById('wa-tooltip');
+                        if (tooltip) {
+                            tooltip.classList.remove('opacity-0', 'pointer-events-none', 'translate-x-4');
+                            tooltip.classList.add('opacity-100', 'translate-x-0');
+                        }
+                    }
+                }
+            }, 4000);
         });
     </script>
 </body></html>
