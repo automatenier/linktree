@@ -125,10 +125,6 @@
 		margin: 8px 15px;
 		width: initial;
 	}
-	
-	.sp-buttons {
-		flex-direction: column !important;
-	}
 }
 </style><link rel="shortcut icon" href="Jo.png"><style type="text/css">.dropdown-menu .active {
   color: #16181b;
@@ -886,6 +882,218 @@
   </div>
 </div>
 
+
+<!-- ═══════════ PREMIUM LEAD FUNNEL INTEGRATION ═══════════ -->
+<!-- Load Tailwind CSS & Material Icons dynamically to preserve original styles -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+<style>
+  .funnel-font { font-family: 'Manrope', sans-serif; }
+  .btn-funnel {
+    background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+    color: #ffffff;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  }
+  .btn-funnel:hover {
+    background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+  }
+</style>
+
+<!-- Lead Capture Modal -->
+<div id="leadModal" class="funnel-font hidden fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm transition-opacity duration-300">
+  <div class="bg-[#0f172a] border border-slate-800 rounded-2xl w-full max-w-md p-6 relative shadow-2xl transform scale-95 transition-transform duration-300">
+    
+    <!-- Close Button -->
+    <button onclick="closeLeadModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+
+    <!-- Modal Content Header -->
+    <div class="mb-6">
+      <div class="inline-block px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 mb-2">
+        <span class="text-[10px] font-mono text-blue-400 uppercase tracking-wider">Instant Access</span>
+      </div>
+      <h3 id="modalAssetTitle" class="text-lg font-extrabold text-white leading-tight">Get Your Free Asset</h3>
+      <p class="text-xs text-slate-400 mt-1">Enter your details below and we'll deliver it immediately.</p>
+    </div>
+
+    <!-- Lead Capture Form -->
+    <form id="leadForm" onsubmit="submitLeadForm(event)" class="space-y-4">
+      <input type="hidden" id="leadMagnetKey" name="leadMagnetKey">
+      <input type="hidden" id="leadMagnetName" name="leadMagnetName">
+
+      <div>
+        <label for="leadName" class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1.5">First Name <span class="text-red-500">*</span></label>
+        <input type="text" id="leadName" required placeholder="e.g. Matthew" class="w-full bg-[#020617] border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
+      </div>
+
+      <div>
+        <label for="leadEmail" class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1.5">Email Address <span class="text-red-500">*</span></label>
+        <input type="email" id="leadEmail" required placeholder="e.g. matthew@email.com" class="w-full bg-[#020617] border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
+      </div>
+
+      <div>
+        <div class="flex justify-between items-center mb-1.5">
+          <label for="leadWhatsapp" class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider">WhatsApp Number</label>
+          <span class="text-[9px] font-medium text-slate-500 uppercase tracking-wider">Optional</span>
+        </div>
+        <input type="tel" id="leadWhatsapp" placeholder="e.g. +62 812-3456-7890" class="w-full bg-[#020617] border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" id="submitBtn" class="btn-funnel w-full py-3 text-xs flex items-center justify-center gap-2 uppercase tracking-widest mt-6 rounded-xl">
+        <span>Get It Free</span>
+        <span class="material-symbols-outlined text-sm">download</span>
+      </button>
+    </form>
+
+    <!-- Loading State Overlay -->
+    <div id="modalLoading" class="hidden absolute inset-0 bg-[#0f172a]/95 rounded-2xl flex flex-col items-center justify-center p-6 text-center">
+      <div class="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+      <p class="text-sm font-bold text-white">Saving your spot...</p>
+      <p class="text-xs text-slate-400 mt-1">Preparing instant delivery</p>
+    </div>
+
+    <!-- Success State Overlay -->
+    <div id="modalSuccess" class="hidden absolute inset-0 bg-[#0f172a] rounded-2xl flex flex-col items-center justify-center p-6 text-center">
+      <div class="w-12 h-12 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center mb-4">
+        <span class="material-symbols-outlined text-2xl">check_circle</span>
+      </div>
+      <h4 class="text-lg font-extrabold text-white mb-1">Access Granted!</h4>
+      <p class="text-xs text-slate-400 mb-6 max-w-xs">We've registered your request. You can access the resource immediately using the link below.</p>
+      
+      <a id="successDownloadLink" href="#" target="_blank" class="btn-funnel py-2.5 px-6 text-xs inline-flex items-center gap-2 uppercase tracking-wider mb-3 rounded-xl">
+        Download Resource
+        <span class="material-symbols-outlined text-sm">open_in_new</span>
+      </a>
+      <button onclick="closeLeadModal()" class="text-xs font-semibold text-slate-400 hover:text-white transition-colors">Close window</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Point to our local automated server endpoint:
+  const WEBHOOK_URL = "/submit-lead"; 
+
+  // Predefined delivery links for each lead magnet
+  const ASSET_DELIVERY_LINKS = {
+    'devops_resources': 'https://drive.google.com/drive/folders/your-devops-folder-id',
+    'aws_resources': 'https://drive.google.com/drive/folders/your-aws-folder-id',
+    'tech_skills_videos': 'https://youtube.com/playlist?list=your-playlist-id',
+    'learning_resources': 'https://drive.google.com/drive/folders/your-learning-folder-id',
+    'mlops_roadmap': 'https://drive.google.com/file/d/your-mlops-file-id/view',
+    'kubernetes_guide': 'https://drive.google.com/file/d/your-kubernetes-file-id/view',
+    'yt_roadmap': 'https://youtube.com/watch?v=your-video-id'
+  };
+
+  // Intercept clicks on the carousel cards in the capture phase
+  document.addEventListener('click', function(e) {
+    const card = e.target.closest('.carousel-card');
+    if (card) {
+      const titleEl = card.querySelector('.carousel-card-title');
+      if (titleEl) {
+        const title = titleEl.textContent.trim();
+        
+        // Match carousel card titles to lead magnet identifiers
+        const leadMagnets = {
+          'Free DevOps Resources for 2026': 'devops_resources',
+          'Best AWS Resources': 'aws_resources',
+          '7 VIDEOS FOR 7 TECH SKILLS ⭐': 'tech_skills_videos',
+          'Top Learning & Practice Resources': 'learning_resources',
+          'DevOps to MLOps Engineer in 6 Months': 'mlops_roadmap',
+          'Advanced Kubernetes Full Guide': 'kubernetes_guide',
+          'Cloud & DevOps YT Video Roadmap▶️': 'yt_roadmap'
+        };
+        
+        if (leadMagnets[title]) {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          
+          openLeadModal(leadMagnets[title], title);
+        }
+      }
+    }
+  }, true); // True triggers capture phase (runs before Next.js React handlers)
+
+  function openLeadModal(assetKey, assetName) {
+    document.getElementById('leadMagnetKey').value = assetKey;
+    document.getElementById('leadMagnetName').value = assetName;
+    document.getElementById('modalAssetTitle').textContent = `Get "${assetName}"`;
+    
+    const modal = document.getElementById('leadModal');
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLeadModal() {
+    const modal = document.getElementById('leadModal');
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+    
+    setTimeout(() => {
+      document.getElementById('leadForm').reset();
+      document.getElementById('modalLoading').classList.add('hidden');
+      document.getElementById('modalSuccess').classList.add('hidden');
+    }, 300);
+  }
+
+  async function submitLeadForm(e) {
+    e.preventDefault();
+    
+    const assetKey = document.getElementById('leadMagnetKey').value;
+    const assetName = document.getElementById('leadMagnetName').value;
+    const name = document.getElementById('leadName').value;
+    const email = document.getElementById('leadEmail').value;
+    const whatsapp = document.getElementById('leadWhatsapp').value;
+
+    const payload = {
+      name: name,
+      email: email,
+      whatsapp: whatsapp,
+      leadMagnet: assetName,
+      leadMagnetKey: assetKey,
+      source: 'Link-in-Bio'
+    };
+
+    const loadingOverlay = document.getElementById('modalLoading');
+    loadingOverlay.classList.remove('hidden');
+
+    try {
+      if (WEBHOOK_URL) {
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      } else {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        console.warn("WEBHOOK_URL is not set. Data simulated:", payload);
+      }
+
+      const downloadUrl = ASSET_DELIVERY_LINKS[assetKey] || '#';
+      document.getElementById('successDownloadLink').href = downloadUrl;
+
+      loadingOverlay.classList.add('hidden');
+      document.getElementById('modalSuccess').classList.remove('hidden');
+
+    } catch (err) {
+      console.error("Submission failed:", err);
+      alert("There was an issue sending your request. Please try again.");
+      loadingOverlay.classList.add('hidden');
+    }
+  }
+</script>
+
 <script>
   function toggleWhatsAppChat() {
     const win = document.getElementById('waChatWindow');
@@ -911,3 +1119,4 @@
   }, 3000);
 </script>
 </body></html>
+
