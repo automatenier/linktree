@@ -620,10 +620,42 @@
     }
   }
   
-  function submitFollowForm(e) {
+  async function submitFollowForm(e) {
     e.preventDefault();
-    alert('Terima kasih telah mengikuti Jordan Engo!');
-    closeFollowModal();
+    const firstName = document.getElementById('followFirstName').value;
+    const lastName = document.getElementById('followLastName').value;
+    const email = document.getElementById('followEmail').value;
+    
+    const payload = {
+      name: (firstName + ' ' + lastName).trim(),
+      email: email,
+      whatsapp: '',
+      leadMagnet: 'Learnz — Email Subskripsi Gratis',
+      leadMagnetKey: 'learnz_subscription',
+      source: 'Link-in-Bio'
+    };
+
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.innerHTML : 'Ikuti';
+    if (submitBtn) submitBtn.innerHTML = 'Memproses...';
+
+    try {
+      await fetch('/submit-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+      alert('Terima kasih telah mengikuti Jordan Engo!');
+    } catch (err) {
+      console.error(err);
+      alert('Terima kasih telah mengikuti Jordan Engo!');
+    } finally {
+      if (submitBtn) submitBtn.innerHTML = originalText;
+      closeFollowModal();
+      e.target.reset();
+    }
   }
 </script>
 
@@ -992,8 +1024,23 @@
     'yt_roadmap': 'https://youtube.com/watch?v=your-video-id'
   };
 
-  // Intercept clicks on the carousel cards in the capture phase
+  // Intercept clicks on the carousel cards & Learnz subscription card in the capture phase
   document.addEventListener('click', function(e) {
+    // 1. Intercept Learnz subscription block
+    const learnzCard = e.target.closest('.featured-variant-two');
+    if (learnzCard) {
+      const titleEl = learnzCard.querySelector('.fv-two-title');
+      if (titleEl && titleEl.textContent.trim() === 'Learnz — Email Subskripsi Gratis') {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        
+        openFollowModal(e);
+        return;
+      }
+    }
+
+    // 2. Intercept carousel cards
     const card = e.target.closest('.carousel-card');
     if (card) {
       const titleEl = card.querySelector('.carousel-card-title');
