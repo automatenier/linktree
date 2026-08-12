@@ -937,76 +937,66 @@
 </style>
 
 <!-- Lead Capture Modal -->
-<div id="leadModal" class="funnel-font hidden fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm transition-opacity duration-300">
-  <div class="bg-[#0f172a] border border-slate-800 rounded-2xl w-full max-w-md p-6 relative shadow-2xl transform scale-95 transition-transform duration-300">
-    
-    <!-- Close Button -->
-    <button onclick="closeLeadModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
-      <span class="material-symbols-outlined">close</span>
-    </button>
-
-    <!-- Modal Content Header -->
-    <div class="mb-6">
-      <div class="inline-block px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 mb-2">
-        <span class="text-[10px] font-mono text-blue-400 uppercase tracking-wider">Instant Access</span>
-      </div>
-      <h3 id="modalAssetTitle" class="text-lg font-extrabold text-white leading-tight">Get Your Free Asset</h3>
-      <p class="text-xs text-slate-400 mt-1">Enter your details below and we'll deliver it immediately.</p>
+<div class="follow-modal-overlay" id="leadModal" onclick="handleLeadOverlayClick(event)">
+  <div class="follow-modal-card">
+    <button class="follow-modal-close" onclick="closeLeadModal()">&times;</button>
+    <img src="Jo.png" class="follow-favicon" alt="Favicon">
+    <div class="follow-modal-header">
+      <div class="follow-modal-title" id="modalAssetTitle">Dapatkan Asset</div>
     </div>
-
-    <!-- Lead Capture Form -->
-    <form id="leadForm" onsubmit="submitLeadForm(event)" class="space-y-4">
+    <div class="follow-modal-subtitle">Dapatkan update terbaru dan promo khusus</div>
+    
+    <form id="leadForm" onsubmit="submitLeadForm(event)">
       <input type="hidden" id="leadMagnetKey" name="leadMagnetKey">
       <input type="hidden" id="leadMagnetName" name="leadMagnetName">
 
-      <div>
-        <label for="leadName" class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1.5">First Name <span class="text-red-500">*</span></label>
-        <input type="text" id="leadName" required placeholder="e.g. Matthew" class="w-full bg-[#020617] border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
+      <div class="follow-input-group">
+        <label for="leadFirstName">Nama depan</label>
+        <input type="text" id="leadFirstName" required placeholder="Nama depan Anda">
       </div>
-
-      <div>
-        <label for="leadEmail" class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1.5">Email Address <span class="text-red-500">*</span></label>
-        <input type="email" id="leadEmail" required placeholder="e.g. matthew@email.com" class="w-full bg-[#020617] border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
+      <div class="follow-input-group">
+        <label for="leadLastName">Nama belakang</label>
+        <input type="text" id="leadLastName" required placeholder="Nama belakang Anda">
       </div>
-
-      <div>
-        <div class="flex justify-between items-center mb-1.5">
-          <label for="leadWhatsapp" class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider">WhatsApp Number</label>
-          <span class="text-[9px] font-medium text-slate-500 uppercase tracking-wider">Optional</span>
-        </div>
-        <input type="tel" id="leadWhatsapp" placeholder="e.g. +62 812-3456-7890" class="w-full bg-[#020617] border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
+      <div class="follow-input-group">
+        <label for="leadEmail">Email Anda</label>
+        <input type="email" id="leadEmail" required placeholder="email@domain.com">
       </div>
-
-      <!-- Submit Button -->
-      <button type="submit" id="submitBtn" class="btn-funnel w-full py-3 text-xs flex items-center justify-center gap-2 uppercase tracking-widest mt-6 rounded-xl">
-        <span>Get It Free</span>
-        <span class="material-symbols-outlined text-sm">download</span>
-      </button>
+      
+      <label class="follow-checkbox-container">
+        <input type="checkbox" required>
+        <span>Saya setuju untuk membagikan detail kontak saya dengan Jordan Engo, yang mungkin akan menghubungi saya.</span>
+      </label>
+      
+      <button type="submit" class="follow-submit-btn" id="submitBtn">Ikuti</button>
     </form>
-
+    
     <!-- Loading State Overlay -->
-    <div id="modalLoading" class="hidden absolute inset-0 bg-[#0f172a]/95 rounded-2xl flex flex-col items-center justify-center p-6 text-center">
-      <div class="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-      <p class="text-sm font-bold text-white">Saving your spot...</p>
-      <p class="text-xs text-slate-400 mt-1">Preparing instant delivery</p>
+    <div id="modalLoading" class="hidden absolute inset-0 bg-white rounded-[16px] flex flex-col items-center justify-center p-6 text-center z-50">
+      <div style="width: 40px; height: 40px; border: 4px solid #000; border-top-color: transparent; border-radius: 50%;" class="animate-spin mb-4"></div>
+      <p style="font-size: 16px; font-weight: 700; color: #000000; margin: 0 0 4px 0;">Menyimpan data...</p>
+      <p style="font-size: 12px; color: #666666; margin: 0;">Mempersiapkan pengiriman instan</p>
     </div>
 
     <!-- Success State Overlay -->
-    <div id="modalSuccess" class="hidden absolute inset-0 bg-[#0f172a] rounded-2xl flex flex-col items-center justify-center p-6 text-center">
-      <div class="w-12 h-12 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center mb-4">
-        <span class="material-symbols-outlined text-2xl">check_circle</span>
+    <div id="modalSuccess" class="hidden absolute inset-0 bg-white rounded-[16px] flex flex-col items-center justify-center p-6 text-center z-50">
+      <div style="width: 48px; height: 48px; background: #f0fdf4; border: 1px solid #bbf7d0; color: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; margin-left: auto; margin-right: auto;">
+        <span class="material-symbols-outlined" style="font-size: 28px; color: #22c55e;">check_circle</span>
       </div>
-      <h4 class="text-lg font-extrabold text-white mb-1">Access Granted!</h4>
-      <p class="text-xs text-slate-400 mb-6 max-w-xs">We've registered your request. You can access the resource immediately using the link below.</p>
+      <h4 style="font-size: 18px; font-weight: 700; color: #000000; margin: 0 0 6px 0;">Akses Diberikan!</h4>
+      <p style="font-size: 12px; color: #666666; margin: 0 0 24px 0; max-width: 280px; line-height: 1.5; margin-left: auto; margin-right: auto;">Pendaftaran Anda berhasil. Silakan klik tombol di bawah ini untuk mengakses resource Anda.</p>
       
-      <a id="successDownloadLink" href="#" target="_blank" class="btn-funnel py-2.5 px-6 text-xs inline-flex items-center gap-2 uppercase tracking-wider mb-3 rounded-xl">
+      <a id="successDownloadLink" href="#" target="_blank" class="follow-submit-btn" style="text-decoration: none; text-align: center; display: block; margin-bottom: 12px; max-width: 240px; margin-left: auto; margin-right: auto;">
         Download Resource
-        <span class="material-symbols-outlined text-sm">open_in_new</span>
       </a>
-      <button onclick="closeLeadModal()" class="text-xs font-semibold text-slate-400 hover:text-white transition-colors">Close window</button>
+      <button onclick="closeLeadModal()" style="background: none; border: none; font-size: 12px; font-weight: 600; color: #666666; cursor: pointer;">Tutup Jendela</button>
     </div>
 
+    <div class="follow-modal-footer">
+      <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a>
+    </div>
   </div>
+</div>
 </div>
 
 <script>
@@ -1099,75 +1089,73 @@
     }
   }, true); // True triggers capture phase (runs before Next.js React handlers)
 
-  function openLeadModal(assetKey, assetName) {
+    function openLeadModal(assetKey, assetName) {
     document.getElementById('leadMagnetKey').value = assetKey;
     document.getElementById('leadMagnetName').value = assetName;
-    document.getElementById('modalAssetTitle').textContent = `Get "${assetName}"`;
+    document.getElementById('modalAssetTitle').textContent = assetName;
+    
+    // Reset overlays
+    document.getElementById('modalLoading').classList.add('hidden');
+    document.getElementById('modalSuccess').classList.add('hidden');
     
     const modal = document.getElementById('leadModal');
-    modal.classList.remove('hidden');
+    modal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
-
+  
   function closeLeadModal() {
     const modal = document.getElementById('leadModal');
-    modal.classList.add('hidden');
+    modal.classList.remove('active');
     document.body.style.overflow = '';
-    
-    setTimeout(() => {
-      document.getElementById('leadForm').reset();
-      document.getElementById('modalLoading').classList.add('hidden');
-      document.getElementById('modalSuccess').classList.add('hidden');
-    }, 300);
+  }
+  
+  function handleLeadOverlayClick(e) {
+    if (e.target.id === 'leadModal') {
+      closeLeadModal();
+    }
   }
 
   async function submitLeadForm(e) {
     e.preventDefault();
-    
-    const assetKey = document.getElementById('leadMagnetKey').value;
-    const assetName = document.getElementById('leadMagnetName').value;
-    const name = document.getElementById('leadName').value;
+    const firstName = document.getElementById('leadFirstName').value;
+    const lastName = document.getElementById('leadLastName').value;
     const email = document.getElementById('leadEmail').value;
-    const whatsapp = document.getElementById('leadWhatsapp').value;
+    const key = document.getElementById('leadMagnetKey').value;
+    const magnetName = document.getElementById('leadMagnetName').value;
+
+    const loading = document.getElementById('modalLoading');
+    const success = document.getElementById('modalSuccess');
+    const downloadLink = document.getElementById('successDownloadLink');
+
+    // Show loading
+    loading.classList.remove('hidden');
 
     const payload = {
-      name: name,
+      name: (firstName + ' ' + lastName).trim(),
       email: email,
-      whatsapp: whatsapp,
-      leadMagnet: assetName,
-      leadMagnetKey: assetKey,
+      whatsapp: '',
+      leadMagnet: magnetName,
+      leadMagnetKey: key,
       source: 'Link-in-Bio'
     };
 
-    const loadingOverlay = document.getElementById('modalLoading');
-    loadingOverlay.classList.remove('hidden');
-
     try {
-      if (WEBHOOK_URL) {
-        await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
-      } else {
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        console.warn("WEBHOOK_URL is not set. Data simulated:", payload);
-      }
-
-      const downloadUrl = ASSET_DELIVERY_LINKS[assetKey] || '#';
-      document.getElementById('successDownloadLink').href = downloadUrl;
-
-      loadingOverlay.classList.add('hidden');
-      document.getElementById('modalSuccess').classList.remove('hidden');
-
-    } catch (err) {
-      console.error("Submission failed:", err);
-      alert("There was an issue sending your request. Please try again.");
-      loadingOverlay.classList.add('hidden');
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch(err) {
+      console.error(err);
     }
+
+    // Set download link
+    const assetUrl = ASSET_DELIVERY_LINKS[key] || '#';
+    downloadLink.href = assetUrl;
+
+    // Show success
+    loading.classList.add('hidden');
+    success.classList.remove('hidden');
   }
 </script>
 
