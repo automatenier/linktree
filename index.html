@@ -839,39 +839,34 @@
 
 <!-- Vault Unlocker Modal (Gamified Lock) -->
 <div class="follow-modal-overlay" id="vaultUnlockModal" onclick="handleVaultOverlayClick(event)">
-  <div class="follow-modal-card" style="text-align: left; padding: 24px; max-width: 440px;">
+  <div class="follow-modal-card" style="text-align: left; padding: 28px; max-width: 440px;">
     <button class="follow-modal-close" onclick="closeVaultUnlockModal()">&times;</button>
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-      <span style="font-size: 22px;">🔒</span>
-      <div style="font-size: 16px; font-weight: 700; color: #000000; font-family: Poppins, sans-serif;">Modul Ini Terkunci di Master Vault</div>
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+      <span style="font-size: 24px;">🔒</span>
+      <div style="font-size: 17px; font-weight: 700; color: #000000; font-family: Poppins, sans-serif;">Modul Ini Terkunci di Master Vault</div>
     </div>
-    <p style="font-size: 13px; color: #666666; line-height: 1.5; margin-bottom: 18px; font-family: Poppins, sans-serif;">
-      Anda sudah meng-unlock 1 modul gratis. Mau buka <strong>seluruh 5 modul lainnya senilai Rp 4.500.000</strong> secara GRATIS?
+    <p style="font-size: 13px; color: #555555; line-height: 1.6; margin-bottom: 20px; font-family: Poppins, sans-serif;">
+      Anda sudah meng-unlock 1 modul gratis. Seluruh <strong>5 modul lainnya senilai Rp 4.500.000</strong> terkunci di Master Vault.
     </p>
 
-    <!-- Option A -->
-    <div style="border: 1.5px solid #FFCA3A; background: #fffdf5; border-radius: 12px; padding: 14px; margin-bottom: 12px; cursor: pointer; transition: transform 0.15s;" onclick="closeVaultUnlockModal(); openCalPopup();">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
-        <span style="font-size: 11px; font-weight: 700; color: #b45309; text-transform: uppercase; letter-spacing: 0.5px; font-family: Poppins, sans-serif;">🔥 Opsi A (Paling Populer)</span>
-        <span style="font-size: 11px; background: #FFCA3A; color: #000; font-weight: 700; padding: 2px 6px; border-radius: 4px; font-family: Poppins, sans-serif;">GRATIS</span>
+    <!-- Audit Bridge Card (Sole Unlock Method) -->
+    <div style="border: 2px solid #FFCA3A; background: #fffdf5; border-radius: 14px; padding: 18px; margin-bottom: 16px; cursor: pointer; transition: transform 0.15s;" onclick="closeVaultUnlockModal(); openCalPopup();">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+        <span style="font-size: 11px; font-weight: 700; color: #b45309; text-transform: uppercase; letter-spacing: 0.5px; font-family: Poppins, sans-serif;">🔥 Unlock Full Master Vault</span>
+        <span style="font-size: 11px; background: #FFCA3A; color: #000; font-weight: 700; padding: 2px 8px; border-radius: 4px; font-family: Poppins, sans-serif;">GRATIS</span>
       </div>
-      <div style="font-size: 14px; font-weight: 700; color: #111; margin-bottom: 4px; font-family: Poppins, sans-serif;">Book 15-Min Free Revenue Leak Audit</div>
-      <div style="font-size: 12px; color: #555; line-height: 1.4; margin-bottom: 10px; font-family: Poppins, sans-serif;">
-        Kita review bottleneck lead generation bisnis Anda & berikan Master Access Key untuk seluruh modul + script.
+      <div style="font-size: 15px; font-weight: 700; color: #111; margin-bottom: 6px; font-family: Poppins, sans-serif;">Book 15-Min Free Revenue Leak Audit</div>
+      <div style="font-size: 12.5px; color: #555; line-height: 1.5; margin-bottom: 14px; font-family: Poppins, sans-serif;">
+        Kita review bottleneck sistem lead generation Anda, hitung revenue leak, dan berikan Master Access Key untuk membuka seluruh 6 tools + script automation secara GRATIS.
       </div>
-      <button type="button" style="width: 100%; padding: 10px; background: #000000; color: #ffffff; font-size: 12px; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; font-family: Poppins, sans-serif;">
-        Jadwalkan Audit Gratis →
+      <button type="button" style="width: 100%; padding: 12px; background: #000000; color: #ffffff; font-size: 13px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer; font-family: Poppins, sans-serif; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        Jadwalkan Audit Gratis via Cal.com →
       </button>
     </div>
 
-    <!-- Option B -->
-    <div style="border: 1px solid #e5e7eb; background: #f9fafb; border-radius: 12px; padding: 14px;">
-      <div style="font-size: 11px; font-weight: 700; color: #6b7280; text-transform: uppercase; margin-bottom: 4px; font-family: Poppins, sans-serif;">⚡ Opsi B: Akses Modul Tunggal</div>
-      <div style="font-size: 12px; color: #555; line-height: 1.4; margin-bottom: 10px; font-family: Poppins, sans-serif;">
-        Atau buka modul ini secara individu dengan mendaftarkan email Anda.
-      </div>
-      <button type="button" onclick="unlockCurrentSingleAsset()" style="width: 100%; padding: 10px; background: #ffffff; color: #111111; font-size: 12px; font-weight: 600; border: 1px solid #d1d5db; border-radius: 8px; cursor: pointer; font-family: Poppins, sans-serif;">
-        Akses Modul Ini Saja →
+    <div style="text-align: center;">
+      <button type="button" onclick="closeVaultUnlockModal()" style="background: none; border: none; font-size: 12px; color: #888888; cursor: pointer; font-family: Poppins, sans-serif;">
+        Kembali ke Modul yang Sudah Dibuka
       </button>
     </div>
   </div>
@@ -1036,15 +1031,6 @@
   function handleVaultOverlayClick(e) {
     if (e.target.id === 'vaultUnlockModal') {
       closeVaultUnlockModal();
-    }
-  }
-
-  function unlockCurrentSingleAsset() {
-    const k = pendingUnlockKey;
-    const t = pendingUnlockTitle;
-    closeVaultUnlockModal();
-    if (k && t) {
-      openLeadModal(k, t);
     }
   }
 
