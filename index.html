@@ -424,12 +424,8 @@
     
     <form onsubmit="submitFollowForm(event)">
       <div class=follow-input-group>
-        <label for="followFirstName">Nama depan</label>
-        <input type="text" id="followFirstName" required placeholder="Nama depan Anda">
-      </div>
-      <div class=follow-input-group>
-        <label for="followLastName">Nama belakang</label>
-        <input type="text" id="followLastName" required placeholder="Nama belakang Anda">
+        <label for="followName">Nama</label>
+        <input type="text" id="followName" required placeholder="Nama Anda">
       </div>
       <div class=follow-input-group>
         <label for="followEmail">Email Anda</label>
@@ -468,12 +464,11 @@
   
   async function submitFollowForm(e) {
     e.preventDefault();
-    const firstName = document.getElementById('followFirstName').value;
-    const lastName = document.getElementById('followLastName').value;
+    const name = document.getElementById('followName').value;
     const email = document.getElementById('followEmail').value;
     
     const payload = {
-      name: (firstName + ' ' + lastName).trim(),
+      name: name.trim(),
       email: email,
       whatsapp: '',
       leadMagnet: 'Learnz — Email Subskripsi Gratis',
@@ -798,12 +793,8 @@
       <input type="hidden" id="leadMagnetName" name="leadMagnetName">
 
       <div class="follow-input-group">
-        <label for="leadFirstName">Nama depan</label>
-        <input type="text" id="leadFirstName" required placeholder="Nama depan Anda">
-      </div>
-      <div class="follow-input-group">
-        <label for="leadLastName">Nama belakang</label>
-        <input type="text" id="leadLastName" required placeholder="Nama belakang Anda">
+        <label for="leadName">Nama</label>
+        <input type="text" id="leadName" required placeholder="Nama Anda">
       </div>
       <div class="follow-input-group">
         <label for="leadEmail">Email Anda</label>
@@ -815,7 +806,7 @@
         <span>Saya setuju untuk membagikan detail kontak saya dengan Jordan Engo, yang mungkin akan menghubungi saya.</span>
       </label>
       
-      <button type="submit" class="follow-submit-btn" id="submitBtn">Ikuti</button>
+      <button type="submit" class="follow-submit-btn" id="submitBtn">Dapatkan Akses Gratis</button>
     </form>
     
     <!-- Loading State Overlay -->
@@ -851,33 +842,22 @@
   const WEBHOOK_URL = "/submit-lead"; 
 
   // Predefined delivery links for each lead magnet
-    // Predefined delivery links for each lead magnet
+  // Predefined delivery links for each lead magnet (Sabrina Ramonov markdown reader pages)
   const ASSET_DELIVERY_LINKS = {
-    'devops_resources': 'http://107.174.70.195:9000/scorecard/results',
-    'aws_resources': 'YOUR_GOOGLE_DRIVE_REMOTION_TEMPLATE_LINK',
-    'mlops_roadmap': 'YOUR_GOOGLE_DOCS_VSL_SCORECARD_LINK',
-    'wa_chatbot_voice_cs': 'YOUR_WA_CHATBOT_VOICE_CS_LINK',
-    'telegram_admin_agent': 'YOUR_TELEGRAM_ADMIN_AGENT_LINK',
-    'video_editor_templates': 'YOUR_VIDEO_EDITOR_TEMPLATES_LINK',
-    'coaching_website_template': 'YOUR_COACHING_WEBSITE_TEMPLATE_LINK',
-    'vsl_prompt': 'YOUR_VSL_PROMPT_LINK',
-    'fb_ig_dm_automation': 'YOUR_FB_IG_DM_AUTOMATION_LINK',
-    'personal_brand_secret': 'YOUR_PERSONAL_BRAND_SECRET_LINK',
-    'video_repurposer_guide': 'YOUR_VIDEO_REPURPOSER_GUIDE_LINK',
-    'setter_sop_library': 'YOUR_SETTER_SOP_LIBRARY_LINK',
-    'linktree_alt_template': 'YOUR_LINKTREE_ALT_TEMPLATE_LINK',
-    'lead_magnet_validator': 'YOUR_LEAD_MAGNET_VALIDATOR_LINK',
-    'client_onboarding_checklist': 'YOUR_CLIENT_ONBOARDING_CHECKLIST_LINK',
-    'founder_bottleneck_audit': 'YOUR_FOUNDER_BOTTLENECK_AUDIT_LINK',
-    'wa_flow_simulator': 'YOUR_WA_FLOW_SIMULATOR_LINK',
-    'ai_employee_comparison': 'YOUR_AI_EMPLOYEE_COMPARISON_LINK',
-    'high_ticket_offer_scorecard': 'YOUR_HIGH_TICKET_OFFER_SCORECARD_LINK',
-    'high_ticket_pricing_calculator': 'YOUR_HIGH_TICKET_PRICING_CALCULATOR_LINK',
-    'system_automation_quiz': 'YOUR_SYSTEM_AUTOMATION_QUIZ_LINK',
-    'wa_link_generator': 'YOUR_WA_LINK_GENERATOR_LINK',
-    'n8n_blueprint_bundle': 'YOUR_N8N_BLUEPRINT_BUNDLE_LINK',
-    'pre_call_dossier_scraper': 'YOUR_PRE_CALL_DOSSIER_SCRAPER_LINK',
-    'speed_to_lead_latency_monitor': 'YOUR_SPEED_TO_LEAD_LATENCY_MONITOR_LINK'
+    'wa_chatbot_voice_cs': '/p/whatsapp-chatbot-crm.html',
+    'telegram_admin_agent': '/p/social-media-posting-agent.html',
+    'video_editor_templates': '/p/ai-video-editor.html',
+    'coaching_website_template': '/p/linktree-alternative-template.html',
+    'vsl_prompt': '/p/lead-magnet-dm-automation.html',
+    'fb_ig_dm_automation': '/p/lead-magnet-dm-automation.html',
+    // Aliases & fallbacks
+    'kubernetes_guide': '/p/whatsapp-chatbot-crm.html',
+    'setter_sop_library': '/p/lead-magnet-dm-automation.html',
+    'video_repurposer_guide': '/p/ai-video-editor.html',
+    'yt_roadmap': '/p/social-media-posting-agent.html',
+    'linktree_alt_template': '/p/linktree-alternative-template.html',
+    'aws_resources': '/p/ai-video-editor.html',
+    'devops_resources': '/p/whatsapp-chatbot-crm.html'
   };
 
   // Intercept clicks on the carousel cards & Learnz subscription card in the capture phase
@@ -913,15 +893,37 @@
           '5 Video Editor Template Gratis': 'video_editor_templates',
           'Coaching Website Template': 'coaching_website_template',
           'Video Sales Letter Prompt': 'vsl_prompt',
-          'Fb & IG DM Automation': 'fb_ig_dm_automation'
+          'Fb & IG DM Automation': 'fb_ig_dm_automation',
+          'Rp 0 Whatsapp Chatbot + CRM Setup (Pakai API sendiri)': 'wa_chatbot_voice_cs',
+          'Social Media Lead Magnet DM Automation Setup + DM SOP': 'fb_ig_dm_automation',
+          'AI Video Editor': 'video_editor_templates',
+          'Social Media Posting Agent': 'telegram_admin_agent',
+          'Open Source Linktree Alternative Template': 'coaching_website_template'
         };
         
-        if (leadMagnets[title]) {
+        let targetKey = leadMagnets[title];
+        if (!targetKey) {
+          const lower = title.toLowerCase();
+          if (lower.includes('wa') || lower.includes('chatbot') || lower.includes('voice')) {
+            targetKey = 'wa_chatbot_voice_cs';
+          } else if (lower.includes('telegram') || lower.includes('admin sosmed')) {
+            targetKey = 'telegram_admin_agent';
+          } else if (lower.includes('video editor')) {
+            targetKey = 'video_editor_templates';
+          } else if (lower.includes('coaching') || lower.includes('template')) {
+            targetKey = 'coaching_website_template';
+          } else if (lower.includes('sales letter') || lower.includes('vsl')) {
+            targetKey = 'vsl_prompt';
+          } else if (lower.includes('dm') || lower.includes('automation')) {
+            targetKey = 'fb_ig_dm_automation';
+          }
+        }
+
+        if (targetKey) {
           e.preventDefault();
           e.stopPropagation();
           e.stopImmediatePropagation();
 
-          const targetKey = leadMagnets[title];
           const consultKeys = ['brand_architect', 'acquisition_breakdown', 'offer_advisory', 'techstack_consult'];
           if (consultKeys.includes(targetKey)) {
             openCalPopup();
@@ -933,24 +935,30 @@
     }
   }, true); // True triggers capture phase (runs before Next.js React handlers)
 
-    function openLeadModal(assetKey, assetName) {
+  function openLeadModal(assetKey, assetName) {
     document.getElementById('leadMagnetKey').value = assetKey;
     document.getElementById('leadMagnetName').value = assetName;
     document.getElementById('modalAssetTitle').textContent = assetName;
     
     // Reset overlays
-    document.getElementById('modalLoading').classList.add('hidden');
-    document.getElementById('modalSuccess').classList.add('hidden');
+    const loading = document.getElementById('modalLoading');
+    const success = document.getElementById('modalSuccess');
+    if (loading) loading.classList.add('hidden');
+    if (success) success.classList.add('hidden');
     
     const modal = document.getElementById('leadModal');
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
   }
   
   function closeLeadModal() {
     const modal = document.getElementById('leadModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
   }
   
   function handleLeadOverlayClick(e) {
@@ -961,8 +969,7 @@
 
   async function submitLeadForm(e) {
     e.preventDefault();
-    const firstName = document.getElementById('leadFirstName').value;
-    const lastName = document.getElementById('leadLastName').value;
+    const name = document.getElementById('leadName').value;
     const email = document.getElementById('leadEmail').value;
     const key = document.getElementById('leadMagnetKey').value;
     const magnetName = document.getElementById('leadMagnetName').value;
@@ -972,10 +979,10 @@
     const downloadLink = document.getElementById('successDownloadLink');
 
     // Show loading
-    loading.classList.remove('hidden');
+    if (loading) loading.classList.remove('hidden');
 
     const payload = {
-      name: (firstName + ' ' + lastName).trim(),
+      name: name.trim(),
       email: email,
       whatsapp: '',
       leadMagnet: magnetName,
@@ -983,23 +990,28 @@
       source: 'Link-in-Bio'
     };
 
+    const assetUrl = ASSET_DELIVERY_LINKS[key] || '/p/whatsapp-chatbot-crm.html';
+
+    // Send lead payload non-blockingly
     try {
-      await fetch(WEBHOOK_URL, {
+      fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
-      });
+      }).catch(err => console.warn('Lead webhook ping:', err));
     } catch(err) {
-      console.error(err);
+      console.warn('Webhook dispatch:', err);
     }
 
-    // Set download link
-    const assetUrl = ASSET_DELIVERY_LINKS[key] || '#';
-    downloadLink.href = assetUrl;
+    if (downloadLink) {
+      downloadLink.href = assetUrl;
+      downloadLink.textContent = 'Buka Modul Sekarang →';
+    }
 
-    // Show success
-    loading.classList.add('hidden');
-    success.classList.remove('hidden');
+    // Redirect directly to the Sabrina Ramonov markdown template page
+    setTimeout(() => {
+      window.location.href = assetUrl;
+    }, 300);
   }
 </script>
 
