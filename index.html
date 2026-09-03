@@ -303,6 +303,48 @@
 
 
 <style id="custom-compact-layout-fixes">
+
+/* Container height & bottom space cleanup */
+html, body {
+  min-height: 100% !important;
+  height: auto !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.super-profile-container {
+  min-height: auto !important;
+  height: auto !important;
+  justify-content: flex-start !important;
+  padding-bottom: 24px !important;
+}
+
+.super-profile {
+  height: auto !important;
+  min-height: auto !important;
+  justify-content: flex-start !important;
+}
+
+.store-layout-variant {
+  min-height: auto !important;
+  height: auto !important;
+}
+
+.store-layout-variant .slv-right {
+  height: auto !important;
+  min-height: auto !important;
+  padding-bottom: 24px !important;
+}
+
+/* Modals should not take document flow space */
+.follow-modal-overlay,
+.super-profile-follower-modal-container,
+#cal-popup-overlay,
+#vaultUnlockModal {
+  position: fixed !important;
+}
+
 /* =========================================================
    COMPACT LAYOUT OVERRIDES (Zero Negative Space)
    ========================================================= */
@@ -728,131 +770,6 @@
 </script>
 
 
-<div class="wa-widget-container">
-  <!-- Chat Window -->
-  <div id="waChatWindow" class="wa-chat-window">
-    <div class="wa-header">
-      <div class="wa-avatar-container">
-        <img src="agentzlogo.webp" class="wa-avatar" alt="AGentZ Assistant">
-        <span class="wa-status-dot"></span>
-      </div>
-      <div class="wa-header-text">
-        <div class="wa-bot-name">AGentZ AI Assistant</div>
-        <div class="wa-bot-status">Online (24/7 Response)</div>
-      </div>
-      <button onclick="toggleWhatsAppChat()" class="wa-close-btn">&times;</button>
-    </div>
-    <div class="wa-body">
-      <div class="wa-message-bubble">
-        <div class="wa-sender-label">Jordan Engo / AGentZ</div>
-        Halo! Ada yang bisa saya bantu terkait setup sistem appointment otomatis & consultation audit untuk bisnis konten Anda? 🤖
-      </div>
-    </div>
-    <div class="wa-footer">
-      <a href="https://wa.me/15556523818?text=Halo%20Jordan,%20saya%20mau%20konsultasi%20AGentZ%20System" target=_blank onclick="closeWaTooltip()" class="wa-action-btn">
-        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.114-2.905-6.99C16.559 1.87 14.09 .836 11.455.836 6.023.836 1.6 5.253 1.597 10.687c0 1.682.44 3.324 1.278 4.757L1.87 21.644l6.326-1.658-1.549-.832zm8.796-6.195c-.328-.164-1.94-.956-2.24-1.066-.3-.11-.518-.164-.737.164-.219.328-.847 1.066-1.038 1.285-.19.219-.383.246-.71.082-.328-.164-1.385-.51-2.637-1.627-.975-.87-1.632-1.946-1.824-2.274-.192-.328-.02-.505.143-.668.148-.146.328-.383.493-.574.164-.19.219-.328.328-.547.11-.219.055-.41-.027-.574-.082-.164-.737-1.777-1.01-2.434-.268-.65-.54-.56-.737-.57-.19-.01-.41-.01-.628-.01-.219 0-.574.082-.876.41-.302.328-1.148 1.12-1.148 2.73 0 1.61 1.175 3.167 1.339 3.386.164.219 2.313 3.532 5.6 4.95.782.338 1.39.54 1.868.692.787.25 1.5.215 2.065.13.63-.095 1.94-.794 2.215-1.56.273-.765.273-1.42.19-1.56-.083-.14-.3-.219-.63-.383z"/></svg>
-        Mulai Chat WhatsApp
-      </a>
-    </div>
-  </div>
-
-  <!-- Trigger Button & Notification Tooltip -->
-  <div class="wa-trigger-wrapper">
-    <div id="waTooltip" class="wa-tooltip">
-      <span class="wa-ping-dot"></span>
-      <span>Konsultasi AGentZ via WA? 👋</span>
-      <button onclick="closeWaTooltip()" class="wa-tooltip-close">&times;</button>
-    </div>
-    <button onclick="toggleWhatsAppChat()" class="wa-trigger-btn" title="Chat WhatsApp">
-      <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.114-2.905-6.99C16.559 1.87 14.09 .836 11.455.836 6.023.836 1.6 5.253 1.597 10.687c0 1.682.44 3.324 1.278 4.757L1.87 21.644l6.326-1.658-1.549-.832zm8.796-6.195c-.328-.164-1.94-.956-2.24-1.066-.3-.11-.518-.164-.737.164-.219.328-.847 1.066-1.038 1.285-.19.219-.383.246-.71.082-.328-.164-1.385-.51-2.637-1.627-.975-.87-1.632-1.946-1.824-2.274-.192-.328-.02-.505.143-.668.148-.146.328-.383.493-.574.164-.19.219-.328.328-.547.11-.219.055-.41-.027-.574-.082-.164-.737-1.777-1.01-2.434-.268-.65-.54-.56-.737-.57-.19-.01-.41-.01-.628-.01-.219 0-.574.082-.876.41-.302.328-1.148 1.12-1.148 2.73 0 1.61 1.175 3.167 1.339 3.386.164.219 2.313 3.532 5.6 4.95.782.338 1.39.54 1.868.692.787.25 1.5.215 2.065.13.63-.095 1.94-.794 2.215-1.56.273-.765.273-1.42.19-1.56-.083-.14-.3-.219-.63-.383z"/></svg>
-    </button>
-  </div>
-</div>
-
-
-<!-- ═══════════ PREMIUM LEAD FUNNEL INTEGRATION ═══════════ -->
-<!-- Load Tailwind CSS & Material Icons dynamically to preserve original styles -->
-<link rel="stylesheet" href="tailwind.css">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-
-<style>
-  .hidden { display: none !important; }
-  .funnel-font { font-family: 'Manrope', sans-serif; }
-  .btn-funnel {
-    background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
-    color: #ffffff;
-    font-weight: 700;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
-  }
-  .btn-funnel:hover {
-    background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
-    transform: scale(1.02);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
-  }
-</style>
-
-<!-- Lead Capture Modal -->
-<div class="follow-modal-overlay" id="leadModal" onclick="handleLeadOverlayClick(event)">
-  <div class="follow-modal-card">
-    <button class="follow-modal-close" onclick="closeLeadModal()">&times;</button>
-    <img src="Jo.webp" class="follow-favicon" alt="Favicon">
-    <div class="follow-modal-header">
-      <div class="follow-modal-title" id="modalAssetTitle">Dapatkan Asset</div>
-    </div>
-    <div class="follow-modal-subtitle">Dapatkan update terbaru dan promo khusus</div>
-    
-    <form id="leadForm" onsubmit="submitLeadForm(event)">
-      <input type="hidden" id="leadMagnetKey" name="leadMagnetKey">
-      <input type="hidden" id="leadMagnetName" name="leadMagnetName">
-
-      <div class="follow-input-group">
-        <label for="leadFirstName">Nama depan</label>
-        <input type="text" id="leadFirstName" required placeholder="Nama depan Anda">
-      </div>
-      <div class="follow-input-group">
-        <label for="leadLastName">Nama belakang</label>
-        <input type="text" id="leadLastName" required placeholder="Nama belakang Anda">
-      </div>
-      <div class="follow-input-group">
-        <label for="leadEmail">Email Anda</label>
-        <input type="email" id="leadEmail" required placeholder="email@domain.com">
-      </div>
-      
-      <label class="follow-checkbox-container">
-        <input type="checkbox" required>
-        <span>Saya setuju untuk membagikan detail kontak saya dengan Jordan Engo, yang mungkin akan menghubungi saya.</span>
-      </label>
-      
-      <button type="submit" class="follow-submit-btn" id="submitBtn">Ikuti</button>
-    </form>
-    
-    <!-- Loading State Overlay -->
-    <div id="modalLoading" class="hidden absolute inset-0 bg-white rounded-[16px] flex flex-col items-center justify-center p-6 text-center z-50">
-      <div style="width: 40px; height: 40px; border: 4px solid #000; border-top-color: transparent; border-radius: 50%;" class="animate-spin mb-4"></div>
-      <p style="font-size: 16px; font-weight: 700; color: #000000; margin: 0 0 4px 0;">Menyimpan data...</p>
-      <p style="font-size: 12px; color: #666666; margin: 0;">Mempersiapkan pengiriman instan</p>
-    </div>
-
-    <!-- Success State Overlay -->
-    <div id="modalSuccess" class="hidden absolute inset-0 bg-white rounded-[16px] flex flex-col items-center justify-center p-6 text-center z-50">
-      <div style="width: 48px; height: 48px; background: #f0fdf4; border: 1px solid #bbf7d0; color: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; margin-left: auto; margin-right: auto;">
-        <span class="material-symbols-outlined" style="font-size: 28px; color: #22c55e;">check_circle</span>
-      </div>
-      <h4 style="font-size: 18px; font-weight: 700; color: #000000; margin: 0 0 6px 0;">Akses Diberikan!</h4>
-      <p style="font-size: 12px; color: #666666; margin: 0 0 24px 0; max-width: 280px; line-height: 1.5; margin-left: auto; margin-right: auto;">Pendaftaran Anda berhasil. Silakan klik tombol di bawah ini untuk mengakses resource Anda.</p>
-      
-      <a id="successDownloadLink" href="#" target="_blank" class="follow-submit-btn" style="text-decoration: none; text-align: center; display: block; margin-bottom: 12px; max-width: 240px; margin-left: auto; margin-right: auto;">
-        Download Resource
-      </a>
-      <button onclick="closeLeadModal()" style="background: none; border: none; font-size: 12px; font-weight: 600; color: #666666; cursor: pointer;">Tutup Jendela</button>
-    </div>
-
-    <div class="follow-modal-footer">
-      <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a>
-    </div>
-  </div>
-</div>
 </div>
 
 <script>
@@ -1008,30 +925,6 @@
   }
 </script>
 
-<script>
-  function toggleWhatsAppChat() {
-    const win = document.getElementById('waChatWindow');
-    if (win.style.display === 'flex') {
-      win.style.display = 'none';
-    } else {
-      win.style.display = 'flex';
-      closeWaTooltip();
-    }
-  }
-  function closeWaTooltip() {
-    const tooltip = document.getElementById('waTooltip');
-    if (tooltip) {
-      tooltip.classList.remove('active');
-    }
-  }
-  // Auto show tooltip after 3 seconds
-  setTimeout(() => {
-    const tooltip = document.getElementById('waTooltip');
-    if (tooltip) {
-      tooltip.classList.add('active');
-    }
-  }, 3000);
-</script>
 <!-- Cal.com Popup Modal -->
 <style>
   #cal-popup-overlay {
