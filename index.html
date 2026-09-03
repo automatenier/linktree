@@ -837,6 +837,46 @@
 </div>
 </div>
 
+<!-- Vault Unlocker Modal (Gamified Lock) -->
+<div class="follow-modal-overlay" id="vaultUnlockModal" onclick="handleVaultOverlayClick(event)">
+  <div class="follow-modal-card" style="text-align: left; padding: 24px; max-width: 440px;">
+    <button class="follow-modal-close" onclick="closeVaultUnlockModal()">&times;</button>
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+      <span style="font-size: 22px;">🔒</span>
+      <div style="font-size: 16px; font-weight: 700; color: #000000; font-family: Poppins, sans-serif;">Modul Ini Terkunci di Master Vault</div>
+    </div>
+    <p style="font-size: 13px; color: #666666; line-height: 1.5; margin-bottom: 18px; font-family: Poppins, sans-serif;">
+      Anda sudah meng-unlock 1 modul gratis. Mau buka <strong>seluruh 5 modul lainnya senilai Rp 4.500.000</strong> secara GRATIS?
+    </p>
+
+    <!-- Option A -->
+    <div style="border: 1.5px solid #FFCA3A; background: #fffdf5; border-radius: 12px; padding: 14px; margin-bottom: 12px; cursor: pointer; transition: transform 0.15s;" onclick="closeVaultUnlockModal(); openCalPopup();">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+        <span style="font-size: 11px; font-weight: 700; color: #b45309; text-transform: uppercase; letter-spacing: 0.5px; font-family: Poppins, sans-serif;">🔥 Opsi A (Paling Populer)</span>
+        <span style="font-size: 11px; background: #FFCA3A; color: #000; font-weight: 700; padding: 2px 6px; border-radius: 4px; font-family: Poppins, sans-serif;">GRATIS</span>
+      </div>
+      <div style="font-size: 14px; font-weight: 700; color: #111; margin-bottom: 4px; font-family: Poppins, sans-serif;">Book 15-Min Free Revenue Leak Audit</div>
+      <div style="font-size: 12px; color: #555; line-height: 1.4; margin-bottom: 10px; font-family: Poppins, sans-serif;">
+        Kita review bottleneck lead generation bisnis Anda & berikan Master Access Key untuk seluruh modul + script.
+      </div>
+      <button type="button" style="width: 100%; padding: 10px; background: #000000; color: #ffffff; font-size: 12px; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; font-family: Poppins, sans-serif;">
+        Jadwalkan Audit Gratis →
+      </button>
+    </div>
+
+    <!-- Option B -->
+    <div style="border: 1px solid #e5e7eb; background: #f9fafb; border-radius: 12px; padding: 14px;">
+      <div style="font-size: 11px; font-weight: 700; color: #6b7280; text-transform: uppercase; margin-bottom: 4px; font-family: Poppins, sans-serif;">⚡ Opsi B: Akses Modul Tunggal</div>
+      <div style="font-size: 12px; color: #555; line-height: 1.4; margin-bottom: 10px; font-family: Poppins, sans-serif;">
+        Atau buka modul ini secara individu dengan mendaftarkan email Anda.
+      </div>
+      <button type="button" onclick="unlockCurrentSingleAsset()" style="width: 100%; padding: 10px; background: #ffffff; color: #111111; font-size: 12px; font-weight: 600; border: 1px solid #d1d5db; border-radius: 8px; cursor: pointer; font-family: Poppins, sans-serif;">
+        Akses Modul Ini Saja →
+      </button>
+    </div>
+  </div>
+</div>
+
 <script>
   // Point to our local automated server endpoint:
   const WEBHOOK_URL = "/submit-lead"; 
@@ -929,11 +969,159 @@
             openCalPopup();
             return;
           }
+
+          const claimed = getClaimedAssets();
+          if (claimed.includes(targetKey)) {
+            // Already unlocked: direct navigate
+            const assetUrl = ASSET_DELIVERY_LINKS[targetKey] || '/p/whatsapp-chatbot-crm.html';
+            window.location.href = assetUrl;
+            return;
+          }
+
+          if (claimed.length > 0) {
+            // User already unlocked 1 module: trigger gamified vault unlock modal (Audit Bridge)
+            openVaultUnlockModal(targetKey, title);
+            return;
+          }
+
+          // First module opt-in
           openLeadModal(targetKey, title);
         }
       }
     }
   }, true); // True triggers capture phase (runs before Next.js React handlers)
+
+  // Gamified Vault State & Handlers
+  let pendingUnlockKey = '';
+  let pendingUnlockTitle = '';
+
+  function getClaimedAssets() {
+    try {
+      const saved = localStorage.getItem('claimed_assets');
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function addClaimedAsset(key) {
+    try {
+      const assets = getClaimedAssets();
+      if (!assets.includes(key)) {
+        assets.push(key);
+        localStorage.setItem('claimed_assets', JSON.stringify(assets));
+      }
+      applyGamifiedVaultLock();
+    } catch (e) {}
+  }
+
+  function openVaultUnlockModal(targetKey, targetTitle) {
+    pendingUnlockKey = targetKey;
+    pendingUnlockTitle = targetTitle;
+    const modal = document.getElementById('vaultUnlockModal');
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeVaultUnlockModal() {
+    const modal = document.getElementById('vaultUnlockModal');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function handleVaultOverlayClick(e) {
+    if (e.target.id === 'vaultUnlockModal') {
+      closeVaultUnlockModal();
+    }
+  }
+
+  function unlockCurrentSingleAsset() {
+    const k = pendingUnlockKey;
+    const t = pendingUnlockTitle;
+    closeVaultUnlockModal();
+    if (k && t) {
+      openLeadModal(k, t);
+    }
+  }
+
+  function getCardKeyFromTitle(title) {
+    const leadMagnets = {
+      'Open Source WA Chatbot & Website Voice CS': 'wa_chatbot_voice_cs',
+      'Agent Admin Sosmed Telegram (Schedule, Monitor Konten & Ads)': 'telegram_admin_agent',
+      '5 Video Editor Template Gratis': 'video_editor_templates',
+      'Coaching Website Template': 'coaching_website_template',
+      'Video Sales Letter Prompt': 'vsl_prompt',
+      'Fb & IG DM Automation': 'fb_ig_dm_automation',
+      'Rp 0 Whatsapp Chatbot + CRM Setup (Pakai API sendiri)': 'wa_chatbot_voice_cs',
+      'Social Media Lead Magnet DM Automation Setup + DM SOP': 'fb_ig_dm_automation',
+      'AI Video Editor': 'video_editor_templates',
+      'Social Media Posting Agent': 'telegram_admin_agent',
+      'Open Source Linktree Alternative Template': 'coaching_website_template'
+    };
+    if (leadMagnets[title]) return leadMagnets[title];
+    const lower = title.toLowerCase();
+    if (lower.includes('wa') || lower.includes('chatbot') || lower.includes('voice')) return 'wa_chatbot_voice_cs';
+    if (lower.includes('telegram') || lower.includes('admin sosmed')) return 'telegram_admin_agent';
+    if (lower.includes('video editor')) return 'video_editor_templates';
+    if (lower.includes('coaching') || lower.includes('template')) return 'coaching_website_template';
+    if (lower.includes('sales letter') || lower.includes('vsl')) return 'vsl_prompt';
+    if (lower.includes('dm') || lower.includes('automation')) return 'fb_ig_dm_automation';
+    return null;
+  }
+
+  function applyGamifiedVaultLock() {
+    const claimed = getClaimedAssets();
+    const bgContainer = document.querySelector('[data-id="6986608c350e1a0014bcfb19"]');
+    if (!bgContainer) return;
+
+    const headEl = bgContainer.querySelector('.head');
+    if (headEl) {
+      if (claimed.length > 0) {
+        headEl.innerHTML = `Bahan Gratis <span style="font-size:11px; font-weight:600; color:#22c55e; background:rgba(34,197,94,0.12); padding:3px 8px; border-radius:12px; margin-left:8px; font-family:Poppins,sans-serif; border: 1px solid rgba(34,197,94,0.3);">🔓 ${claimed.length}/6 Modul Terbuka</span>`;
+      } else {
+        headEl.textContent = 'Bahan Gratis';
+      }
+    }
+
+    const cards = bgContainer.querySelectorAll('.carousel-card');
+    cards.forEach(card => {
+      const titleEl = card.querySelector('.carousel-card-title');
+      if (!titleEl) return;
+      const key = getCardKeyFromTitle(titleEl.textContent.trim());
+      if (!key) return;
+
+      const ctaBtn = card.querySelector('.carousel-card-cta');
+      let lockBadge = card.querySelector('.vault-lock-badge');
+
+      if (claimed.includes(key)) {
+        if (lockBadge) lockBadge.remove();
+        if (ctaBtn) {
+          ctaBtn.innerHTML = `<span>Buka Modul ↗</span>`;
+          ctaBtn.style.background = '#16a34a';
+        }
+      } else if (claimed.length > 0) {
+        if (!lockBadge) {
+          const imgWrap = card.querySelector('.carousel-card-image');
+          if (imgWrap) {
+            imgWrap.style.position = 'relative';
+            const badge = document.createElement('div');
+            badge.className = 'vault-lock-badge';
+            badge.style.cssText = 'position:absolute; top:8px; right:8px; background:rgba(0,0,0,0.85); backdrop-filter:blur(4px); color:#FFCA3A; font-size:10px; font-weight:700; padding:3px 8px; border-radius:6px; display:flex; align-items:center; gap:4px; border:1px solid rgba(255,202,58,0.35); font-family:Poppins,sans-serif; z-index:2;';
+            badge.innerHTML = '🔒 LOCKED';
+            imgWrap.appendChild(badge);
+          }
+        }
+        if (ctaBtn) {
+          ctaBtn.innerHTML = `<span>🔒 Terkunci</span>`;
+          ctaBtn.style.background = '#374151';
+        }
+      }
+    });
+  }
 
   function openLeadModal(assetKey, assetName) {
     document.getElementById('leadMagnetKey').value = assetKey;
@@ -992,6 +1180,9 @@
 
     const assetUrl = ASSET_DELIVERY_LINKS[key] || '/p/whatsapp-chatbot-crm.html';
 
+    // Persist unlock in browser
+    addClaimedAsset(key);
+
     // Send lead payload non-blockingly
     try {
       fetch(WEBHOOK_URL, {
@@ -1013,6 +1204,27 @@
       window.location.href = assetUrl;
     }, 300);
   }
+
+  // Auto initialize on load and support ?claim=... / ?unlock=...
+  window.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const claimParam = urlParams.get('claim') || urlParams.get('unlock') || urlParams.get('asset');
+    if (claimParam) {
+      const aliasMap = {
+        'wa_chatbot': 'wa_chatbot_voice_cs',
+        'wacrm': 'wa_chatbot_voice_cs',
+        'voice_cs': 'wa_chatbot_voice_cs',
+        'telegram': 'telegram_admin_agent',
+        'video_editor': 'video_editor_templates',
+        'coaching': 'coaching_website_template',
+        'vsl': 'vsl_prompt',
+        'dm': 'fb_ig_dm_automation'
+      };
+      const resolved = aliasMap[claimParam.toLowerCase()] || claimParam;
+      addClaimedAsset(resolved);
+    }
+    applyGamifiedVaultLock();
+  });
 </script>
 
 <script>
