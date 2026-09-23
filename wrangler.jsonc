@@ -1,0 +1,11 @@
+{
+  "name": "jordanengo-website",
+  "compatibility_date": "2026-08-20",
+  "assets": {
+    "directory": "./dist"
+  },
+  "routes": [
+    { "pattern": "jordanengo.com/*", "zone_name": "jordanengo.com" },
+    { "pattern": "www.jordanengo.com/*", "zone_name": "jordanengo.com" }
+  ]
+}
