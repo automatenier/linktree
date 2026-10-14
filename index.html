@@ -1285,24 +1285,35 @@ html, body {
 
     const submitBtn = e.target.querySelector('button[type="submit"]');
     const originalText = submitBtn ? submitBtn.innerHTML : 'Ikuti';
-    if (submitBtn) submitBtn.innerHTML = 'Memproses...';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Memproses...';
+    }
 
+    let submitted = false;
     try {
-      await fetch('/submit-lead', {
+      const response = await fetch('/submit-lead', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
+      if (!response.ok) throw new Error(`Lead submission failed (${response.status})`);
+      const result = await response.json();
+      if (result.status !== 'success') throw new Error(result.message || 'Lead submission was not accepted');
+      submitted = true;
       alert('Terima kasih telah mengikuti Jordan Engo!');
     } catch (err) {
       console.error(err);
-      alert('Terima kasih telah mengikuti Jordan Engo!');
+      alert('Pendaftaran belum berhasil dikirim. Silakan coba lagi.');
     } finally {
-      if (submitBtn) submitBtn.innerHTML = originalText;
-      closeFollowModal();
-      e.target.reset();
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+      if (submitted) {
+        closeFollowModal();
+        e.target.reset();
+      }
     }
   }
 </script>
@@ -1719,6 +1730,8 @@ html, body {
 
   async function submitLeadForm(e) {
     e.preventDefault();
+    const form = e.currentTarget;
+    const submitBtn = form.querySelector('button[type="submit"]');
     const name = document.getElementById('leadName').value;
     const email = document.getElementById('leadEmail').value;
     const key = document.getElementById('leadMagnetKey').value;
@@ -1742,29 +1755,43 @@ html, body {
 
     const assetUrl = ASSET_DELIVERY_LINKS[key] || '/p/whatsapp-chatbot-crm.html';
 
-    // Persist unlock in browser
-    addClaimedAsset(key);
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.dataset.originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Memproses...';
+    }
 
-    // Send lead payload non-blockingly
     try {
-      fetch(WEBHOOK_URL, {
+      const response = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
-      }).catch(err => console.warn('Lead webhook ping:', err));
-    } catch(err) {
-      console.warn('Webhook dispatch:', err);
+      });
+      if (!response.ok) throw new Error(`Lead submission failed (${response.status})`);
+      const result = await response.json();
+      if (result.status !== 'success') throw new Error(result.message || 'Lead submission was not accepted');
+
+      // Grant access only after the lead service has accepted the submission.
+      addClaimedAsset(key);
+      if (loading) loading.classList.add('hidden');
+      if (downloadLink) {
+        downloadLink.href = assetUrl;
+        downloadLink.textContent = 'Buka Modul Sekarang →';
+      }
+      if (success) success.classList.remove('hidden');
+      form.reset();
+    } catch (err) {
+      console.error('Lead submission failed:', err);
+      if (loading) loading.classList.add('hidden');
+      alert('Pendaftaran belum berhasil dikirim. Akses belum dibuka. Silakan coba lagi.');
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = submitBtn.dataset.originalText || 'Dapatkan Akses Gratis';
+        delete submitBtn.dataset.originalText;
+      }
     }
 
-    if (downloadLink) {
-      downloadLink.href = assetUrl;
-      downloadLink.textContent = 'Buka Modul Sekarang →';
-    }
-
-    // Redirect directly to the Sabrina Ramonov markdown template page
-    setTimeout(() => {
-      window.location.href = assetUrl;
-    }, 300);
   }
 
   // Auto initialize on load and support ?claim=... / ?unlock=...
@@ -1829,12 +1856,24 @@ html, body {
     width: 100%;
     min-height: 600px;
   }
+  #cal-booking-fallback {
+    display: none;
+    margin: 16px 24px 24px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    background: #195846;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font: 600 14px Poppins, sans-serif;
+  }
 </style>
 
 <div id="cal-popup-overlay" onclick="if(event.target===this) closeCalPopup()">
   <div id="cal-popup-box">
-    <button id="cal-popup-close" onclick="closeCalPopup()">&times;</button>
-    <div id="my-cal-inline"></div>
+    <button id="cal-popup-close" onclick="closeCalPopup()" aria-label="Tutup jadwal">&times;</button>
+    <div id="my-cal-inline" data-cal-link="mathew-jordan-p2ha2t/30menitkonsultasi" data-cal-config='{"layout":"month_view","theme":"light"}'></div>
+    <a id="cal-booking-fallback" href="https://cal.com/mathew-jordan-p2ha2t/30menitkonsultasi" target="_blank" rel="noopener noreferrer">Buka jadwal di Cal.com →</a>
   </div>
 </div>
 
@@ -1845,34 +1884,29 @@ html, body {
     document.getElementById('cal-popup-overlay').classList.add('open');
     if (!calLoaded) {
       calLoaded = true;
-      (function (C, A, L) {
-        var p = function (a, ar) { a.q.push(ar); };
-        var d = C.document;
-        C.Cal = C.Cal || function () {
-          var cal = C.Cal; var ar = arguments;
-          if (!cal.loaded) {
-            cal.ns = {}; cal.q = cal.q || [];
-            d.head.appendChild(d.createElement("script")).src = A;
-            cal.loaded = true;
-          }
-          if (ar[0] === L) {
-            var api = function () { p(api, arguments); };
-            var namespace = ar[1]; api.q = api.q || [];
-            if (typeof namespace === "string") {
-              cal.ns[namespace] = cal.ns[namespace] || api;
-              p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]);
-            } else p(cal, ar); return;
-          }
-          p(cal, ar);
-        };
-      })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", { origin: "https://cal.com" });
-      Cal("inline", {
-        elementOrSelector: "#my-cal-inline",
-        calLink: "mathew-jordan-p2ha2t/30menitkonsultasi",
-        config: { layout: "month_view", theme: "light" }
-      });
-      Cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+      var fallback = document.getElementById('cal-booking-fallback');
+      var embed = document.getElementById('my-cal-inline');
+      var script = document.createElement('script');
+      script.src = 'https://app.cal.com/embed/embed.js';
+      script.async = true;
+      script.onload = function () {
+        if (window.Cal) {
+          window.Cal('init', { origin: 'https://cal.com' });
+          window.Cal('inline', {
+            elementOrSelector: '#my-cal-inline',
+            calLink: 'mathew-jordan-p2ha2t/30menitkonsultasi',
+            config: { layout: 'month_view', theme: 'light' }
+          });
+          window.Cal('ui', { hideEventTypeDetails: false, layout: 'month_view' });
+          window.setTimeout(function () {
+            if (!embed.querySelector('iframe')) fallback.style.display = 'block';
+          }, 5000);
+        } else {
+          fallback.style.display = 'block';
+        }
+      };
+      script.onerror = function () { fallback.style.display = 'block'; };
+      document.head.appendChild(script);
     }
   }
 
@@ -2006,4 +2040,3 @@ html, body {
       })();
     </script>
 </body></html>
-
