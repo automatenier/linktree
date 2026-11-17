@@ -13,7 +13,7 @@
   <link rel="preload" as="image" href="Jo-hero-1264.webp" imagesrcset="Jo-hero-400.webp 400w, Jo-hero-800.webp 800w, Jo-hero-1264.webp 1264w" imagesizes="(min-width: 768px) 70vw, 160vw" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -42,6 +42,10 @@
       font-family: 'Geist', system-ui, sans-serif;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+    }
+
+    .font-fraunces {
+      font-family: 'Fraunces', serif;
     }
 
     .h-display {
@@ -111,38 +115,310 @@
       }
     }
 
+    .vault-art {
+      height: 300px;
+      position: relative;
+    }
+    .vault-tile {
+      aspect-ratio: 16/10;
+      border: 1.5px solid var(--line);
+      background: var(--clay-soft);
+      border-radius: 16px;
+      width: 58%;
+      position: absolute;
+      overflow: hidden;
+      box-shadow: 0 22px 44px -22px rgba(40, 30, 20, 0.34), 0 6px 14px -8px rgba(40, 30, 20, 0.16);
+    }
+    .vault-tile img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .vault-tile.t1 { top: 0; right: 0; transform: rotate(3deg); }
+    .vault-tile.t2 { z-index: 1; top: 66px; left: 0; transform: rotate(-4deg); }
+    .vault-tile.t3 { z-index: 2; bottom: 0; right: 7%; transform: rotate(1.5deg); }
+    @media (max-width: 880px) {
+      .vault-art { height: 92px; margin: 0 -6px; }
+      .vault-tile { border-radius: 12px; width: 38%; top: 0; bottom: auto; }
+      .vault-tile.t1 { top: 6px; left: 0; right: auto; transform: rotate(-3deg); }
+      .vault-tile.t2 { top: 0; left: 31%; transform: rotate(1.5deg); }
+      .vault-tile.t3 { top: 8px; left: auto; right: 0; transform: rotate(4deg); }
+    }
+
     .hairline-soft {
       height: 1px;
       background: var(--line);
     }
 
+    /* 1:1 Angus Agent Grid Architecture */
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
     .agent-card {
-      background: #ffffff;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      font: inherit;
+      color: var(--ink);
       border: 1.5px solid var(--line);
-      border-radius: 26px;
       box-shadow: var(--tile-shadow-sm);
+      background: #fff;
+      border-radius: 26px;
+      flex-direction: column;
+      padding: 0;
+      text-decoration: none;
+      transition: transform 0.45s cubic-bezier(0.16, 0.7, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 0.7, 0.3, 1);
+      display: flex;
+      position: relative;
       overflow: hidden;
-      transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s ease, box-shadow 0.24s ease;
     }
     .agent-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--line-strong);
-      box-shadow: var(--tile-shadow);
+      transform: translateY(-5px);
+      box-shadow: 0 32px 64px -26px rgba(40, 30, 20, 0.28), 0 8px 20px -10px rgba(40, 30, 20, 0.14), inset 0 1.5px #ffffffe6;
     }
-
-    .mini-agent {
-      background: #ffffff;
-      border: 1.5px solid var(--line);
-      border-radius: 18px;
+    .agent-card:focus-visible {
+      border-color: var(--clay);
+      box-shadow: var(--tile-shadow-sm), 0 0 0 3px rgba(217, 119, 87, 0.22);
+      outline: none;
+    }
+    .agent-plate {
+      aspect-ratio: 16/10;
+      border-bottom: 1.5px solid var(--line);
+      background: var(--clay-soft);
+      width: 100%;
+      color: var(--clay);
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+      display: flex;
       overflow: hidden;
-      transition: border-color 0.2s ease, transform 0.2s ease;
     }
-    .mini-agent:hover {
+    .agent-plate img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      display: block;
+    }
+    .agent-card:hover .agent-plate img {
+      transform: scale(1.03);
+    }
+    .agent-body {
+      flex-direction: column;
+      flex: 1;
+      align-items: flex-start;
+      min-width: 0;
+      padding: 24px 26px 26px;
+      display: flex;
+    }
+    .agent-name {
+      letter-spacing: -0.022em;
+      color: var(--ink);
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.16;
+      transition: color 0.3s;
+    }
+    .agent-line {
+      color: var(--sub);
+      margin-top: 9px;
+      font-size: 15px;
+      line-height: 1.5;
+      display: block;
+    }
+    .agent-note {
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      display: block;
+    }
+    .agent-meet {
+      margin-top: auto;
+      padding-top: 20px;
+    }
+    .cut-read {
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      align-items: center;
+      gap: 7px;
+      font-family: 'Geist Mono', monospace;
+      font-size: 10.5px;
+      transition: color 0.3s;
+      display: inline-flex;
+    }
+    .cut-arr {
+      transition: transform 0.3s;
+      display: inline-flex;
+    }
+    .agent-card:hover .agent-name,
+    .agent-card:hover .cut-read {
+      color: var(--clay);
+    }
+    .agent-card:hover .cut-arr {
+      transform: translateX(4px);
+    }
+    .agent-more {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .agent-mini {
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      font: inherit;
+      color: var(--ink);
+      border: 1.5px solid var(--line);
+      box-shadow: var(--tile-shadow-sm);
+      background: #fff;
+      border-radius: 18px;
+      flex-direction: column;
+      padding: 0;
+      text-decoration: none;
+      transition: transform 0.45s cubic-bezier(0.16, 0.7, 0.3, 1), border-color 0.3s;
+      display: flex;
+      overflow: hidden;
+    }
+    .agent-mini:hover {
       border-color: var(--line-strong);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
-
-
+    .agent-mini .agent-plate {
+      aspect-ratio: 16/10;
+    }
+    .agent-mini-body {
+      flex-direction: column;
+      min-width: 0;
+      padding: 13px 14px 15px;
+      display: flex;
+    }
+    .agent-mini-name {
+      letter-spacing: -0.012em;
+      color: var(--ink);
+      font-size: 14.5px;
+      font-weight: 600;
+      line-height: 1.22;
+      transition: color 0.3s;
+    }
+    .agent-mini:hover .agent-mini-name {
+      color: var(--clay);
+    }
+    .agent-mini-line {
+      color: var(--sub);
+      margin-top: 5px;
+      font-size: 12.5px;
+      line-height: 1.42;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .agent-all {
+      justify-content: center;
+      margin-top: 32px;
+      display: flex;
+    }
+    .agent-all-link {
+      cursor: pointer;
+      font: inherit;
+      color: var(--ink);
+      border: 1.5px solid var(--line-strong);
+      background: #fff;
+      border-radius: 13px;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color 0.3s, color 0.3s;
+      display: inline-flex;
+    }
+    .agent-all-link:hover {
+      border-color: var(--clay);
+      color: var(--clay);
+    }
+    @media (max-width: 880px) {
+      .agent-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .agent-card {
+        border-radius: 22px;
+      }
+      .agent-body {
+        padding: 18px 20px 20px;
+      }
+      .agent-name {
+        font-size: 20px;
+      }
+      .agent-meet {
+        padding-top: 14px;
+      }
+      .agent-card.minor {
+        flex-direction: row;
+        align-items: center;
+      }
+      .agent-card.minor .agent-plate {
+        border: 1.5px solid var(--line);
+        border-radius: 12px;
+        width: 116px;
+        margin: 14px 0 14px 14px;
+      }
+      .agent-card.minor .agent-body {
+        padding: 14px 16px 14px 14px;
+      }
+      .agent-card.minor .agent-name {
+        font-size: 17px;
+        line-height: 1.2;
+      }
+      .agent-card.minor .agent-line {
+        margin-top: 5px;
+        font-size: 14px;
+        line-height: 1.42;
+      }
+      .agent-card.minor .agent-note {
+        margin-top: 7px;
+      }
+      .agent-card.minor .agent-meet {
+        padding-top: 9px;
+      }
+      .agent-more {
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        grid-template-columns: none;
+        grid-auto-columns: 46%;
+        grid-auto-flow: column;
+        gap: 12px;
+        margin: 14px -24px 0;
+        padding: 4px 24px 14px;
+        scroll-padding-left: 24px;
+        overflow-x: auto;
+      }
+      .agent-more::-webkit-scrollbar {
+        display: none;
+      }
+      .agent-mini {
+        scroll-snap-align: start;
+      }
+      .agent-all {
+        margin-top: 10px;
+      }
+      .agent-all-link {
+        justify-content: center;
+        width: 100%;
+      }
+    }
 
     .field-input {
       width: 100%;
@@ -181,22 +457,25 @@
   <div class="grain"></div>
 
   <!-- Header -->
-  <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b border-transparent">
+  <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300" style="background:transparent;backdrop-filter:none;border-bottom:1px solid transparent">
     <div class="max-w-[1280px] mx-auto px-6 sm:px-9 h-[64px] flex items-center justify-between gap-6">
-      <a href="#top" class="text-[16px] font-semibold tracking-tight text-ink">
-        Jordan <em class="not-italic font-normal text-sub">Engo</em><span class="text-clay">.</span>
+      <a href="#top" class="flex items-baseline min-w-0 whitespace-nowrap font-fraunces">
+        <span class="text-cream" style="font-size:17px;font-weight:500;letter-spacing:-0.004em;line-height:1">Jordan</span>
+        <span class="text-cream-2" style="font-size:16.5px;font-weight:400;font-style:italic;letter-spacing:-0.002em;line-height:1;margin-left:0.30em">Engo</span>
+        <span style="color:var(--clay);font-size:17px;font-weight:600;line-height:1;margin-left:0.01em">.</span>
       </a>
 
-      <nav class="flex items-center gap-6 sm:gap-8">
-        <a href="#latest" class="font-mono text-[10.5px] uppercase tracking-[0.16em] text-sub hover:text-ink transition-colors">AI Agent</a>
-        <a href="#channels" class="font-mono text-[10.5px] uppercase tracking-[0.16em] text-sub hover:text-ink transition-colors">Ikuti</a>
-        <a href="#vault" class="font-mono text-[10.5px] uppercase tracking-[0.16em] text-sub hover:text-ink transition-colors hidden sm:inline">Vault</a>
-        <a href="#top" aria-label="Langganan" class="w-9 h-9 rounded-[10px] bg-clay text-white inline-flex items-center justify-center hover:opacity-90 transition-opacity">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+      <nav class="flex items-center gap-1">
+        <a href="#latest" class="hidden md:inline-block font-mono text-[10.5px] font-medium tracking-[0.16em] uppercase text-cream-2 hover:text-cream px-3 py-2 transition-colors">Agents</a>
+        <a href="#channels" class="hidden md:inline-block font-mono text-[10.5px] font-medium tracking-[0.16em] uppercase text-cream-2 hover:text-cream px-3 py-2 transition-colors">Ikuti</a>
+        <a href="#vault" class="hidden md:inline-block font-mono text-[10.5px] font-semibold tracking-[0.16em] uppercase text-cream hover:text-clay px-3 py-2 transition-colors">Vault</a>
+        <a href="#top" class="ml-2 inline-flex items-center gap-2 bg-clay text-white font-sans text-[12.5px] font-semibold pl-3.5 pr-3.5 py-2 rounded-[11px] hover:brightness-[1.04] transition-all border-none cursor-pointer" style="box-shadow:0 1px 2px rgba(40,30,20,0.12), inset 0 1.5px 0 rgba(255,255,255,0.25)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff">
             <rect x="3" y="4" width="18" height="2.6"></rect>
             <rect x="3" y="9.2" width="18" height="2.6"></rect>
             <path d="M3 14.4H21V21L12 16.4 3 21z"></path>
           </svg>
+          <span>Langganan</span>
         </a>
       </nav>
     </div>
@@ -215,7 +494,7 @@
             width="1264" height="848" fetchpriority="high" decoding="async"
             alt="Jordan Engo"
             class="hero-portrait absolute inset-0 w-full h-full object-cover"
-            style="object-position:62% 20%;transform:scale(1.03);filter:grayscale(1) contrast(1.02) brightness(1.03)"
+            style="object-position:62% 26%;transform:scale(1.05) translateY(0px);filter:grayscale(1) contrast(1.02) brightness(1.03)"
           />
         </picture>
         <!-- Mobile white gradients -->
@@ -233,7 +512,7 @@
               <rect x="3" y="9.2" width="18" height="2.6"></rect>
               <path d="M3 14.4H21V21L12 16.4 3 21z"></path>
             </svg>
-            <span class="font-mono uppercase text-cream-2 shrink-0 whitespace-nowrap" style="font-size:11px;letter-spacing:0.24em">Langganan</span>
+            <span class="font-mono uppercase text-cream-2 shrink-0 whitespace-nowrap" style="font-size:11px;letter-spacing:0.24em">DI SUBSTACK</span>
           </div>
 
           <h1 class="reveal font-sans text-cream md:[width:max-content] md:max-w-[820px]" style="font-size:clamp(38px,6vw,80px);font-weight:600;line-height:0.95;letter-spacing:-0.03em;transition-delay:90ms">
@@ -251,10 +530,11 @@
                 <span class="text-cream-3 shrink-0 group-focus-within:text-clay transition-colors">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="m3.5 7 8.5 6 8.5-6"></path></svg>
                 </span>
-                <input type="email" required placeholder="nama@email.com" aria-label="Alamat email" class="newsletter-email flex-1 min-w-0 bg-transparent border-none outline-none text-cream font-sans placeholder:text-cream-3" style="font-size:16px;padding-left:13px;padding-right:6px" />
+                <input type="email" required placeholder="Masukkan email kamu" aria-label="Alamat email" class="newsletter-email flex-1 min-w-0 bg-transparent border-none outline-none text-cream font-sans placeholder:text-cream-3" style="font-size:16px;padding-left:13px;padding-right:6px" />
               </label>
-              <button type="submit" class="hk-btn w-full" style="height:56px;font-size:16px">
-                Langganan — Gratis
+              <button type="submit" class="hk-btn w-full disabled:opacity-70" style="height:56px;font-size:16px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><rect x="3" y="4" width="18" height="2.6"></rect><rect x="3" y="9.2" width="18" height="2.6"></rect><path d="M3 14.4H21V21L12 16.4 3 21z"></path></svg>
+                <span>Langganan — Gratis</span>
               </button>
             </form>
 
@@ -263,14 +543,15 @@
               <span class="text-cream-3 shrink-0 group-focus-within:text-clay transition-colors">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="m3.5 7 8.5 6 8.5-6"></path></svg>
               </span>
-              <input type="email" required placeholder="nama@email.com" aria-label="Alamat email" class="newsletter-email flex-1 min-w-0 bg-transparent border-none outline-none text-cream font-sans placeholder:text-cream-3" style="font-size:16.5px;padding-left:15px;padding-right:10px" />
-              <button type="submit" class="hk-btn shrink-0" style="height:58px;padding-left:27px;padding-right:26px;font-size:16px">
-                Langganan
+              <input type="email" required placeholder="Masukkan email kamu" aria-label="Alamat email" class="newsletter-email flex-1 min-w-0 bg-transparent border-none outline-none text-cream font-sans placeholder:text-cream-3" style="font-size:16.5px;padding-left:15px;padding-right:10px" />
+              <button type="submit" class="hk-btn shrink-0 disabled:opacity-70" style="height:58px;padding-left:27px;padding-right:26px;font-size:16px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><rect x="3" y="4" width="18" height="2.6"></rect><rect x="3" y="9.2" width="18" height="2.6"></rect><path d="M3 14.4H21V21L12 16.4 3 21z"></path></svg>
+                <span>Langganan</span>
               </button>
             </form>
 
             <p class="font-sans text-cream-3 mt-4" style="font-size:13.5px">
-              <span class="text-cream font-semibold">+1,000 subscriber</span> · gratis, tanpa spam
+              <span class="text-cream font-semibold">+1,000</span> subscriber<span class="mx-2 text-cream-3/50">·</span>gratis, tanpa spam
             </p>
           </div>
         </div>
@@ -283,200 +564,328 @@
         <div class="reveal vault-card">
           <div class="vault-copy">
             <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-clay">AGentZ Member Vault</span>
-            <h2 class="font-sans text-cream mt-4" style="font-size:clamp(30px,3.8vw,48px);font-weight:600;line-height:1.04;letter-spacing:-0.025em">
+            <h2 class="font-sans text-cream mt-4" style="font-size:clamp(28px,3.4vw,42px);font-weight:600;line-height:1.04;letter-spacing:-0.025em">
               Sistem AI saya, dipasang oleh AI-mu.
             </h2>
-            <p class="font-sans text-cream-2 mt-5 max-w-[44ch]" style="font-size:16.5px;line-height:1.6">
+            <p class="font-sans text-[16px] leading-[1.6] text-cream-2 mt-4 max-w-[46ch]">
               Semua sistem yang saya jalankan dan bahas di video, siap dipasang oleh AI agent-mu ke dalam bisnismu. Cukup ceritakan apa yang kamu kerjakan. Sisanya biar dia yang urus.
             </p>
-            <div class="mt-8">
-              <a
-                href="https://wa.me/15556523818?text=Halo%20Jordan,%20saya%20mau%20gabung%20AGentZ%20Member%20Vault"
-                target="_blank"
-                rel="noopener"
-                class="hk-btn px-7 py-3.5 text-[15.5px]"
-              >
-                Gabung ke Vault →
-              </a>
-            </div>
+            <a
+              href="https://wa.me/15556523818?text=Halo%20Jordan,%20saya%20mau%20gabung%20AGentZ%20Member%20Vault"
+              target="_blank"
+              rel="noopener"
+              class="mt-7 inline-flex items-center gap-2 bg-cream text-white font-sans text-[15px] font-semibold px-5 py-3.5 rounded-[13px] hover:brightness-[1.04] transition-all"
+              style="background:var(--ink);box-shadow:0 1px 2px rgba(40,30,20,0.12), inset 0 1.5px 0 rgba(255,255,255,0.25)"
+            >
+              Gabung ke Vault <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+            </a>
           </div>
 
-          <!-- Rotated Art Tiles Stack -->
-          <div class="relative h-[260px] sm:h-[310px] flex items-center justify-center">
-            <img src="bisnis_ai_audit.png" alt="AGentZ Audit System" class="absolute w-[58%] aspect-[16/10] object-cover rounded-[14px] border-[1.5px] border-line shadow-lg" style="transform:translate(-26%, -16%) rotate(-4deg)" />
-            <img src="whatsapp_invoice.png" alt="AGentZ WhatsApp Operator" class="absolute w-[58%] aspect-[16/10] object-cover rounded-[14px] border-[1.5px] border-line shadow-lg" style="transform:translate(24%, 18%) rotate(3deg)" />
-            <img src="bisnis_dashboard.png" alt="AGentZ Dashboard" class="relative z-10 w-[64%] aspect-[16/10] object-cover rounded-[16px] border-[1.5px] border-clay/40" style="box-shadow:var(--featured-tile-shadow);transform:rotate(1.5deg)" />
+          <div class="vault-art" aria-hidden="true">
+            <span class="vault-tile t1"><img src="bisnis_ai_audit.png" alt="AGentZ Audit System" loading="lazy" decoding="async"/></span>
+            <span class="vault-tile t2"><img src="whatsapp_invoice.png" alt="AGentZ WhatsApp Operator" loading="lazy" decoding="async"/></span>
+            <span class="vault-tile t3"><img src="bisnis_dashboard.png" alt="AGentZ Dashboard" loading="lazy" decoding="async"/></span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 3: 01 — From the Member Vault -->
-    <section id="latest" class="max-w-[1280px] mx-auto px-6 sm:px-9 py-14 md:py-20">
-      <div class="reveal mb-12">
-        <div class="flex items-center gap-4 mb-6">
-          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-clay">01</span>
-          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-cream-3">Dari Member Vault</span>
+    <!-- SECTION 2: 1:1 Angus Sewell #reach Section (Visual Proof Grid) -->
+    <section id="reach" class="relative" style="background:var(--night)">
+      <div class="max-w-[1280px] mx-auto px-6 sm:px-9 py-16 md:py-24">
+        <div class="md:hidden reveal flex items-center gap-4 mb-6">
+          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-clay">Angka &amp; Jangkauan</span>
           <span class="hairline-soft flex-1"></span>
+          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-cream-3">4 Saluran</span>
         </div>
-        <h2 class="font-sans text-cream max-w-[16ch]" style="font-size:clamp(42px,5.2vw,60px);font-weight:600;line-height:1;letter-spacing:-0.025em">
-          Pilih pekerjaan yang ingin kamu lepas.
-        </h2>
-        <p class="font-sans text-cream-2 mt-5 max-w-[52ch]" style="font-size:17px;line-height:1.6">
-          Setiap AI Agent adalah sistem yang benar-benar saya jalankan, dan AI-mu tinggal memasangnya di aplikasi yang sudah kamu pakai.
-        </p>
-      </div>
-
-      <!-- 3 Featured Agent Cards with 16/10 Image Plates -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <button onclick="openAgentModal('Inbox & WA Gatekeeper', 'Menyaring ratusan chat WhatsApp & email masuk, lalu merangkum 3 pesan paling penting yang butuh responmu hari ini.', 'Member Vault')" class="text-left agent-card flex flex-col group">
-          <div class="w-full aspect-[16/10] bg-[#faf9f7] border-b-[1.5px] border-line overflow-hidden">
-            <img src="whatsapp_invoice.png" alt="Inbox & WA Gatekeeper" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
-          </div>
-          <div class="p-6 flex-1 flex flex-col justify-between">
-            <div>
-              <h3 class="text-[20px] font-semibold text-ink mb-2 group-hover:text-clay transition-colors">Inbox &amp; WA Gatekeeper</h3>
-              <p class="text-[14.5px] text-sub leading-[1.55]">Menemukan 3 pesan paling penting yang butuh responmu hari ini.</p>
+        <div class="grid grid-cols-2 gap-2.5 md:flex md:gap-3">
+          <!-- Card 1: Instagram -->
+          <a href="https://www.instagram.com/jordan_engo/" target="_blank" rel="noopener" class="reveal group relative block shrink-0 overflow-hidden rounded-[16px] md:flex-1 md:min-w-[228px]" style="aspect-ratio:4/5;transition-delay:0ms;border:1.5px solid var(--line);box-shadow:0 16px 36px -16px rgba(40,30,20,0.22), inset 0 1.5px 0 rgba(255,255,255,0.9)">
+            <img src="jo_bisai.webp" alt="Jordan Engo Instagram" loading="lazy" class="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.9] contrast-[1.03] transition-all duration-[900ms] ease-out group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-[1.05]" style="object-position:50% 22%"/>
+            <div class="absolute inset-0" style="background:linear-gradient(178deg, rgba(22,19,15,0.30) 0%, rgba(22,19,15,0) 34%, rgba(22,19,15,0.26) 62%, rgba(22,19,15,0.86) 100%)"></div>
+            <div class="absolute top-0 inset-x-0 p-3.5 md:p-4 flex items-start justify-between">
+              <span class="flex items-center gap-2 md:gap-2.5" style="filter:drop-shadow(0 2px 7px rgba(0,0,0,0.55))">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.4"></rect><circle cx="12" cy="12" r="4.6"></circle><circle cx="17.7" cy="6.3" r="1.25" fill="#fff" stroke="none"></circle></svg>
+                <span class="font-mono text-[9px] md:text-[10px] tracking-[0.17em] uppercase text-white/85">Instagram</span>
+              </span>
+              <span class="text-white/0 group-hover:text-white/90 -translate-x-1 group-hover:translate-x-0 transition-all duration-300">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+              </span>
             </div>
-            <div class="mt-6 pt-4 border-t border-line flex items-center justify-between text-[13.5px] font-medium text-ink">
-              <span>Lihat AI Agent</span>
-              <span class="text-clay group-hover:translate-x-1 transition-transform">→</span>
+            <div class="absolute bottom-0 inset-x-0 p-3.5 md:p-4">
+              <div class="font-sans font-extrabold text-white leading-[0.9] text-[28px] md:text-[36px]" style="letter-spacing:-0.035em;text-shadow:0 2px 18px rgba(0,0,0,0.5)">2.4K</div>
+              <div class="font-mono text-[9px] md:text-[9.5px] tracking-[0.16em] uppercase text-white/65 mt-1.5 md:mt-2">followers</div>
             </div>
-          </div>
-        </button>
+          </a>
 
-        <button onclick="openAgentModal('CEO\'s Chief of Staff', 'Menyiapkan ringkasan sebelum setiap meeting dan langsung membuat draf follow-up ke klien begitu meeting selesai.', 'Member Vault')" class="text-left agent-card flex flex-col group">
-          <div class="w-full aspect-[16/10] bg-[#faf9f7] border-b-[1.5px] border-line overflow-hidden">
-            <img src="bisnis_dashboard.png" alt="CEO's Chief of Staff" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
-          </div>
-          <div class="p-6 flex-1 flex flex-col justify-between">
-            <div>
-              <h3 class="text-[20px] font-semibold text-ink mb-2 group-hover:text-clay transition-colors">CEO's Chief of Staff</h3>
-              <p class="text-[14.5px] text-sub leading-[1.55]">Menyiapkanmu sebelum setiap meeting dan menulis draf follow-up-nya.</p>
+          <!-- Card 2: TikTok -->
+          <a href="https://www.tiktok.com/@jordan_engo" target="_blank" rel="noopener" class="reveal group relative block shrink-0 overflow-hidden rounded-[16px] md:flex-1 md:min-w-[228px]" style="aspect-ratio:4/5;transition-delay:70ms;border:1.5px solid var(--line);box-shadow:0 16px 36px -16px rgba(40,30,20,0.22), inset 0 1.5px 0 rgba(255,255,255,0.9)">
+            <img src="jo_figma.webp" alt="Jordan Engo TikTok" loading="lazy" class="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.9] contrast-[1.03] transition-all duration-[900ms] ease-out group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-[1.05]" style="object-position:50% 50%"/>
+            <div class="absolute inset-0" style="background:linear-gradient(178deg, rgba(22,19,15,0.30) 0%, rgba(22,19,15,0) 34%, rgba(22,19,15,0.26) 62%, rgba(22,19,15,0.86) 100%)"></div>
+            <div class="absolute top-0 inset-x-0 p-3.5 md:p-4 flex items-start justify-between">
+              <span class="flex items-center gap-2 md:gap-2.5" style="filter:drop-shadow(0 2px 7px rgba(0,0,0,0.55))">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M14 3h3c.31 1.94 1.62 3.45 3.5 3.86v3.02c-1.27 0-2.48-.37-3.5-1.01v6.18A6.18 6.18 0 1 1 10.82 8.9c.31 0 .61.02.9.07v3.13a3.1 3.1 0 1 0 2.28 3V3z"></path></svg>
+                <span class="font-mono text-[9px] md:text-[10px] tracking-[0.17em] uppercase text-white/85">TikTok</span>
+              </span>
+              <span class="text-white/0 group-hover:text-white/90 -translate-x-1 group-hover:translate-x-0 transition-all duration-300">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+              </span>
             </div>
-            <div class="mt-6 pt-4 border-t border-line flex items-center justify-between text-[13.5px] font-medium text-ink">
-              <span>Lihat AI Agent</span>
-              <span class="text-clay group-hover:translate-x-1 transition-transform">→</span>
+            <div class="absolute bottom-0 inset-x-0 p-3.5 md:p-4">
+              <div class="font-sans font-extrabold text-white leading-[0.9] text-[28px] md:text-[36px]" style="letter-spacing:-0.035em;text-shadow:0 2px 18px rgba(0,0,0,0.5)">1.3K</div>
+              <div class="font-mono text-[9px] md:text-[9.5px] tracking-[0.16em] uppercase text-white/65 mt-1.5 md:mt-2">followers</div>
             </div>
-          </div>
-        </button>
+          </a>
 
-        <button onclick="openAgentModal('Quiz Funnel Builder', 'Membuat kuis interaktif singkat yang mengarahkan setiap pengunjung ke penawaran yang paling pas.', 'Member Vault')" class="text-left agent-card flex flex-col group">
-          <div class="w-full aspect-[16/10] bg-[#faf9f7] border-b-[1.5px] border-line overflow-hidden">
-            <img src="bisnis_ai_audit.png" alt="Quiz Funnel Builder" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
-          </div>
-          <div class="p-6 flex-1 flex flex-col justify-between">
-            <div>
-              <h3 class="text-[20px] font-semibold text-ink mb-2 group-hover:text-clay transition-colors">Quiz Funnel Builder</h3>
-              <p class="text-[14.5px] text-sub leading-[1.55]">Membuat kuis yang mengarahkan setiap pengunjung ke penawaran yang tepat.</p>
+          <!-- Card 3: YouTube -->
+          <a href="https://www.youtube.com/@jordanengolo" target="_blank" rel="noopener" class="reveal group relative block shrink-0 overflow-hidden rounded-[16px] md:flex-1 md:min-w-[228px]" style="aspect-ratio:4/5;transition-delay:140ms;border:1.5px solid var(--line);box-shadow:0 16px 36px -16px rgba(40,30,20,0.22), inset 0 1.5px 0 rgba(255,255,255,0.9)">
+            <img src="youtube_promo.webp" alt="Jordan Engo YouTube" loading="lazy" class="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.9] contrast-[1.03] transition-all duration-[900ms] ease-out group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-[1.05]" style="object-position:50% 50%"/>
+            <div class="absolute inset-0" style="background:linear-gradient(178deg, rgba(22,19,15,0.30) 0%, rgba(22,19,15,0) 34%, rgba(22,19,15,0.26) 62%, rgba(22,19,15,0.86) 100%)"></div>
+            <div class="absolute top-0 inset-x-0 p-3.5 md:p-4 flex items-start justify-between">
+              <span class="flex items-center gap-2 md:gap-2.5" style="filter:drop-shadow(0 2px 7px rgba(0,0,0,0.55))">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><rect x="2" y="5" width="20" height="14" rx="4"></rect><polygon points="10,9 16,12 10,15" fill="#16130f" stroke="none"></polygon></svg>
+                <span class="font-mono text-[9px] md:text-[10px] tracking-[0.17em] uppercase text-white/85">YouTube</span>
+              </span>
+              <span class="text-white/0 group-hover:text-white/90 -translate-x-1 group-hover:translate-x-0 transition-all duration-300">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+              </span>
             </div>
-            <div class="mt-6 pt-4 border-t border-line flex items-center justify-between text-[13.5px] font-medium text-ink">
-              <span>Lihat AI Agent</span>
-              <span class="text-clay group-hover:translate-x-1 transition-transform">→</span>
+            <div class="absolute bottom-0 inset-x-0 p-3.5 md:p-4">
+              <div class="font-sans font-extrabold text-white leading-[0.9] text-[28px] md:text-[36px]" style="letter-spacing:-0.035em;text-shadow:0 2px 18px rgba(0,0,0,0.5)">1.5K</div>
+              <div class="font-mono text-[9px] md:text-[9.5px] tracking-[0.16em] uppercase text-white/65 mt-1.5 md:mt-2">subscribers</div>
             </div>
-          </div>
-        </button>
-      </div>
+          </a>
 
-      <!-- 6 Mini Agents with 116px Thumbnail Plates -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-        <button onclick="openAgentModal('Business Numbers Coach', 'Mendeteksi angka atau target bisnis mana yang mulai melenceng minggu ini.', 'AGentZ')" class="text-left mini-agent flex items-stretch">
-          <img src="bisnis_dashboard.png" alt="" class="w-[100px] h-[116px] object-cover border-r-[1.5px] border-line shrink-0" />
-          <div class="p-4 flex flex-col justify-center">
-            <h3 class="text-[14.5px] font-semibold text-ink">Business Numbers Coach</h3>
-            <p class="text-[13px] text-sub mt-1 leading-snug">Mendeteksi angka bisnis yang melenceng minggu ini.</p>
-          </div>
-        </button>
-
-        <button onclick="openAgentModal('Viral Format Finder', 'Menunjukkan format video mana yang sedang naik dan mana yang sudah terlalu jenuh.', 'AGentZ')" class="text-left mini-agent flex items-stretch">
-          <img src="coaching_video_templates.gif" alt="" class="w-[100px] h-[116px] object-cover border-r-[1.5px] border-line shrink-0" />
-          <div class="p-4 flex flex-col justify-center">
-            <h3 class="text-[14.5px] font-semibold text-ink">Viral Format Finder</h3>
-            <p class="text-[13px] text-sub mt-1 leading-snug">Format video mana yang tembus views vs yang jenuh.</p>
-          </div>
-        </button>
-
-        <button onclick="openAgentModal('Order & Nota Operator', 'Mencatat order WhatsApp otomatis dan langsung siapkan nota tanpa input manual.', 'AGentZ')" class="text-left mini-agent flex items-stretch">
-          <img src="whatsapp_invoice.png" alt="" class="w-[100px] h-[116px] object-cover border-r-[1.5px] border-line shrink-0" />
-          <div class="p-4 flex flex-col justify-center">
-            <h3 class="text-[14.5px] font-semibold text-ink">Order &amp; Nota Operator</h3>
-            <p class="text-[13px] text-sub mt-1 leading-snug">Order WhatsApp tercatat otomatis &amp; nota langsung jadi.</p>
-          </div>
-        </button>
-
-        <button onclick="openAgentModal('Video Recut Coach', 'Menemukan di detik ke berapa penonton meninggalkan videomu lalu merancang ulang potongannya.', 'AGentZ')" class="text-left mini-agent flex items-stretch">
-          <img src="video_editor.gif" alt="" class="w-[100px] h-[116px] object-cover border-r-[1.5px] border-line shrink-0" />
-          <div class="p-4 flex flex-col justify-center">
-            <h3 class="text-[14.5px] font-semibold text-ink">Video Recut Coach</h3>
-            <p class="text-[13px] text-sub mt-1 leading-snug">Menemukan titik penonton kabur &amp; merancang ulang editnya.</p>
-          </div>
-        </button>
-
-        <button onclick="openAgentModal('Past-Client Rekindler', 'Memberi tahu klien lama mana yang paling tepat untuk kamu sapa lagi minggu ini.', 'AGentZ')" class="text-left mini-agent flex items-stretch">
-          <img src="whatsapp_chat.gif" alt="" class="w-[100px] h-[116px] object-cover border-r-[1.5px] border-line shrink-0" />
-          <div class="p-4 flex flex-col justify-center">
-            <h3 class="text-[14.5px] font-semibold text-ink">Past-Client Rekindler</h3>
-            <p class="text-[13px] text-sub mt-1 leading-snug">Klien lama mana yang paling pas disapa minggu ini.</p>
-          </div>
-        </button>
-
-        <button onclick="openAgentModal('Waitlist Pitch Tester', 'Menguji dua penawaran sekaligus sebelum kamu membangun produk apa pun.', 'AGentZ')" class="text-left mini-agent flex items-stretch">
-          <img src="bisnis_ai_audit.png" alt="" class="w-[100px] h-[116px] object-cover border-r-[1.5px] border-line shrink-0" />
-          <div class="p-4 flex flex-col justify-center">
-            <h3 class="text-[14.5px] font-semibold text-ink">Waitlist Pitch Tester</h3>
-            <p class="text-[13px] text-sub mt-1 leading-snug">Uji dua penawaran sebelum membangun produk.</p>
-          </div>
-        </button>
-      </div>
-
-      <!-- New Agents Strip -->
-      <div class="mb-10">
-        <div class="font-mono text-[10.5px] uppercase tracking-[0.2em] text-clay mb-4">Baru</div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <button onclick="openAgentModal('Reels Producer', 'Merencanakan jadwal syuting dan menyebar videomu ke semua platform.', 'Baru')" class="text-left agent-card p-6 flex flex-col justify-between group">
-            <div>
-              <h3 class="text-[18px] font-semibold text-ink mb-1.5 group-hover:text-clay transition-colors">Reels Producer</h3>
-              <p class="text-[14px] text-sub leading-[1.55]">Merencanakan syuting dan menyebar videomu ke semua platform.</p>
+          <!-- Card 4: Combined Reach -->
+          <a href="https://www.instagram.com/jordan_engo/" target="_blank" rel="noopener" class="reveal group relative block shrink-0 overflow-hidden rounded-[16px] md:flex-1 md:min-w-[228px]" style="aspect-ratio:4/5;transition-delay:210ms;border:1.5px solid var(--line);box-shadow:0 16px 36px -16px rgba(40,30,20,0.22), inset 0 1.5px 0 rgba(255,255,255,0.9)">
+            <img src="Jo-hero-hd.jpg" alt="Total Jangkauan" loading="lazy" class="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.9] contrast-[1.03] transition-all duration-[900ms] ease-out group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-[1.05]" style="object-position:50% 50%"/>
+            <div class="absolute inset-0" style="background:linear-gradient(178deg, rgba(22,19,15,0.30) 0%, rgba(22,19,15,0) 34%, rgba(22,19,15,0.26) 62%, rgba(22,19,15,0.86) 100%)"></div>
+            <div class="absolute top-0 inset-x-0 p-3.5 md:p-4 flex items-start justify-between">
+              <span class="font-mono text-[9px] md:text-[10px] tracking-[0.22em] uppercase text-white/80" style="filter:drop-shadow(0 2px 7px rgba(0,0,0,0.55))">Total Saluran</span>
+              <span class="text-white/0 group-hover:text-white/90 -translate-x-1 group-hover:translate-x-0 transition-all duration-300">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+              </span>
             </div>
-            <div class="mt-5 text-[13.5px] font-medium text-ink">Lihat AI Agent →</div>
-          </button>
-
-          <button onclick="openAgentModal('Local Prospector', 'Mencari bisnis lokal yang punya alasan kuat untuk mendengar penawaranmu.', 'Baru')" class="text-left agent-card p-6 flex flex-col justify-between group">
-            <div>
-              <h3 class="text-[18px] font-semibold text-ink mb-1.5 group-hover:text-clay transition-colors">Local Prospector</h3>
-              <p class="text-[14px] text-sub leading-[1.55]">Mencari bisnis lokal yang butuh solusi dan siap mendengar penawaranmu.</p>
+            <div class="absolute bottom-0 inset-x-0 p-3.5 md:p-4">
+              <div class="font-sans font-extrabold text-white leading-[0.9] text-[32px] md:text-[44px]" style="letter-spacing:-0.035em;text-shadow:0 2px 18px rgba(0,0,0,0.5)">5,200<span class="text-clay">+</span></div>
+              <div class="font-mono text-[9px] md:text-[9.5px] tracking-[0.16em] uppercase text-white/65 mt-1.5 md:mt-2">Jangkauan Bulanan</div>
             </div>
-            <div class="mt-5 text-[13.5px] font-medium text-ink">Lihat AI Agent →</div>
-          </button>
-
-          <button onclick="openAgentModal('Reorder Planner', 'Memberi tahu stok mana yang habis duluan dan menyiapkan draf order ke supplier.', 'Baru')" class="text-left agent-card p-6 flex flex-col justify-between group">
-            <div>
-              <h3 class="text-[18px] font-semibold text-ink mb-1.5 group-hover:text-clay transition-colors">Reorder Planner</h3>
-              <p class="text-[14px] text-sub leading-[1.55]">Memberi tahu stok mana yang habis duluan dan menyiapkan draf ordernya.</p>
-            </div>
-            <div class="mt-5 text-[13.5px] font-medium text-ink">Lihat AI Agent →</div>
-          </button>
+          </a>
         </div>
-      </div>
-
-      <div class="text-center">
-        <a
-          href="https://wa.me/15556523818?text=Halo%20Jordan,%20saya%20mau%20lihat%20semua%20130%2B%20agen%20AGentZ"
-          target="_blank"
-          rel="noopener"
-          class="inline-flex items-center gap-2 text-[15px] font-medium text-ink hover:text-clay transition-colors"
-        >
-          <span>Lihat semua 130+ AI Agent</span>
-          <span>→</span>
-        </a>
       </div>
     </section>
 
-    <!-- SECTION 4: 02 — Follow the work -->
+    <!-- SECTION 3: 01 — From the Member Vault (#latest) -->
+    <section id="latest" class="max-w-[1280px] mx-auto px-6 sm:px-9 py-14 md:py-20">
+      <div class="latest-agents">
+        <div class="reveal mb-12">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-clay">01</span>
+            <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-cream-3">Dari Member Vault</span>
+            <span class="hairline-soft flex-1"></span>
+          </div>
+          <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <h2 class="h-display text-[42px] md:text-[60px] text-cream max-w-[20ch]">
+              Pilih pekerjaan yang ingin kamu lepas.
+            </h2>
+            <p class="font-sans text-[13.5px] text-cream-3 max-w-[34ch] leading-[1.55]">
+              Setiap AI Agent adalah sistem nyata yang saya pakai sendiri, dan AI-mu tinggal memasangnya di aplikasimu.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6 Main Agent Cards in Angus 3-column Grid -->
+        <div class="agent-set agent-set-popular">
+          <div class="reveal agent-grid">
+            <!-- Lead Agent Card: Inbox & WA Gatekeeper -->
+            <button type="button" onclick="openAgentModal('Inbox & WA Gatekeeper', 'Menyaring ratusan chat WhatsApp & email masuk, lalu merangkum 3 pesan paling penting yang butuh responmu hari ini.', 'Member Vault')" aria-label="Inbox & WA Gatekeeper: Menemukan 3 pesan paling penting yang butuh responmu hari ini." class="agent-card lead">
+              <span class="agent-plate" aria-hidden="true">
+                <img src="whatsapp_invoice.png" alt="Inbox & WA Gatekeeper" loading="lazy" decoding="async"/>
+              </span>
+              <span class="agent-body">
+                <h3 class="agent-name">Inbox &amp; WA Gatekeeper</h3>
+                <span class="agent-line">Menemukan 3 pesan paling penting yang butuh responmu hari ini.</span>
+                <span class="agent-note">Digunakan oleh 39 pemilik bisnis</span>
+                <span class="cut-read agent-meet">
+                  Temui agenmu
+                  <span class="cut-arr">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                  </span>
+                </span>
+              </span>
+            </button>
+
+            <!-- Minor 1: CEO Chief of Staff -->
+            <button type="button" onclick="openAgentModal('CEO\'s Chief of Staff', 'Menyiapkan ringkasan sebelum setiap meeting dan langsung membuat draf follow-up ke klien begitu meeting selesai.', 'Member Vault')" aria-label="CEO's Chief of Staff" class="agent-card minor">
+              <span class="agent-plate" aria-hidden="true">
+                <img src="bisnis_dashboard.png" alt="CEO's Chief of Staff" loading="lazy" decoding="async"/>
+              </span>
+              <span class="agent-body">
+                <h3 class="agent-name">CEO&#x27;s Chief of Staff</h3>
+                <span class="agent-line">Menyiapkanmu sebelum setiap meeting dan menulis draf follow-up-nya.</span>
+                <span class="agent-note">Digunakan oleh 34 anggota</span>
+                <span class="cut-read agent-meet">
+                  Temui agenmu
+                  <span class="cut-arr">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                  </span>
+                </span>
+              </span>
+            </button>
+
+            <!-- Minor 2: Quiz Funnel Builder -->
+            <button type="button" onclick="openAgentModal('Quiz Funnel Builder', 'Membuat kuis interaktif singkat yang mengarahkan setiap pengunjung ke penawaran yang paling pas.', 'Member Vault')" aria-label="Quiz Funnel Builder" class="agent-card minor">
+              <span class="agent-plate" aria-hidden="true">
+                <img src="bisnis_ai_audit.png" alt="Quiz Funnel Builder" loading="lazy" decoding="async"/>
+              </span>
+              <span class="agent-body">
+                <h3 class="agent-name">Quiz Funnel Builder</h3>
+                <span class="agent-line">Membuat kuis yang mengarahkan setiap pengunjung ke penawaran yang tepat.</span>
+                <span class="agent-note">Digunakan oleh 29 anggota</span>
+                <span class="cut-read agent-meet">
+                  Temui agenmu
+                  <span class="cut-arr">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                  </span>
+                </span>
+              </span>
+            </button>
+
+            <!-- Minor 3: Reels & Video Producer -->
+            <button type="button" onclick="openAgentModal('Reels & Video Producer', 'Merencanakan jadwal syuting, hooks viral, dan menyebar videomu ke semua platform media sosial.', 'Member Vault')" aria-label="Reels Producer" class="agent-card minor">
+              <span class="agent-plate" aria-hidden="true">
+                <img src="coaching_video_templates.gif" alt="Reels Producer" loading="lazy" decoding="async"/>
+              </span>
+              <span class="agent-body">
+                <h3 class="agent-name">Reels &amp; Video Producer</h3>
+                <span class="agent-line">Merencanakan syuting dan menyebar videomu ke semua platform.</span>
+                <span class="agent-note">Digunakan oleh 28 anggota</span>
+                <span class="cut-read agent-meet">
+                  Temui agenmu
+                  <span class="cut-arr">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                  </span>
+                </span>
+              </span>
+            </button>
+
+            <!-- Minor 4: Local Prospector -->
+            <button type="button" onclick="openAgentModal('Local Prospector', 'Mencari bisnis lokal yang butuh solusi AI dan siap mendengar penawaranmu.', 'Member Vault')" aria-label="Local Prospector" class="agent-card minor">
+              <span class="agent-plate" aria-hidden="true">
+                <img src="jo_bisai.webp" alt="Local Prospector" loading="lazy" decoding="async"/>
+              </span>
+              <span class="agent-body">
+                <h3 class="agent-name">Local Prospector</h3>
+                <span class="agent-line">Mencari bisnis lokal yang butuh solusi dan siap mendengar penawaranmu.</span>
+                <span class="agent-note">Digunakan oleh 25 anggota</span>
+                <span class="cut-read agent-meet">
+                  Temui agenmu
+                  <span class="cut-arr">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                  </span>
+                </span>
+              </span>
+            </button>
+
+            <!-- Minor 5: Order & Invoice Planner -->
+            <button type="button" onclick="openAgentModal('Order & Nota Planner', 'Memberi tahu stok mana yang habis duluan dan menyiapkan draf order serta nota ke supplier.', 'Member Vault')" aria-label="Reorder Planner" class="agent-card minor">
+              <span class="agent-plate" aria-hidden="true">
+                <img src="whatsapp_chat.gif" alt="Order & Nota Planner" loading="lazy" decoding="async"/>
+              </span>
+              <span class="agent-body">
+                <h3 class="agent-name">Order &amp; Nota Planner</h3>
+                <span class="agent-line">Memberi tahu stok habis duluan dan menyiapkan draf order serta invoice.</span>
+                <span class="agent-note">Digunakan oleh 24 anggota</span>
+                <span class="cut-read agent-meet">
+                  Temui agenmu
+                  <span class="cut-arr">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                  </span>
+                </span>
+              </span>
+            </button>
+          </div>
+
+          <!-- Angus 6-Card Secondary Row (.agent-more) -->
+          <div class="reveal agent-more">
+            <button type="button" onclick="openAgentModal('Business Numbers Coach', 'Mendeteksi metrik bisnis mana yang mulai melenceng minggu ini.', 'AGentZ')" aria-label="Business Numbers Coach" class="agent-mini">
+              <span class="agent-plate" aria-hidden="true">
+                <img src="bisnis_dashboard.png" alt="" loading="lazy" decoding="async"/>
+              </span>
+              <span class="agent-mini-body">
+                <span class="agent-mini-name">Numbers Coach</span>
+                <span class="agent-mini-line">Mendeteksi angka bisnis yang melenceng minggu ini.</span>
+              </span>
+            </button>
+
+            <button type="button" onclick="openAgentModal('Viral Format Finder', 'Menunjukkan format video mana yang sedang naik dan mana yang sudah terlalu jenuh.', 'AGentZ')" aria-label="Viral Format Finder" class="agent-mini">
+              <span class="agent-plate" aria-hidden="true">
+                <img src="coaching_video_templates.gif" alt="" loading="lazy" decoding="async"/>
+              </span>
+              <span class="agent-mini-body">
+                <span class="agent-mini-name">Format Finder</span>
+                <span class="agent-mini-line">Format video mana yang tembus views vs yang jenuh.</span>
+              </span>
+            </button>
+
+            <button type="button" onclick="openAgentModal('Business Buying Scout', 'Mencari bisnis lokal offline yang undervalued untuk diakuisisi atau diajak kerja sama.', 'AGentZ')" aria-label="Business Buying Scout" class="agent-mini">
+              <span class="agent-plate" aria-hidden="true">
+                <img src="jo_figma.webp" alt="" loading="lazy" decoding="async"/>
+              </span>
+              <span class="agent-mini-body">
+                <span class="agent-mini-name">Buying Scout</span>
+                <span class="agent-mini-line">Mencari bisnis lokal offline bernilai untuk diakuisisi.</span>
+              </span>
+            </button>
+
+            <button type="button" onclick="openAgentModal('Video Recut Coach', 'Menemukan di detik ke berapa penonton meninggalkan videomu lalu merancang ulang potongannya.', 'AGentZ')" aria-label="Video Recut Coach" class="agent-mini">
+              <span class="agent-plate" aria-hidden="true">
+                <img src="video_editor.gif" alt="" loading="lazy" decoding="async"/>
+              </span>
+              <span class="agent-mini-body">
+                <span class="agent-mini-name">Recut Coach</span>
+                <span class="agent-mini-line">Menemukan titik penonton kabur &amp; merancang ulang editnya.</span>
+              </span>
+            </button>
+
+            <button type="button" onclick="openAgentModal('Past-Client Rekindler', 'Memberi tahu klien lama mana yang paling tepat untuk kamu sapa lagi minggu ini.', 'AGentZ')" aria-label="Past-Client Rekindler" class="agent-mini">
+              <span class="agent-plate" aria-hidden="true">
+                <img src="whatsapp_chat.gif" alt="" loading="lazy" decoding="async"/>
+              </span>
+              <span class="agent-mini-body">
+                <span class="agent-mini-name">Past-Client</span>
+                <span class="agent-mini-line">Klien lama mana yang paling pas disapa minggu ini.</span>
+              </span>
+            </button>
+
+            <button type="button" onclick="openAgentModal('Waitlist Pitch Tester', 'Menguji dua penawaran sekaligus sebelum kamu membangun produk apa pun.', 'AGentZ')" aria-label="Waitlist Pitch Tester" class="agent-mini">
+              <span class="agent-plate" aria-hidden="true">
+                <img src="bisnis_ai_audit.png" alt="" loading="lazy" decoding="async"/>
+              </span>
+              <span class="agent-mini-body">
+                <span class="agent-mini-name">Pitch Tester</span>
+                <span class="agent-mini-line">Uji dua penawaran sebelum membangun produk.</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 1:1 Angus See All Agents Link -->
+        <div class="reveal agent-all">
+          <button type="button" onclick="openAgentModal('Katalog 130+ AI Agent', 'Semua blueprint, prompt workflow, dan otomasi n8n/Python siap pakai di Member Vault.', 'Member Vault')" class="agent-all-link">
+            <span>Lihat semua 130+ AI Agent</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: 02 — Follow the work (#channels) -->
     <section id="channels" class="max-w-[1280px] mx-auto px-6 sm:px-9 py-16 md:py-24">
       <div class="reveal mb-12">
         <div class="flex items-center gap-4 mb-6">
-          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-clay">Channels</span>
+          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-clay">02</span>
+          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-cream-3">Tempat menemukan saya</span>
           <span class="hairline-soft flex-1"></span>
         </div>
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -499,13 +908,13 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
             </span>
           </div>
-          <div class="mt-8">
+          <div>
             <div class="flex items-baseline gap-3">
               <span class="font-serif text-[28px] text-cream leading-tight">Instagram</span>
-              <span class="font-mono text-[12px] tracking-[0.08em] text-clay">651</span>
+              <span class="font-mono text-[12px] tracking-[0.08em] text-clay">2.4K</span>
             </div>
             <div class="font-mono text-[12px] text-cream-3 mt-1 mb-3">@jordan_engo</div>
-            <span class="font-sans text-[13.5px] text-cream-2">Daily. Where it all started.</span>
+            <span class="font-sans text-[13.5px] text-cream-2">Setiap hari. Tempat semuanya bermula.</span>
           </div>
         </a>
 
@@ -523,13 +932,13 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
             </span>
           </div>
-          <div class="mt-8">
+          <div>
             <div class="flex items-baseline gap-3">
               <span class="font-serif text-[28px] text-cream leading-tight">Substack</span>
               <span class="font-mono text-[12px] tracking-[0.08em] text-clay">+1,000</span>
             </div>
             <div class="font-mono text-[12px] text-cream-3 mt-1 mb-3">Langganan · gratis</div>
-            <span class="font-sans text-[13.5px] text-cream-2">Weekly essays. The deep dives.</span>
+            <span class="font-sans text-[13.5px] text-cream-2">Tulisan mingguan. Bedah mendalam sistem nyata.</span>
           </div>
         </a>
       </div>
@@ -562,7 +971,10 @@
             </svg>
           </span>
           <div class="flex-1 min-w-0">
-            <div class="font-serif text-[18px] text-cream leading-tight">YouTube</div>
+            <div class="flex items-baseline gap-2">
+              <span class="font-serif text-[18px] text-cream leading-tight">YouTube</span>
+              <span class="font-mono text-[11px] text-clay">1.5K</span>
+            </div>
             <div class="font-mono text-[11px] text-cream-3">@jordanengolo</div>
           </div>
           <span class="text-cream-3 group-hover:text-clay transition-colors">
@@ -589,7 +1001,7 @@
       </div>
     </section>
 
-    <!-- SECTION 5: 03 — Contact (Single Boxed Card) -->
+    <!-- SECTION 5: 03 — Contact (#contact) -->
     <section id="contact" class="max-w-[1280px] mx-auto px-6 sm:px-9 py-16 md:py-24">
       <div class="rounded-[24px] p-8 md:p-14" style="background:#ffffff;border:1.5px solid var(--line);box-shadow:var(--tile-shadow)">
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-20 items-start">
@@ -598,69 +1010,94 @@
               <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-clay">03</span>
               <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-cream-3">Hubungi saya</span>
             </div>
-            <h2 class="font-sans text-cream" style="font-size:clamp(40px,4.8vw,56px);font-weight:600;line-height:1;letter-spacing:-0.025em">
+            <h2 class="h-display text-[40px] md:text-[54px] text-cream mb-6">
               Mari ngobrol.
             </h2>
-            <p class="font-sans text-cream-2 mt-5" style="font-size:16.5px;line-height:1.6">
-              Kerja sama brand, podcast, undangan pembicara, atau pertanyaan soal sistem yang saya bangun.
+            <p class="font-sans text-[16px] leading-[1.6] text-cream-2 max-w-[42ch]">
+              Kerja sama brand, podcast, undangan pembicara, atau pertanyaan tentang sistem yang saya bangun.
             </p>
-            <div class="mt-8 space-y-2.5 text-[14.5px] text-sub">
-              <div>
-                <span class="block text-[12px] font-mono uppercase tracking-[0.14em] text-muted mb-0.5">Kerja sama brand</span>
-                <a href="mailto:brands@jordanengo.com" class="text-ink font-medium hover:text-clay underline decoration-line-strong underline-offset-4">brands@jordanengo.com</a>
+            <div class="mt-9 pt-6" style="border-top:1px solid var(--line)">
+              <div class="flex flex-col gap-5 font-sans text-[15px] leading-relaxed">
+                <div>
+                  <p class="text-cream font-medium">Kerja sama brand:</p>
+                  <a href="mailto:brands@jordanengo.com" class="inline-block py-1 text-cream-2 underline underline-offset-4 decoration-cream-3/50 hover:text-clay transition-colors break-all">brands@jordanengo.com</a>
+                </div>
+                <div>
+                  <p class="text-cream font-medium">Lainnya — sistem AI, podcast, pertanyaan:</p>
+                  <a href="mailto:hello@jordanengo.com" class="inline-block py-1 text-cream-2 underline underline-offset-4 decoration-cream-3/50 hover:text-clay transition-colors break-all">hello@jordanengo.com</a>
+                </div>
               </div>
-              <div>
-                <span class="block text-[12px] font-mono uppercase tracking-[0.14em] text-muted mb-0.5">Lainnya — sistem AI, podcast, pertanyaan</span>
-                <a href="mailto:hello@jordanengo.com" class="text-ink font-medium hover:text-clay underline decoration-line-strong underline-offset-4">hello@jordanengo.com</a>
-              </div>
-              <div class="text-muted text-[13px] pt-1">Biasanya saya balas dalam 1×24 jam.</div>
+              <p class="font-sans text-sm text-cream-2 mt-5">Biasanya saya balas dalam 1×24 jam.</p>
             </div>
           </div>
 
-          <form id="contact-form" class="space-y-3.5">
-            <select id="topic" aria-label="Ini soal apa?" class="field-input">
-              <option value="Bangun sistem AI untuk perusahaan saya">Bangun sistem AI untuk perusahaan saya</option>
-              <option value="Kerja sama brand / sponsorship">Kerja sama brand / sponsorship</option>
-              <option value="Podcast / liputan / pembicara">Podcast / liputan / pembicara</option>
-              <option value="Hal lainnya">Hal lainnya</option>
-            </select>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              <input type="text" id="sender-name" required placeholder="Nama kamu" class="field-input" />
-              <input type="text" id="sender-biz" placeholder="Bisnis / Peran" class="field-input" />
-            </div>
-            <textarea id="sender-msg" rows="4" required placeholder="Ini soal apa? Ceritakan singkat..." class="field-input"></textarea>
-            <button type="submit" class="hk-btn w-full sm:w-auto px-8 py-3.5 text-[15px]">
-              Kirim →
-            </button>
-          </form>
+          <div class="reveal w-full max-w-[560px]">
+            <form id="contact-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input class="field-input" placeholder="Nama kamu" required="" id="sender-name" name="name" />
+                <input class="field-input" type="email" placeholder="Email" required="" id="sender-email" name="email" />
+              </div>
+              <select id="topic" name="topic" class="field-input" required="" style="appearance:none">
+                <option value="" disabled="" selected="">Ini soal apa?</option>
+                <option value="Kerja sama brand / sponsorship">Kerja sama brand / sponsorship</option>
+                <option value="Podcast / undangan pembicara">Podcast / undangan pembicara</option>
+                <option value="Pemasangan sistem AI untuk bisnis saya">Pemasangan sistem AI untuk bisnis saya</option>
+                <option value="Pertanyaan lainnya">Pertanyaan lainnya</option>
+              </select>
+              <textarea id="sender-msg" name="message" class="field-input resize-y" rows="4" placeholder="Ceritakan sedikit lebih banyak..." required="" style="min-height:120px"></textarea>
+              <div class="flex items-center gap-4">
+                <button type="submit" class="inline-flex items-center gap-2 bg-clay text-white text-[14.5px] font-semibold px-7 py-3.5 rounded-[12px] hover:brightness-[1.04] transition-all disabled:opacity-70 cursor-pointer border-none" style="box-shadow:0 1px 2px rgba(40,30,20,0.12), inset 0 1.5px 0 rgba(255,255,255,0.25)">
+                  <span>Kirim Pesan</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="border-t-[1.5px] border-line py-9">
-    <div class="max-w-[1280px] mx-auto px-6 sm:px-9 flex flex-wrap items-center justify-between gap-4">
-      <div class="text-[14px] text-muted">
-        <strong class="text-ink font-semibold">Jordan <em class="not-italic font-normal text-sub">Engo</em><span class="text-clay">.</span></strong>
-        <span class="mx-2">/</span>
+  <footer class="max-w-[1280px] mx-auto px-6 sm:px-9">
+    <div class="py-10 flex flex-col md:flex-row items-center justify-between gap-6 border-t" style="border-color:var(--line)">
+      <div class="flex items-center text-cream-3 text-[13px]">
+        <span class="flex items-baseline whitespace-nowrap font-fraunces">
+          <span class="text-cream-2" style="font-size:16px;font-weight:500;letter-spacing:-0.004em">Jordan</span>
+          <span class="text-cream-3" style="font-size:15.5px;font-weight:400;font-style:italic;margin-left:0.30em">Engo</span>
+          <span style="color:var(--clay);font-size:16px;font-weight:600;margin-left:0.01em">.</span>
+        </span>
+        <span class="mx-3 opacity-40">/</span>
         <span>© 2026</span>
       </div>
+
       <div class="flex items-center gap-1.5">
-        <a href="https://instagram.com/jordan_engo" target="_blank" rel="noopener" aria-label="Instagram" class="w-9 h-9 rounded-[10px] flex items-center justify-center text-sub hover:text-clay hover:bg-ink/[0.04] transition-colors">
+        <a href="#top" aria-label="Langganan" class="w-9 h-9 flex items-center justify-center rounded-[10px] text-cream-3 hover:text-cream hover:bg-cream/[0.06] transition-colors">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="3" y="4" width="18" height="2.6"></rect>
+            <rect x="3" y="9.2" width="18" height="2.6"></rect>
+            <path d="M3 14.4H21V21L12 16.4 3 21z"></path>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/jordan_engo/" target="_blank" rel="noopener" aria-label="Instagram" class="w-9 h-9 flex items-center justify-center rounded-[10px] text-cream-3 hover:text-cream hover:bg-cream/[0.06] transition-colors">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <rect x="2.5" y="2.5" width="19" height="19" rx="5"></rect>
             <circle cx="12" cy="12" r="4.2"></circle>
-            <circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"></circle>
+            <circle cx="17.6" cy="6.4" r="1.1" fill="#16130f" stroke="none"></circle>
           </svg>
         </a>
-        <a href="https://www.youtube.com/@jordanengolo" target="_blank" rel="noopener" aria-label="YouTube" class="w-9 h-9 rounded-[10px] flex items-center justify-center text-sub hover:text-clay hover:bg-ink/[0.04] transition-colors">
+        <a href="https://www.tiktok.com/@jordan_engo" target="_blank" rel="noopener" aria-label="TikTok" class="w-9 h-9 flex items-center justify-center rounded-[10px] text-cream-3 hover:text-cream hover:bg-cream/[0.06] transition-colors">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.5 12.5a3.5 3.5 0 1 0 3.5 3.5V5c.7 1.8 2.3 3 4.2 3.1"></path>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@jordanengolo" target="_blank" rel="noopener" aria-label="YouTube" class="w-9 h-9 rounded-[10px] flex items-center justify-center text-cream-3 hover:text-cream hover:bg-cream/[0.06] transition-colors">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <rect x="2.5" y="5" width="19" height="14" rx="4"></rect>
             <polygon points="10,9.5 15.5,12 10,14.5" stroke-linejoin="round"></polygon>
           </svg>
         </a>
-        <a href="https://www.linkedin.com/in/jordan-engo/" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-9 h-9 rounded-[10px] flex items-center justify-center text-sub hover:text-clay hover:bg-ink/[0.04] transition-colors">
+        <a href="https://www.linkedin.com/in/jordan-engo/" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-9 h-9 flex items-center justify-center rounded-[10px] text-cream-3 hover:text-cream hover:bg-cream/[0.06] transition-colors">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <rect x="2.5" y="2.5" width="19" height="19" rx="4"></rect>
             <path d="M7 10v7M7 7.5v.01M11 17v-4a2 2 0 0 1 4 0v4M11 17v-7" stroke-linecap="round"></path>
@@ -675,7 +1112,7 @@
     <div class="bg-white border-[1.5px] border-line-strong rounded-[24px] max-w-[460px] w-full p-7 shadow-2xl">
       <div class="flex items-center justify-between gap-3 mb-4">
         <span id="modal-badge" class="font-mono text-[11px] uppercase tracking-wider text-clay bg-[#d97757]/10 px-2.5 py-0.5 rounded-full"></span>
-        <button onclick="closeAgentModal()" class="text-muted hover:text-ink text-[20px] leading-none">&times;</button>
+        <button onclick="closeAgentModal()" class="text-muted hover:text-ink text-[20px] leading-none cursor-pointer border-none bg-transparent">&times;</button>
       </div>
       <h3 id="modal-title" class="text-[22px] font-semibold text-ink mb-2"></h3>
       <p id="modal-desc" class="text-[15px] leading-[1.6] text-sub mb-6"></p>
@@ -683,7 +1120,7 @@
         <a id="modal-wa" href="#" target="_blank" rel="noopener" class="hk-btn flex-1 py-3 text-[14px]">
           Pasang AI Agent Ini →
         </a>
-        <button onclick="closeAgentModal()" class="px-4 py-3 rounded-[12px] border-[1.5px] border-line text-[14px] text-sub hover:text-ink">
+        <button onclick="closeAgentModal()" class="px-4 py-3 rounded-[12px] border-[1.5px] border-line text-[14px] text-sub hover:text-ink cursor-pointer bg-transparent">
           Tutup
         </button>
       </div>
@@ -733,7 +1170,6 @@
 
     recordUtmEvent('pageview', { referrer: document.referrer || 'direct' });
 
-    // Append UTM attribution automatically to all static wa.me links on the page
     document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
       const utmTag = getUtmTag();
       if (utmTag) {
@@ -776,10 +1212,10 @@
       e.preventDefault();
       const topic = document.getElementById('topic').value;
       const name = document.getElementById('sender-name').value.trim();
-      const biz = document.getElementById('sender-biz').value.trim();
+      const email = document.getElementById('sender-email').value.trim();
       const msg = document.getElementById('sender-msg').value.trim();
       recordUtmEvent('contact_submit', { topic });
-      const fullText = `Halo Jordan, saya ${name}${biz ? ` (${biz})` : ''}.\nTopik: ${topic}\n\n${msg}${getUtmTag()}`;
+      const fullText = `Halo Jordan, saya ${name} (${email}).\nTopik: ${topic}\n\nPesan: ${msg}${getUtmTag()}`;
       window.open(`https://wa.me/15556523818?text=${encodeURIComponent(fullText)}`, '_blank');
     });
 
