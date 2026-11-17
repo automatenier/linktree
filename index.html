@@ -1330,733 +1330,843 @@ html, body {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
       }
-      if (submitted) {
-        closeFollowModal();
-        e.target.reset();
+    ]
+  }
+  </script>
+  <link rel="icon" href="agentzlogo.webp" />
+  <link rel="preload" as="image" href="Jo-hero-1264.webp" imagesrcset="Jo-hero-760.webp 760w, Jo-hero-1264.webp 1264w" imagesizes="(min-width: 768px) 70vw, 160vw" fetchpriority="high" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700;800&display=swap" /></noscript>
+  <style>
+    :root {
+      --canvas: #ffffff;
+      --night: #ffffff;
+      --ink: #16130f;
+      --cream: #16130f;
+      --cream-2: #5f5a53;
+      --cream-3: #a59e95;
+      --sub: #5f5a53;
+      --muted: #a59e95;
+      --line: #efe9e2;
+      --line-strong: #e2ddd6;
+      --clay: #d97757;
+      --clay-soft: rgba(217, 119, 87, 0.12);
+      --clay-border: rgba(217, 119, 87, 0.52);
+      --tile-shadow: 0 20px 44px -18px rgba(40, 30, 20, 0.24), 0 4px 12px -6px rgba(40, 30, 20, 0.12), inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+      --tile-shadow-sm: 0 16px 36px -16px rgba(40, 30, 20, 0.22), inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+      --featured-tile-shadow: 0 28px 58px -22px rgba(217, 119, 87, 0.34), 0 12px 30px -18px rgba(40, 30, 20, 0.22), inset 0 1.5px 0 rgba(255, 255, 255, 0.95);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: 'Geist', system-ui, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .grain {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      opacity: 0.03;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    .hero-portrait {
+      opacity: 0.55;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.1) 12%, rgba(0, 0, 0, 0.6) 26%, #000 34%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.1) 12%, rgba(0, 0, 0, 0.6) 26%, #000 34%);
+    }
+
+    .hk-pill {
+      background: #ffffff;
+      border: 1.5px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--tile-shadow-sm);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .hk-pill:focus-within {
+      border-color: var(--clay-border);
+      box-shadow: var(--featured-tile-shadow);
+    }
+
+    .hk-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      background: var(--clay);
+      color: #ffffff;
+      font-weight: 500;
+      border-radius: 12px;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+    .hk-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+
+    .vault-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: center;
+      border-radius: 28px;
+      border: 1.5px solid var(--line);
+      background: linear-gradient(115deg, #ffffff 46%, var(--clay-soft) 130%);
+      box-shadow: var(--tile-shadow);
+      padding: 32px 26px;
+      overflow: hidden;
+    }
+    @media (min-width: 960px) {
+      .vault-card {
+        grid-template-columns: 1.05fr 0.95fr;
+        padding: 52px 56px;
       }
     }
-  }
-</script>
 
+    .hairline-soft {
+      height: 1px;
+      background: var(--line);
+    }
 
+    .agent-card {
+      background: #ffffff;
+      border: 1.5px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--tile-shadow-sm);
+      overflow: hidden;
+      transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s ease, box-shadow 0.24s ease;
+    }
+    .agent-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--line-strong);
+      box-shadow: var(--tile-shadow);
+    }
 
+    .mini-agent {
+      background: #ffffff;
+      border: 1.5px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .mini-agent:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-2px);
+    }
 
-<!-- ═══════════ PREMIUM LEAD FUNNEL INTEGRATION ═══════════ -->
-<!-- Load Tailwind CSS & Material Icons dynamically to preserve original styles -->
-<link rel="stylesheet" href="tailwind.css">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    .reach-card {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 16px;
+      border: 1.5px solid var(--line);
+      overflow: hidden;
+      background: #faf9f7;
+    }
+    .reach-card img {
+      filter: grayscale(1) brightness(0.9) contrast(1.03);
+      transition: filter 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reach-card:hover img {
+      filter: grayscale(0) brightness(0.95) contrast(1.02);
+      transform: scale(1.04);
+    }
 
-<style>
-  .hidden { display: none !important; }
-  .funnel-font { font-family: 'Manrope', sans-serif; }
-  .btn-funnel {
-    background: #195846;
-    color: #ffffff;
-    font-weight: 700;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 14px rgba(24, 62, 54, 0.2);
-    border-radius: 10px;
-  }
-  .btn-funnel:hover {
-    background: #14493a;
-    transform: scale(1.02);
-    box-shadow: 0 6px 20px rgba(24, 62, 54, 0.3);
-  }
-</style>
+    .channel-card {
+      background: #ffffff;
+      border: 1.5px solid var(--line);
+      border-radius: 22px;
+      min-height: 178px;
+      padding: 26px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .channel-card:hover {
+      border-color: var(--line-strong);
+      box-shadow: var(--tile-shadow-sm);
+      transform: translateY(-2px);
+    }
 
-<!-- Lead Capture Modal -->
-<div class="follow-modal-overlay" id="leadModal" onclick="handleLeadOverlayClick(event)">
-  <div class="follow-modal-card">
-    <button class="follow-modal-close" onclick="closeLeadModal()">&times;</button>
-    <img src="Jo.webp" class="follow-favicon" alt="Favicon">
-    <div class="follow-modal-header">
-      <div class="follow-modal-title" id="modalAssetTitle">Dapatkan Asset</div>
-    </div>
-    <div class="follow-modal-subtitle">Dapatkan update terbaru dan promo khusus</div>
-    
-    <form id="leadForm" onsubmit="submitLeadForm(event)">
-      <input type="hidden" id="leadMagnetKey" name="leadMagnetKey">
-      <input type="hidden" id="leadMagnetName" name="leadMagnetName">
+    .field-input {
+      width: 100%;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      padding: 15px 16px;
+      font-size: 15px;
+      background: #ffffff;
+      color: var(--ink);
+      transition: border-color 0.2s ease;
+    }
+    .field-input:focus {
+      outline: none;
+      border-color: var(--clay-border);
+    }
 
-      <div class="follow-input-group">
-        <label for="leadName">Nama</label>
-        <input type="text" id="leadName" required placeholder="Nama Anda">
-      </div>
-      <div class="follow-input-group">
-        <label for="leadEmail">Email Anda</label>
-        <input type="email" id="leadEmail" required placeholder="email@domain.com">
-      </div>
-      
-      <label class="follow-checkbox-container">
-        <input type="checkbox" required>
-        <span>Saya setuju untuk membagikan detail kontak saya dengan Jordan Engo, yang mungkin akan menghubungi saya.</span>
-      </label>
-      
-      <button type="submit" class="follow-submit-btn" id="submitBtn">Dapatkan Akses Gratis</button>
-    </form>
-    
-    <!-- Loading State Overlay -->
-    <div id="modalLoading" class="hidden absolute inset-0 bg-white rounded-[16px] flex flex-col items-center justify-center p-6 text-center z-50">
-      <div style="width: 40px; height: 40px; border: 4px solid #195846; border-top-color: transparent; border-radius: 50%;" class="animate-spin mb-4"></div>
-      <p style="font-size: 16px; font-weight: 700; color: #183e36; margin: 0 0 4px 0;">Menyimpan data...</p>
-      <p style="font-size: 12px; color: #61796f; margin: 0;">Mempersiapkan pengiriman instan</p>
-    </div>
+    .header-scrolled {
+      background: rgba(255, 255, 255, 0.86) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1.5px solid var(--line) !important;
+    }
 
-    <!-- Success State Overlay -->
-    <div id="modalSuccess" class="hidden absolute inset-0 bg-white rounded-[16px] flex flex-col items-center justify-center p-6 text-center z-50">
-      <div style="width: 48px; height: 48px; background: #e5eedf; border: 1px solid #dce2d8; color: #195846; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; margin-left: auto; margin-right: auto;">
-        <span class="material-symbols-outlined" style="font-size: 28px; color: #195846;">check_circle</span>
-      </div>
-      <h4 style="font-size: 18px; font-weight: 700; color: #183e36; margin: 0 0 6px 0;">Akses Diberikan!</h4>
-      <p style="font-size: 12px; color: #61796f; margin: 0 0 24px 0; max-width: 280px; line-height: 1.5; margin-left: auto; margin-right: auto;">Pendaftaran Anda berhasil. Silakan klik tombol di bawah ini untuk mengakses resource Anda.</p>
-      
-      <a id="successDownloadLink" href="#" target="_blank" class="follow-submit-btn" style="text-decoration: none; text-align: center; display: block; margin-bottom: 12px; max-width: 240px; margin-left: auto; margin-right: auto;">
-        Download Resource
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+  <link rel="stylesheet" href="/site.css" />
+</head>
+<body class="min-h-screen flex flex-col">
+  <div class="grain"></div>
+
+  <!-- Header -->
+  <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b border-transparent">
+    <div class="max-w-[1280px] mx-auto px-6 sm:px-9 h-[64px] flex items-center justify-between gap-6">
+      <a href="#top" class="text-[16px] font-semibold tracking-tight text-ink">
+        Jordan <em class="not-italic font-normal text-sub">Engo</em><span class="text-clay">.</span>
       </a>
-      <button onclick="closeLeadModal()" style="background: none; border: none; font-size: 12px; font-weight: 600; color: #61796f; cursor: pointer;">Tutup Jendela</button>
-    </div>
 
-    <div class="follow-modal-footer">
-      <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a>
+      <nav class="flex items-center gap-6 sm:gap-8">
+        <a href="#latest" class="font-mono text-[10.5px] uppercase tracking-[0.16em] text-sub hover:text-ink transition-colors">Agen</a>
+        <a href="#channels" class="font-mono text-[10.5px] uppercase tracking-[0.16em] text-sub hover:text-ink transition-colors">Ikuti</a>
+        <a href="#vault" class="font-mono text-[10.5px] uppercase tracking-[0.16em] text-sub hover:text-ink transition-colors hidden sm:inline">Vault</a>
+        <a href="#top" aria-label="Langganan" class="w-9 h-9 rounded-[10px] bg-clay text-white inline-flex items-center justify-center hover:opacity-90 transition-opacity">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="3" y="4" width="18" height="2.6"></rect>
+            <rect x="3" y="9.2" width="18" height="2.6"></rect>
+            <path d="M3 14.4H21V21L12 16.4 3 21z"></path>
+          </svg>
+        </a>
+      </nav>
     </div>
-  </div>
-</div>
-</div>
+  </header>
 
-<!-- Vault Unlocker Modal (Gamified Lock) -->
-<div class="follow-modal-overlay" id="vaultUnlockModal" onclick="handleVaultOverlayClick(event)">
-  <div class="follow-modal-card" style="text-align: left; padding: 28px; max-width: 440px;">
-    <button class="follow-modal-close" onclick="closeVaultUnlockModal()">&times;</button>
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-      <span style="font-size: 24px;">🔒</span>
-      <div style="font-size: 17px; font-weight: 700; color: #183e36; font-family: Poppins, sans-serif;">Modul Ini Terkunci di Master Vault</div>
-    </div>
-    <p style="font-size: 13px; color: #61796f; line-height: 1.6; margin-bottom: 20px; font-family: Poppins, sans-serif;">
-      Anda sudah meng-unlock 1 modul gratis. Seluruh <strong>6 modul lainnya senilai Rp 4.500.000</strong> terkunci di Master Vault.
-    </p>
-
-    <!-- Audit Bridge Card (Sole Unlock Method) -->
-    <div style="border: 1.5px solid #195846; background: #e5eedf; border-radius: 14px; padding: 18px; margin-bottom: 16px; cursor: pointer; transition: transform 0.15s;" onclick="closeVaultUnlockModal(); openCalPopup();">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-        <span style="font-size: 11px; font-weight: 700; color: #183e36; text-transform: uppercase; letter-spacing: 0.5px; font-family: Poppins, sans-serif;">🔥 Unlock Full Master Vault</span>
-        <span style="font-size: 11px; background: #195846; color: #ffffff; font-weight: 700; padding: 2px 8px; border-radius: 4px; font-family: Poppins, sans-serif;">GRATIS</span>
+  <main class="flex-1">
+    <!-- SECTION 0: Full-Viewport Founder-Portrait Hero -->
+    <section id="top" class="relative md:min-h-screen overflow-hidden" style="background:var(--night)">
+      <!-- Founder Portrait Overlay Layer -->
+      <div class="hero-media relative h-[58svh] min-h-[380px] md:h-auto md:min-h-0 md:absolute md:inset-y-0 md:right-0 w-full md:w-[70%] overflow-hidden">
+        <img
+          src="Jo-hero-1264.webp" srcset="Jo-hero-760.webp 760w, Jo-hero-1264.webp 1264w" sizes="(min-width: 768px) 70vw, 160vw" width="1264" height="848" fetchpriority="high" decoding="async"
+          alt="Jordan Engo"
+          class="hero-portrait absolute inset-0 w-full h-full object-cover"
+          style="object-position:62% 20%;transform:scale(1.03);filter:grayscale(1) contrast(1.02) brightness(1.03)"
+        />
+        <!-- Mobile white gradients -->
+        <div class="absolute inset-0 md:hidden" style="background:linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.30) 26%, rgba(255,255,255,0.30) 46%, rgba(255,255,255,0.72) 70%, #ffffff 96%)"></div>
+        <div class="absolute inset-x-0 bottom-0 h-2/5" style="background:linear-gradient(0deg, #ffffff 4%, transparent)"></div>
+        <div class="absolute inset-x-0 top-0 h-1/4" style="background:linear-gradient(180deg, rgba(255,255,255,0.5), transparent)"></div>
       </div>
-      <div style="font-size: 15px; font-weight: 700; color: #183e36; margin-bottom: 6px; font-family: Poppins, sans-serif;">Book 15-Min Free Revenue Leak Audit</div>
-      <div style="font-size: 12.5px; color: #61796f; line-height: 1.5; margin-bottom: 14px; font-family: Poppins, sans-serif;">
-        Kita review bottleneck sistem lead generation Anda, hitung revenue leak, dan berikan Master Access Key untuk membuka seluruh 6 tools + script automation secara GRATIS.
-      </div>
-      <button type="button" style="width: 100%; padding: 12px; background: #195846; color: #ffffff; font-size: 13px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer; font-family: Poppins, sans-serif; box-shadow: 0 4px 12px rgba(24,62,54,0.15);">
-        Jadwalkan Audit Gratis via Cal.com →
-      </button>
-    </div>
 
-    <div style="text-align: center;">
-      <button type="button" onclick="closeVaultUnlockModal()" style="background: none; border: none; font-size: 12px; color: #61796f; cursor: pointer; font-family: Poppins, sans-serif;">
-        Kembali ke Modul yang Sudah Dibuka
-      </button>
-    </div>
-  </div>
-</div>
+      <!-- Hero Copy Layer -->
+      <div class="hero-content relative z-[2] max-w-[1280px] mx-auto px-6 sm:px-9 md:min-h-screen flex items-center mt-[-17svh] md:mt-0 pt-0 md:pt-28 pb-16 md:pb-24">
+        <div class="w-full max-w-[640px]">
+          <div class="reveal flex items-center gap-2.5 mb-8" style="transition-delay:40ms">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#D97757">
+              <rect x="3" y="4" width="18" height="2.6"></rect>
+              <rect x="3" y="9.2" width="18" height="2.6"></rect>
+              <path d="M3 14.4H21V21L12 16.4 3 21z"></path>
+            </svg>
+            <span class="font-mono text-cream-2 shrink-0 whitespace-nowrap" style="font-size:11px;letter-spacing:0.24em">DI SUBSTACK</span>
+          </div>
 
-<script>
-  // Point to our local automated server endpoint:
-  const WEBHOOK_URL = "/submit-lead"; 
+          <h1 class="reveal font-sans text-cream md:[width:max-content] md:max-w-[820px]" style="font-size:clamp(38px,6vw,80px);font-weight:600;line-height:0.95;letter-spacing:-0.03em;transition-delay:90ms">
+            Cara kreatif memakai<br /><span class="text-clay">AI agent.</span>
+          </h1>
 
-  // Predefined delivery links for each lead magnet
-  // Predefined delivery links for each lead magnet (Sabrina Ramonov markdown reader pages)
-  const ASSET_DELIVERY_LINKS = {
-    'wa_chatbot_voice_cs': '/p/whatsapp-chatbot-crm.html',
-    'whatsapp_invoice_system': '/p/whatsapp-chatbot-crm.html',
-    'telegram_admin_agent': '/p/social-media-posting-agent.html',
-    'video_editor_templates': '/p/ai-video-editor.html',
-    'bisnis_dashboard_excel': '/p/linktree-alternative-template.html',
-    'coaching_website_template': '/p/linktree-alternative-template.html',
-    'bisnis_ai_audit': '/p/lead-magnet-dm-automation.html',
-    'vsl_prompt': '/p/lead-magnet-dm-automation.html',
-    'fb_ig_dm_automation': '/p/lead-magnet-dm-automation.html',
-    // Aliases & fallbacks
-    'kubernetes_guide': '/p/whatsapp-chatbot-crm.html',
-    'setter_sop_library': '/p/lead-magnet-dm-automation.html',
-    'video_repurposer_guide': '/p/ai-video-editor.html',
-    'yt_roadmap': '/p/social-media-posting-agent.html',
-    'linktree_alt_template': '/p/linktree-alternative-template.html',
-    'aws_resources': '/p/ai-video-editor.html',
-    'devops_resources': '/p/whatsapp-chatbot-crm.html'
-  };
+          <p class="reveal font-sans text-cream-2 mt-7" style="font-size:clamp(16px,1.4vw,18px);line-height:1.58;max-width:44ch;transition-delay:140ms">
+            Sistem nyata yang saya bangun dan pakai di bisnis maupun keseharian. Mana yang berhasil, mana yang gagal—gratis tiap minggu.
+          </p>
 
-  // Intercept clicks on the carousel cards in the capture phase
-  document.addEventListener('click', function(e) {
-    // 1. Intercept bisAI subscription block
-    const bisaiCard = e.target.closest('.featured-variant-two');
-    if (bisaiCard) {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-      openFollowModal(e);
-      return;
-    }
+          <div class="reveal mt-10" style="max-width:548px;transition-delay:190ms">
+            <!-- Mobile Form -->
+            <form class="newsletter-form sm:hidden flex flex-col gap-3">
+              <label class="hk-pill group flex items-center" style="height:58px;padding-left:20px;padding-right:18px">
+                <span class="text-cream-3 shrink-0 group-focus-within:text-clay transition-colors">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="m3.5 7 8.5 6 8.5-6"></path></svg>
+                </span>
+                <input type="email" required placeholder="nama@email.com" aria-label="Alamat email" class="newsletter-email flex-1 min-w-0 bg-transparent border-none outline-none text-cream font-sans placeholder:text-cream-3" style="font-size:16px;padding-left:13px;padding-right:6px" />
+              </label>
+              <button type="submit" class="hk-btn w-full" style="height:56px;font-size:16px">
+                Langganan — Gratis
+              </button>
+            </form>
 
+            <!-- Desktop Pill Form -->
+            <form class="newsletter-form hk-pill group hidden sm:flex items-center w-full" style="height:72px;padding-left:26px;padding-right:8px">
+              <span class="text-cream-3 shrink-0 group-focus-within:text-clay transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="m3.5 7 8.5 6 8.5-6"></path></svg>
+              </span>
+              <input type="email" required placeholder="nama@email.com" aria-label="Alamat email" class="newsletter-email flex-1 min-w-0 bg-transparent border-none outline-none text-cream font-sans placeholder:text-cream-3" style="font-size:16.5px;padding-left:15px;padding-right:10px" />
+              <button type="submit" class="hk-btn shrink-0" style="height:58px;padding-left:27px;padding-right:26px;font-size:16px">
+                Langganan
+              </button>
+            </form>
 
-    // 2. Intercept carousel cards
-    const card = e.target.closest('.carousel-card');
-    if (card) {
-      const titleEl = card.querySelector('.carousel-card-title');
-      if (titleEl) {
-        const title = titleEl.textContent.trim();
-        
-        const leadMagnets = {
-          'Personal Brand Audit': 'brand_architect',
-          'Bedah Sistem Sales': 'acquisition_breakdown',
-          'Buat Penawaran Satu-satunya': 'offer_advisory',
-          'Setup Sistem dan Tools': 'techstack_consult',
-          'Website 24/7 Telefon Respsionis & Whatsapp': 'wa_chatbot_voice_cs',
-          'Open Source WA Chatbot & Website Voice CS': 'wa_chatbot_voice_cs',
-          'Whatsapp Invoice System & AI Agent': 'whatsapp_invoice_system',
-          'Ai Agent Social Media (Posting, Monitor, Konten & ADS)': 'telegram_admin_agent',
-          'Agent Admin Sosmed Telegram (Schedule, Monitor Konten & Ads)': 'telegram_admin_agent',
-          '5 Coaching Video Editing Template': 'video_editor_templates',
-          '5 Video Editor Template Gratis': 'video_editor_templates',
-          'Bisnis Dashbor + Excel Template': 'bisnis_dashboard_excel',
-          'Coaching Website Template': 'coaching_website_template',
-          'Bisnis AI Integrasi Audit': 'bisnis_ai_audit',
-          'Video Sales Letter Prompt': 'vsl_prompt',
-          'Fb & IG DM Automation': 'fb_ig_dm_automation',
-          'Rp 0 Whatsapp Chatbot + CRM Setup (Pakai API sendiri)': 'wa_chatbot_voice_cs',
-          'Social Media Lead Magnet DM Automation Setup + DM SOP': 'fb_ig_dm_automation',
-          'AI Video Editor': 'video_editor_templates',
-          'Social Media Posting Agent': 'telegram_admin_agent',
-          'Open Source Linktree Alternative Template': 'coaching_website_template'
-        };
-        
-        let targetKey = leadMagnets[title];
-        if (!targetKey) {
-          const lower = title.toLowerCase();
-          if (lower.includes('invoice')) {
-            targetKey = 'whatsapp_invoice_system';
-          } else if (lower.includes('audit')) {
-            targetKey = 'bisnis_ai_audit';
-          } else if (lower.includes('dashbor') || lower.includes('excel')) {
-            targetKey = 'bisnis_dashboard_excel';
-          } else if (lower.includes('wa') || lower.includes('chatbot') || lower.includes('voice') || lower.includes('telefon') || lower.includes('resepsionis')) {
-            targetKey = 'wa_chatbot_voice_cs';
-          } else if (lower.includes('telegram') || lower.includes('admin sosmed') || lower.includes('social media') || lower.includes('posting')) {
-            targetKey = 'telegram_admin_agent';
-          } else if (lower.includes('video editor') || lower.includes('coaching video')) {
-            targetKey = 'video_editor_templates';
-          } else if (lower.includes('coaching') || lower.includes('template')) {
-            targetKey = 'coaching_website_template';
-          } else if (lower.includes('sales letter') || lower.includes('vsl')) {
-            targetKey = 'vsl_prompt';
-          } else if (lower.includes('dm') || lower.includes('automation')) {
-            targetKey = 'fb_ig_dm_automation';
-          }
-        }
-
-        if (targetKey) {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-
-          const consultKeys = ['brand_architect', 'acquisition_breakdown', 'offer_advisory', 'techstack_consult'];
-          if (consultKeys.includes(targetKey)) {
-            openCalPopup();
-            return;
-          }
-
-          const claimed = getClaimedAssets();
-          if (claimed.includes(targetKey)) {
-            // Already unlocked: direct navigate
-            const assetUrl = ASSET_DELIVERY_LINKS[targetKey] || '/p/whatsapp-chatbot-crm.html';
-            window.location.href = assetUrl;
-            return;
-          }
-
-          if (claimed.length > 0) {
-            // User already unlocked 1 module: trigger gamified vault unlock modal (Audit Bridge)
-            openVaultUnlockModal(targetKey, title);
-            return;
-          }
-
-          // First module opt-in
-          openLeadModal(targetKey, title);
-        }
-      }
-    }
-  }, true); // True triggers capture phase (runs before Next.js React handlers)
-
-  // Gamified Vault State & Handlers
-  let pendingUnlockKey = '';
-  let pendingUnlockTitle = '';
-
-  function getClaimedAssets() {
-    try {
-      const saved = localStorage.getItem('claimed_assets');
-      return saved ? JSON.parse(saved) : [];
-    } catch (e) {
-      return [];
-    }
-  }
-
-  function addClaimedAsset(key) {
-    try {
-      const assets = getClaimedAssets();
-      if (!assets.includes(key)) {
-        assets.push(key);
-        localStorage.setItem('claimed_assets', JSON.stringify(assets));
-      }
-      applyGamifiedVaultLock();
-    } catch (e) {}
-  }
-
-  function openVaultUnlockModal(targetKey, targetTitle) {
-    pendingUnlockKey = targetKey;
-    pendingUnlockTitle = targetTitle;
-    const modal = document.getElementById('vaultUnlockModal');
-    if (modal) {
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-  }
-
-  function closeVaultUnlockModal() {
-    const modal = document.getElementById('vaultUnlockModal');
-    if (modal) {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  }
-
-  function handleVaultOverlayClick(e) {
-    if (e.target.id === 'vaultUnlockModal') {
-      closeVaultUnlockModal();
-    }
-  }
-
-  function getCardKeyFromTitle(title) {
-    const leadMagnets = {
-      'Website 24/7 Telefon Respsionis & Whatsapp': 'wa_chatbot_voice_cs',
-      'Open Source WA Chatbot & Website Voice CS': 'wa_chatbot_voice_cs',
-      'Whatsapp Invoice System & AI Agent': 'whatsapp_invoice_system',
-      'Ai Agent Social Media (Posting, Monitor, Konten & ADS)': 'telegram_admin_agent',
-      'Agent Admin Sosmed Telegram (Schedule, Monitor Konten & Ads)': 'telegram_admin_agent',
-      '5 Coaching Video Editing Template': 'video_editor_templates',
-      '5 Video Editor Template Gratis': 'video_editor_templates',
-      'Bisnis Dashbor + Excel Template': 'bisnis_dashboard_excel',
-      'Coaching Website Template': 'coaching_website_template',
-      'Bisnis AI Integrasi Audit': 'bisnis_ai_audit',
-      'Video Sales Letter Prompt': 'vsl_prompt',
-      'Fb & IG DM Automation': 'fb_ig_dm_automation',
-      'Rp 0 Whatsapp Chatbot + CRM Setup (Pakai API sendiri)': 'wa_chatbot_voice_cs',
-      'Social Media Lead Magnet DM Automation Setup + DM SOP': 'fb_ig_dm_automation',
-      'AI Video Editor': 'video_editor_templates',
-      'Social Media Posting Agent': 'telegram_admin_agent',
-      'Open Source Linktree Alternative Template': 'coaching_website_template'
-    };
-    if (leadMagnets[title]) return leadMagnets[title];
-    const lower = title.toLowerCase();
-    if (lower.includes('invoice')) return 'whatsapp_invoice_system';
-    if (lower.includes('audit')) return 'bisnis_ai_audit';
-    if (lower.includes('dashbor') || lower.includes('excel')) return 'bisnis_dashboard_excel';
-    if (lower.includes('wa') || lower.includes('chatbot') || lower.includes('voice') || lower.includes('telefon') || lower.includes('resepsionis')) return 'wa_chatbot_voice_cs';
-    if (lower.includes('telegram') || lower.includes('admin sosmed') || lower.includes('social media') || lower.includes('posting')) return 'telegram_admin_agent';
-    if (lower.includes('video editor') || lower.includes('coaching video')) return 'video_editor_templates';
-    if (lower.includes('coaching') || lower.includes('template')) return 'coaching_website_template';
-    if (lower.includes('sales letter') || lower.includes('vsl')) return 'vsl_prompt';
-    if (lower.includes('dm') || lower.includes('automation')) return 'fb_ig_dm_automation';
-    return null;
-  }
-
-  function applyGamifiedVaultLock() {
-    const claimed = getClaimedAssets();
-    const bgContainer = document.querySelector('[data-id="6986608c350e1a0014bcfb19"]');
-    if (!bgContainer) return;
-
-    const headEl = bgContainer.querySelector('.head');
-    if (headEl) {
-      if (claimed.length > 0) {
-        headEl.innerHTML = `Bahan Gratis <span style="font-size:11px; font-weight:600; color:#22c55e; background:rgba(34,197,94,0.12); padding:3px 8px; border-radius:12px; margin-left:8px; font-family:Poppins,sans-serif; border: 1px solid rgba(34,197,94,0.3);">🔓 ${claimed.length}/7 Modul Terbuka</span>`;
-      } else {
-        headEl.textContent = 'Bahan Gratis';
-      }
-    }
-
-    const cards = bgContainer.querySelectorAll('.carousel-card');
-    cards.forEach(card => {
-      const titleEl = card.querySelector('.carousel-card-title');
-      if (!titleEl) return;
-      const key = getCardKeyFromTitle(titleEl.textContent.trim());
-      if (!key) return;
-
-      const ctaBtn = card.querySelector('.carousel-card-cta');
-      let lockBadge = card.querySelector('.vault-lock-badge');
-
-      if (claimed.includes(key)) {
-        if (lockBadge) lockBadge.remove();
-        if (ctaBtn) {
-          ctaBtn.innerHTML = `<span>Buka Modul ↗</span>`;
-          ctaBtn.style.background = '#16a34a';
-        }
-      } else if (claimed.length > 0) {
-        if (!lockBadge) {
-          const imgWrap = card.querySelector('.carousel-card-image');
-          if (imgWrap) {
-            imgWrap.style.position = 'relative';
-            const badge = document.createElement('div');
-            badge.className = 'vault-lock-badge';
-            badge.style.cssText = 'position:absolute; top:8px; right:8px; background:rgba(24,62,54,0.92); backdrop-filter:blur(4px); color:#ffffff; font-size:10px; font-weight:700; padding:3px 8px; border-radius:6px; display:flex; align-items:center; gap:4px; border:1px solid #195846; font-family:Poppins,sans-serif; z-index:2;';
-            badge.innerHTML = '🔒 LOCKED';
-            imgWrap.appendChild(badge);
-          }
-        }
-        if (ctaBtn) {
-          ctaBtn.innerHTML = `<span>🔒 Terkunci</span>`;
-          ctaBtn.style.background = '#61796f';
-        }
-      }
-    });
-  }
-
-  function openLeadModal(assetKey, assetName) {
-    document.getElementById('leadMagnetKey').value = assetKey;
-    document.getElementById('leadMagnetName').value = assetName;
-    document.getElementById('modalAssetTitle').textContent = assetName;
-    
-    // Reset overlays
-    const loading = document.getElementById('modalLoading');
-    const success = document.getElementById('modalSuccess');
-    if (loading) loading.classList.add('hidden');
-    if (success) success.classList.add('hidden');
-    
-    const modal = document.getElementById('leadModal');
-    if (modal) {
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-  }
-  
-  function closeLeadModal() {
-    const modal = document.getElementById('leadModal');
-    if (modal) {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  }
-  
-  function handleLeadOverlayClick(e) {
-    if (e.target.id === 'leadModal') {
-      closeLeadModal();
-    }
-  }
-
-  async function submitLeadForm(e) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const name = document.getElementById('leadName').value;
-    const email = document.getElementById('leadEmail').value;
-    const key = document.getElementById('leadMagnetKey').value;
-    const magnetName = document.getElementById('leadMagnetName').value;
-
-    const loading = document.getElementById('modalLoading');
-    const success = document.getElementById('modalSuccess');
-    const downloadLink = document.getElementById('successDownloadLink');
-
-    // Show loading
-    if (loading) loading.classList.remove('hidden');
-
-    const payload = {
-      name: name.trim(),
-      email: email,
-      whatsapp: '',
-      leadMagnet: magnetName,
-      leadMagnetKey: key,
-      source: 'Link-in-Bio'
-    };
-
-    const assetUrl = ASSET_DELIVERY_LINKS[key] || '/p/whatsapp-chatbot-crm.html';
-
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.dataset.originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Memproses...';
-    }
-
-    try {
-      const response = await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (!response.ok) throw new Error(`Lead submission failed (${response.status})`);
-      const result = await response.json();
-      if (result.status !== 'success') throw new Error(result.message || 'Lead submission was not accepted');
-
-      // Grant access only after the lead service has accepted the submission.
-      addClaimedAsset(key);
-      if (loading) loading.classList.add('hidden');
-      if (downloadLink) {
-        downloadLink.href = assetUrl;
-        downloadLink.textContent = 'Buka Modul Sekarang →';
-      }
-      if (success) success.classList.remove('hidden');
-      form.reset();
-    } catch (err) {
-      console.error('Lead submission failed:', err);
-      if (loading) loading.classList.add('hidden');
-      alert('Pendaftaran belum berhasil dikirim. Akses belum dibuka. Silakan coba lagi.');
-    } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = submitBtn.dataset.originalText || 'Dapatkan Akses Gratis';
-        delete submitBtn.dataset.originalText;
-      }
-    }
-
-  }
-
-  // Auto initialize on load and support ?claim=... / ?unlock=...
-  window.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const claimParam = urlParams.get('claim') || urlParams.get('unlock') || urlParams.get('asset');
-    if (claimParam) {
-      const aliasMap = {
-        'wa_chatbot': 'wa_chatbot_voice_cs',
-        'wacrm': 'wa_chatbot_voice_cs',
-        'voice_cs': 'wa_chatbot_voice_cs',
-        'telegram': 'telegram_admin_agent',
-        'video_editor': 'video_editor_templates',
-        'coaching': 'coaching_website_template',
-        'vsl': 'vsl_prompt',
-        'dm': 'fb_ig_dm_automation'
-      };
-      const resolved = aliasMap[claimParam.toLowerCase()] || claimParam;
-      addClaimedAsset(resolved);
-    }
-    applyGamifiedVaultLock();
-  });
-</script>
-
-
-<!-- Cal.com Popup Modal -->
-<style>
-  #cal-popup-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(6px);
-    z-index: 999999;
-    justify-content: center;
-    align-items: center;
-  }
-  #cal-popup-overlay.open { display: flex; }
-  #cal-popup-box {
-    background: #fff;
-    border-radius: 16px;
-    width: 95%;
-    max-width: 900px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
-  }
-  #cal-popup-close {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    background: none;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #333;
-    z-index: 10;
-    line-height: 1;
-  }
-  #my-cal-inline {
-    width: 100%;
-    min-height: 600px;
-  }
-  #cal-booking-fallback {
-    display: none;
-    margin: 16px 24px 24px;
-    padding: 14px 18px;
-    border-radius: 10px;
-    background: #195846;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    font: 600 14px Poppins, sans-serif;
-  }
-</style>
-
-<div id="cal-popup-overlay" onclick="if(event.target===this) closeCalPopup()">
-  <div id="cal-popup-box">
-    <button id="cal-popup-close" onclick="closeCalPopup()" aria-label="Tutup jadwal">&times;</button>
-    <div id="my-cal-inline" data-cal-link="mathew-jordan-p2ha2t/30menitkonsultasi" data-cal-config='{"layout":"month_view","theme":"light"}'></div>
-    <a id="cal-booking-fallback" href="https://cal.com/mathew-jordan-p2ha2t/30menitkonsultasi" target="_blank" rel="noopener noreferrer">Buka jadwal di Cal.com →</a>
-  </div>
-</div>
-
-<script>
-  var calLoaded = false;
-
-  function openCalPopup() {
-    document.getElementById('cal-popup-overlay').classList.add('open');
-    if (!calLoaded) {
-      calLoaded = true;
-      var fallback = document.getElementById('cal-booking-fallback');
-      var embed = document.getElementById('my-cal-inline');
-      var script = document.createElement('script');
-      script.src = 'https://app.cal.com/embed/embed.js';
-      script.async = true;
-      script.onload = function () {
-        if (window.Cal) {
-          window.Cal('init', { origin: 'https://cal.com' });
-          window.Cal('inline', {
-            elementOrSelector: '#my-cal-inline',
-            calLink: 'mathew-jordan-p2ha2t/30menitkonsultasi',
-            config: { layout: 'month_view', theme: 'light' }
-          });
-          window.Cal('ui', { hideEventTypeDetails: false, layout: 'month_view' });
-          window.setTimeout(function () {
-            if (!embed.querySelector('iframe')) fallback.style.display = 'block';
-          }, 5000);
-        } else {
-          fallback.style.display = 'block';
-        }
-      };
-      script.onerror = function () { fallback.style.display = 'block'; };
-      document.head.appendChild(script);
-    }
-  }
-
-  function closeCalPopup() {
-    document.getElementById('cal-popup-overlay').classList.remove('open');
-  }
-</script>
-
-    <!-- ═══════════ ORIGINAL CLEAN FLOATING WIDGETS (EXACT COPY FROM AGENTZ.JORDANENGO.COM) ═══════════ -->
-    
-    <!-- Floating Widgets Responsive Styling (WhatsApp & ElevenLabs Voice) -->
-    <style>
-      @media (max-width: 640px) {
-        elevenlabs-convai {
-          transform: scale(0.68) !important;
-          transform-origin: bottom right !important;
-          right: 10px !important;
-          bottom: 10px !important;
-        }
-        #agentz-wa-wrapper {
-          bottom: 120px !important;
-          right: 12px !important;
-          gap: 0 !important;
-        }
-        #wa-text-pill {
-          display: none !important;
-        }
-        #main-wa-link {
-          width: 42px !important;
-          height: 42px !important;
-        }
-        #main-wa-link img {
-          width: 26px !important;
-          height: 26px !important;
-        }
-      }
-    </style>
-    <!-- WhatsApp Floating Button (Above Voice Button & High Z-Index) -->
-    <div id="agentz-wa-wrapper" style="position:fixed;bottom:160px;right:24px;z-index:2147483645;display:flex;align-items:center;gap:8px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
-      <span id="wa-text-pill" style="background:#ffffff;color:#18181b;font-size:12px;font-weight:700;padding:6px 12px;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,0.18);border:1px solid rgba(0,0,0,0.08);letter-spacing:0.2px;pointer-events:none;">WhatsApp chat</span>
-      <a id="main-wa-link" href="https://wa.me/15556523818?text=Halo%20Jordan,%20saya%20mau%20konsultasi%20AGentZ%20System" target="_blank" style="width:52px;height:52px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#ffffff;box-shadow:0 8px 24px rgba(0,0,0,0.35);transition:transform 0.2s, box-shadow 0.2s;text-decoration:none;" onmouseover="this.style.transform='scale(1.08)';this.style.boxShadow='0 10px 28px rgba(0,0,0,0.45)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.35)';" title="Chat WhatsApp" aria-label="WhatsApp">
-        <img src="https://vsl.jordanengo.com/embed/wa.webp" alt="WhatsApp" style="width:36px;height:36px;object-fit:contain;" />
-      </a>
-    </div>
-
-    <!-- ElevenLabs Native Floating Voice Widget (Exact agentz.jordanengo.com original) -->
-    <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
-    <elevenlabs-convai id="eleven-widget" agent-id="agent_9601kf7rm6pheekv40vd6w550gs9"></elevenlabs-convai>
-
-    <!-- Auto-Sync WhatsApp Bridge Token on Voice Call Initiation -->
-    <script>
-      (function() {
-        const BUSINESS_WA = "15556523818";
-        let sessionToken = null;
-        let activeSessionId = null;
-
-        async function initVoiceSessionBridge() {
-          try {
-            const res = await fetch("https://engo-1.jordanengo.com/api/voice/session/initiate", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ duration_minutes: 30 })
-            });
-            const data = await res.json();
-            if (data.success && data.session) {
-              sessionToken = data.session.sessionRef;
-              activeSessionId = data.session.id;
-              updateWALinks();
-            }
-          } catch (e) {
-            sessionToken = "V" + Math.random().toString(36).substring(2, 7).toUpperCase();
-            updateWALinks();
-          }
-        }
-
-        function updateWALinks() {
-          const waLink = document.getElementById("main-wa-link");
-          const waPill = document.getElementById("wa-text-pill");
-          if (!waLink) return;
-
-          const prefilled = `Halo Jordan, saya yang tadi telepon di website.\n\n[ID: ${sessionToken}]`;
-          waLink.href = `https://wa.me/${BUSINESS_WA}?text=${encodeURIComponent(prefilled)}`;
-          
-          if (waPill) {
-            waPill.innerText = `WhatsApp chat`;
-          }
-
-          waLink.onclick = async () => {
-            if (activeSessionId) {
-              try {
-                await fetch("https://engo-1.jordanengo.com/api/voice/events", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ session_id: activeSessionId, event_type: "WHATSAPP_CTA_CLICKED" })
-                });
-              } catch(err) {}
-            }
-          };
-        }
-
-        window.addEventListener("load", initVoiceSessionBridge);
-      })();
-    </script>
-
-    <!-- ═══════════ IN-APP BROWSER DETECTOR (INSTAGRAM, TIKTOK, FACEBOOK) ═══════════ -->
-    <div id="inapp-browser-notice" style="display:none;position:fixed;top:0;left:0;right:0;background:#09090b;color:#ffffff;padding:12px 16px;z-index:2147483647;border-bottom:3px solid #2563eb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,0.8);">
-      <div style="max-width:600px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;">
-        <div style="display:flex;align-items:center;gap:10px;text-align:left;">
-          <span style="font-size:22px;">🎙️</span>
-          <div>
-            <div style="font-size:12px;font-weight:800;color:#60a5fa;">Akses Mikrofon Dibatasi Aplikasi</div>
-            <div style="font-size:11px;color:#e4e4e7;line-height:1.35;">Ketuk ikon <b>···</b> di pojok kanan atas lalu pilih <b>"Open in Safari / Chrome"</b> untuk bicara dengan AI Voice.</div>
+            <p class="font-sans text-cream-3 mt-4" style="font-size:13.5px">
+              <span class="text-cream font-semibold">AGentZ Notes</span> · gratis, tanpa spam
+            </p>
           </div>
         </div>
-        <button onclick="document.getElementById('inapp-browser-notice').style.display='none';" style="background:#27272a;color:#ffffff;border:1px solid rgba(255,255,255,0.15);padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;">Tutup</button>
+      </div>
+    </section>
+
+    <!-- SECTION 1: The Member Vault -->
+    <section id="vault" class="relative" style="background:var(--night)">
+      <div class="max-w-[1280px] mx-auto px-6 sm:px-9 pt-4 md:pt-10 pb-6">
+        <div class="reveal vault-card">
+          <div class="vault-copy">
+            <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-clay">AGentZ Member Vault</span>
+            <h2 class="font-sans text-cream mt-4" style="font-size:clamp(30px,3.8vw,48px);font-weight:600;line-height:1.04;letter-spacing:-0.025em">
+              Sistem AI saya, dipasang oleh AI-mu.
+            </h2>
+            <p class="font-sans text-cream-2 mt-5 max-w-[44ch]" style="font-size:16.5px;line-height:1.6">
+              Semua sistem yang saya jalankan dan bahas di video, siap dipasang oleh AI agent-mu ke dalam bisnismu. Cukup ceritakan apa yang kamu kerjakan. Sisanya biar dia yang urus.
+            </p>
+            <div class="mt-8">
+              <a
+                href="https://wa.me/15556523818?text=Halo%20Jordan,%20saya%20mau%20gabung%20AGentZ%20Member%20Vault"
+                target="_blank"
+                rel="noopener"
+                class="hk-btn px-7 py-3.5 text-[15.5px]"
+              >
+                Gabung ke Vault →
+              </a>
+            </div>
+          </div>
+
+          <!-- Rotated Art Tiles Stack -->
+          <div class="relative h-[260px] sm:h-[310px] flex items-center justify-center">
+            <img loading="lazy" decoding="async" src="bisnis_ai_audit.webp" alt="AGentZ Audit System" class="absolute w-[58%] aspect-[16/10] object-cover rounded-[14px] border-[1.5px] border-line shadow-lg" style="transform:translate(-26%, -16%) rotate(-4deg)" />
+            <img loading="lazy" decoding="async" src="whatsapp_invoice.webp" alt="AGentZ WhatsApp Operator" class="absolute w-[58%] aspect-[16/10] object-cover rounded-[14px] border-[1.5px] border-line shadow-lg" style="transform:translate(24%, 18%) rotate(3deg)" />
+            <img loading="lazy" decoding="async" src="bisnis_dashboard.webp" alt="AGentZ Dashboard" class="relative z-10 w-[64%] aspect-[16/10] object-cover rounded-[16px] border-[1.5px] border-clay/40" style="box-shadow:var(--featured-tile-shadow);transform:rotate(1.5deg)" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: The Numbers (4 Photo Cards) -->
+    <section id="reach" class="relative" style="background:var(--night)">
+      <div class="max-w-[1280px] mx-auto px-6 sm:px-9 py-16 md:py-24">
+        <div class="reveal flex items-center gap-4 mb-10">
+          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-clay">Angka di baliknya</span>
+          <span class="hairline-soft flex-1"></span>
+          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-cream-3">4 kanal aktif</span>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          <a href="https://instagram.com/jordan_engo" target="_blank" rel="noopener" class="reveal reach-card group block">
+            <img loading="lazy" decoding="async" src="jo_bisai.webp" alt="Instagram Jordan Engo" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(22,19,15,0.45) 0%, rgba(22,19,15,0.1) 45%, rgba(22,19,15,0.85) 100%)"></div>
+            <div class="relative z-10 h-full p-5 flex flex-col justify-between text-white">
+              <div class="font-mono text-[11px] uppercase tracking-[0.16em] opacity-90">Instagram</div>
+              <div>
+                <div class="text-[28px] sm:text-[36px] font-extrabold leading-none tracking-tight">651</div>
+                <div class="font-mono text-[13px] text-white/80 mt-1.5">@jordan_engo</div>
+                <div class="text-[12.5px] text-white/80 mt-1">Followers · Update harian</div>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/@jordanengolo" target="_blank" rel="noopener" class="reveal reach-card group block" style="transition-delay:70ms">
+            <img loading="lazy" decoding="async" src="channel_youtube.webp" alt="YouTube Channel Jordan Engo" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(22,19,15,0.45) 0%, rgba(22,19,15,0.1) 45%, rgba(22,19,15,0.85) 100%)"></div>
+            <div class="relative z-10 h-full p-5 flex flex-col justify-between text-white">
+              <div class="font-mono text-[11px] uppercase tracking-[0.16em] opacity-90">YouTube</div>
+              <div>
+                <div class="text-[28px] sm:text-[36px] font-extrabold leading-none tracking-tight">45</div>
+                <div class="font-mono text-[13px] text-white/80 mt-1.5">@jordanengolo</div>
+                <div class="text-[12.5px] text-white/80 mt-1">Subscribers · Bedah sistem</div>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/jordan-engo/" target="_blank" rel="noopener" class="reveal reach-card group block" style="transition-delay:140ms">
+            <img loading="lazy" decoding="async" src="Jo.webp" alt="LinkedIn Jordan Engo" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(22,19,15,0.45) 0%, rgba(22,19,15,0.1) 45%, rgba(22,19,15,0.85) 100%)"></div>
+            <div class="relative z-10 h-full p-5 flex flex-col justify-between text-white">
+              <div class="font-mono text-[11px] uppercase tracking-[0.16em] opacity-90">LinkedIn</div>
+              <div>
+                <div class="text-[28px] sm:text-[36px] font-extrabold leading-none tracking-tight">jordan-engo</div>
+                <div class="text-[12.5px] text-white/80 mt-1.5">Studi kasus B2B</div>
+              </div>
+            </div>
+          </a>
+
+          <a href="#hero" class="reveal reach-card group block" style="transition-delay:210ms">
+            <img loading="lazy" decoding="async" src="bisnis_dashboard.webp" alt="AGentZ Notes di Substack" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(22,19,15,0.45) 0%, rgba(22,19,15,0.1) 45%, rgba(22,19,15,0.85) 100%)"></div>
+            <div class="relative z-10 h-full p-5 flex flex-col justify-between text-white">
+              <div class="font-mono text-[11px] uppercase tracking-[0.16em] opacity-90">Substack</div>
+              <div>
+                <div class="text-[28px] sm:text-[36px] font-extrabold leading-none tracking-tight">AGentZ Notes</div>
+                <div class="text-[12.5px] text-white/80 mt-1.5">Newsletter mingguan · Gratis</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: 01 — From the Member Vault -->
+    <section id="latest" class="max-w-[1280px] mx-auto px-6 sm:px-9 py-14 md:py-20">
+      <div class="reveal mb-12">
+        <div class="flex items-center gap-4 mb-6">
+          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-clay">01</span>
+          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-cream-3">Dari Member Vault</span>
+          <span class="hairline-soft flex-1"></span>
+        </div>
+        <h2 class="font-sans text-cream max-w-[16ch]" style="font-size:clamp(42px,5.2vw,60px);font-weight:600;line-height:1;letter-spacing:-0.025em">
+          Pilih pekerjaan yang ingin kamu lepas.
+        </h2>
+        <p class="font-sans text-cream-2 mt-5 max-w-[52ch]" style="font-size:17px;line-height:1.6">
+          Setiap agen adalah sistem yang benar-benar saya jalankan, dan AI-mu tinggal memasangnya di aplikasi yang sudah kamu pakai.
+        </p>
+      </div>
+
+      <!-- 3 Featured Agent Cards with 16/10 Image Plates -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <button onclick="openAgentModal('Inbox & WA Gatekeeper', 'Menyaring ratusan chat WhatsApp & email masuk, lalu merangkum 3 pesan paling penting yang butuh responmu hari ini.', 'Member Vault')" class="text-left agent-card flex flex-col group">
+          <div class="w-full aspect-[16/10] bg-[#faf9f7] border-b-[1.5px] border-line overflow-hidden">
+            <img loading="lazy" decoding="async" src="whatsapp_invoice.webp" alt="Inbox & WA Gatekeeper" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-[20px] font-semibold text-ink mb-2 group-hover:text-clay transition-colors">Inbox &amp; WA Gatekeeper</h3>
+              <p class="text-[14.5px] text-sub leading-[1.55]">Menemukan 3 pesan paling penting yang butuh responmu hari ini.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-line flex items-center justify-between text-[13.5px] font-medium text-ink">
+              <span>Lihat agen</span>
+              <span class="text-clay group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+        </button>
+
+        <button onclick="openAgentModal('CEO\'s Chief of Staff', 'Menyiapkan ringkasan sebelum setiap meeting dan langsung membuat draf follow-up ke klien begitu meeting selesai.', 'Member Vault')" class="text-left agent-card flex flex-col group">
+          <div class="w-full aspect-[16/10] bg-[#faf9f7] border-b-[1.5px] border-line overflow-hidden">
+            <img loading="lazy" decoding="async" src="bisnis_dashboard.webp" alt="CEO's Chief of Staff" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-[20px] font-semibold text-ink mb-2 group-hover:text-clay transition-colors">CEO's Chief of Staff</h3>
+              <p class="text-[14.5px] text-sub leading-[1.55]">Menyiapkanmu sebelum setiap meeting dan menulis draf follow-up-nya.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-line flex items-center justify-between text-[13.5px] font-medium text-ink">
+              <span>Lihat agen</span>
+              <span class="text-clay group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+        </button>
+
+        <button onclick="openAgentModal('Quiz Funnel Builder', 'Membuat kuis interaktif singkat yang mengarahkan setiap pengunjung ke penawaran yang paling pas.', 'Member Vault')" class="text-left agent-card flex flex-col group">
+          <div class="w-full aspect-[16/10] bg-[#faf9f7] border-b-[1.5px] border-line overflow-hidden">
+            <img loading="lazy" decoding="async" src="bisnis_ai_audit.webp" alt="Quiz Funnel Builder" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-[20px] font-semibold text-ink mb-2 group-hover:text-clay transition-colors">Quiz Funnel Builder</h3>
+              <p class="text-[14.5px] text-sub leading-[1.55]">Membuat kuis yang mengarahkan setiap pengunjung ke penawaran yang tepat.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-line flex items-center justify-between text-[13.5px] font-medium text-ink">
+              <span>Lihat agen</span>
+              <span class="text-clay group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <!-- 6 Mini Agents with 116px Thumbnail Plates -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+        <button onclick="openAgentModal('Business Numbers Coach', 'Mendeteksi angka atau target bisnis mana yang mulai melenceng minggu ini.', 'AGentZ')" class="text-left mini-agent flex items-stretch">
+          <img loading="lazy" decoding="async" src="bisnis_dashboard.webp" alt="" class="w-[100px] h-[116px] object-cover border-r-[1.5px] border-line shrink-0" />
+          <div class="p-4 flex flex-col justify-center">
+            <h3 class="text-[14.5px] font-semibold text-ink">Business Numbers Coach</h3>
+            <p class="text-[13px] text-sub mt-1 leading-snug">Mendeteksi angka bisnis yang melenceng minggu ini.</p>
+          </div>
+        </button>
+
+        <button onclick="openAgentModal('Viral Format Finder', 'Menunjukkan format video mana yang sedang naik dan mana yang sudah terlalu jenuh.', 'AGentZ')" class="text-left mini-agent flex items-stretch">
+          <img loading="lazy" decoding="async" src="coaching_video_templates.thumb.webp" alt="" class="w-[100px] h-[116px] object-cover border-r-[1.5px] border-line shrink-0" />
+          <div class="p-4 flex flex-col justify-center">
+            <h3 class="text-[14.5px] font-semibold text-ink">Viral Format Finder</h3>
+            <p class="text-[13px] text-sub mt-1 leading-snug">Format video mana yang tembus views vs yang jenuh.</p>
+          </div>
+        </button>
+
+        <button onclick="openAgentModal('Order & Nota Operator', 'Mencatat order WhatsApp otomatis dan langsung siapkan nota tanpa input manual.', 'AGentZ')" class="text-left mini-agent flex items-stretch">
+          <img loading="lazy" decoding="async" src="whatsapp_invoice.webp" alt="" class="w-[100px] h-[116px] object-cover border-r-[1.5px] border-line shrink-0" />
+          <div class="p-4 flex flex-col justify-center">
+            <h3 class="text-[14.5px] font-semibold text-ink">Order &amp; Nota Operator</h3>
+            <p class="text-[13px] text-sub mt-1 leading-snug">Order WhatsApp tercatat otomatis &amp; nota langsung jadi.</p>
+          </div>
+        </button>
+
+        <button onclick="openAgentModal('Video Recut Coach', 'Menemukan di detik ke berapa penonton meninggalkan videomu lalu merancang ulang potongannya.', 'AGentZ')" class="text-left mini-agent flex items-stretch">
+          <img loading="lazy" decoding="async" src="video_editor.thumb.webp" alt="" class="w-[100px] h-[116px] object-cover border-r-[1.5px] border-line shrink-0" />
+          <div class="p-4 flex flex-col justify-center">
+            <h3 class="text-[14.5px] font-semibold text-ink">Video Recut Coach</h3>
+            <p class="text-[13px] text-sub mt-1 leading-snug">Menemukan titik penonton kabur &amp; merancang ulang editnya.</p>
+          </div>
+        </button>
+
+        <button onclick="openAgentModal('Past-Client Rekindler', 'Memberi tahu klien lama mana yang paling tepat untuk kamu sapa lagi minggu ini.', 'AGentZ')" class="text-left mini-agent flex items-stretch">
+          <img loading="lazy" decoding="async" src="whatsapp_chat.thumb.webp" alt="" class="w-[100px] h-[116px] object-cover border-r-[1.5px] border-line shrink-0" />
+          <div class="p-4 flex flex-col justify-center">
+            <h3 class="text-[14.5px] font-semibold text-ink">Past-Client Rekindler</h3>
+            <p class="text-[13px] text-sub mt-1 leading-snug">Klien lama mana yang paling pas disapa minggu ini.</p>
+          </div>
+        </button>
+
+        <button onclick="openAgentModal('Waitlist Pitch Tester', 'Menguji dua penawaran sekaligus sebelum kamu membangun produk apa pun.', 'AGentZ')" class="text-left mini-agent flex items-stretch">
+          <img loading="lazy" decoding="async" src="bisnis_ai_audit.webp" alt="" class="w-[100px] h-[116px] object-cover border-r-[1.5px] border-line shrink-0" />
+          <div class="p-4 flex flex-col justify-center">
+            <h3 class="text-[14.5px] font-semibold text-ink">Waitlist Pitch Tester</h3>
+            <p class="text-[13px] text-sub mt-1 leading-snug">Uji dua penawaran sebelum membangun produk.</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- New Agents Strip -->
+      <div class="mb-10">
+        <div class="font-mono text-[10.5px] uppercase tracking-[0.2em] text-clay mb-4">Baru</div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <button onclick="openAgentModal('Reels Producer', 'Merencanakan jadwal syuting dan menyebar videomu ke semua platform.', 'Baru')" class="text-left agent-card p-6 flex flex-col justify-between group">
+            <div>
+              <h3 class="text-[18px] font-semibold text-ink mb-1.5 group-hover:text-clay transition-colors">Reels Producer</h3>
+              <p class="text-[14px] text-sub leading-[1.55]">Merencanakan syuting dan menyebar videomu ke semua platform.</p>
+            </div>
+            <div class="mt-5 text-[13.5px] font-medium text-ink">Lihat agen →</div>
+          </button>
+
+          <button onclick="openAgentModal('Local Prospector', 'Mencari bisnis lokal yang punya alasan kuat untuk mendengar penawaranmu.', 'Baru')" class="text-left agent-card p-6 flex flex-col justify-between group">
+            <div>
+              <h3 class="text-[18px] font-semibold text-ink mb-1.5 group-hover:text-clay transition-colors">Local Prospector</h3>
+              <p class="text-[14px] text-sub leading-[1.55]">Mencari bisnis lokal yang butuh solusi dan siap mendengar penawaranmu.</p>
+            </div>
+            <div class="mt-5 text-[13.5px] font-medium text-ink">Lihat agen →</div>
+          </button>
+
+          <button onclick="openAgentModal('Reorder Planner', 'Memberi tahu stok mana yang habis duluan dan menyiapkan draf order ke supplier.', 'Baru')" class="text-left agent-card p-6 flex flex-col justify-between group">
+            <div>
+              <h3 class="text-[18px] font-semibold text-ink mb-1.5 group-hover:text-clay transition-colors">Reorder Planner</h3>
+              <p class="text-[14px] text-sub leading-[1.55]">Memberi tahu stok mana yang habis duluan dan menyiapkan draf ordernya.</p>
+            </div>
+            <div class="mt-5 text-[13.5px] font-medium text-ink">Lihat agen →</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a
+          href="https://wa.me/15556523818?text=Halo%20Jordan,%20saya%20mau%20lihat%20semua%20130%2B%20agen%20AGentZ"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 text-[15px] font-medium text-ink hover:text-clay transition-colors"
+        >
+          <span>Lihat semua 130+ agen</span>
+          <span>→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 4: 02 — Where to find me -->
+    <section id="channels" class="max-w-[1280px] mx-auto px-6 sm:px-9 py-16 md:py-24">
+      <div class="reveal mb-12">
+        <div class="flex items-center gap-4 mb-6">
+          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-clay">02</span>
+          <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-cream-3">Tempat menemukan saya</span>
+          <span class="hairline-soft flex-1"></span>
+        </div>
+        <h2 class="font-sans text-cream" style="font-size:clamp(42px,5.2vw,60px);font-weight:600;line-height:1;letter-spacing:-0.025em">
+          Ikuti prosesnya.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        <a href="https://instagram.com/jordan_engo" target="_blank" rel="noopener" class="channel-card flex flex-col justify-between group">
+          <div class="flex items-start justify-between">
+            <div class="w-[54px] h-[54px] rounded-[14px] border-[1.5px] border-line flex items-center justify-center text-ink">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>
+            </div>
+            <span class="text-muted group-hover:text-clay transition-colors text-[20px]">↗</span>
+          </div>
+          <div class="mt-6">
+            <div class="flex items-baseline justify-between gap-3">
+              <span class="text-[22px] font-semibold text-ink">Instagram</span>
+              <span class="font-mono text-[13px] text-clay">@jordan_engo</span>
+            </div>
+            <p class="text-[14px] text-sub mt-1.5">Harian. Di balik layar sistem &amp; eksperimen AI.</p>
+          </div>
+        </a>
+
+        <a href="https://www.youtube.com/@jordanengolo" target="_blank" rel="noopener" class="channel-card flex flex-col justify-between group">
+          <div class="flex items-start justify-between">
+            <div class="w-[54px] h-[54px] rounded-[14px] border-[1.5px] border-line flex items-center justify-center text-ink">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="4"></rect><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"></polygon></svg>
+            </div>
+            <span class="text-muted group-hover:text-clay transition-colors text-[20px]">↗</span>
+          </div>
+          <div class="mt-6">
+            <div class="flex items-baseline justify-between gap-3">
+              <span class="text-[22px] font-semibold text-ink">YouTube</span>
+              <span class="font-mono text-[13px] text-clay">@jordanengolo</span>
+            </div>
+            <p class="text-[14px] text-sub mt-1.5">Bedah mendalam. Cara kerja agen dari nol sampai jalan.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <a href="https://www.linkedin.com/in/jordan-engo/" target="_blank" rel="noopener" class="p-5 px-6 rounded-[18px] border-[1.5px] border-line bg-white hover:border-line-strong flex items-center justify-between">
+          <div>
+            <span class="font-semibold text-ink text-[15px]">LinkedIn</span>
+            <span class="font-mono text-[12.5px] text-muted ml-3">in/jordan-engo</span>
+          </div>
+          <span class="text-muted">↗</span>
+        </a>
+        <a href="https://wa.me/15556523818" target="_blank" rel="noopener" class="p-5 px-6 rounded-[18px] border-[1.5px] border-line bg-white hover:border-line-strong flex items-center justify-between">
+          <div>
+            <span class="font-semibold text-ink text-[15px]">WhatsApp</span>
+            <span class="font-mono text-[12.5px] text-muted ml-3">Tanya cepat</span>
+          </div>
+          <span class="text-muted">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 5: 03 — Contact (Single Boxed Card) -->
+    <section id="contact" class="max-w-[1280px] mx-auto px-6 sm:px-9 py-16 md:py-24">
+      <div class="rounded-[24px] p-8 md:p-14" style="background:#ffffff;border:1.5px solid var(--line);box-shadow:var(--tile-shadow)">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-20 items-start">
+          <div class="reveal max-w-[460px]">
+            <div class="flex items-center gap-4 mb-6">
+              <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-clay">03</span>
+              <span class="font-mono text-[10.5px] tracking-[0.2em] uppercase text-cream-3">Hubungi saya</span>
+            </div>
+            <h2 class="font-sans text-cream" style="font-size:clamp(40px,4.8vw,56px);font-weight:600;line-height:1;letter-spacing:-0.025em">
+              Mari ngobrol.
+            </h2>
+            <p class="font-sans text-cream-2 mt-5" style="font-size:16.5px;line-height:1.6">
+              Kerja sama brand, podcast, undangan pembicara, atau pertanyaan soal sistem yang saya bangun.
+            </p>
+            <div class="mt-8 space-y-2 text-[14.5px] text-sub">
+              <div><strong class="text-ink font-medium">Email:</strong> <a href="mailto:jordanmathew811@gmail.com" class="hover:text-clay underline decoration-line-strong underline-offset-4">jordanmathew811@gmail.com</a></div>
+              <div class="text-muted text-[13px] pt-1">Biasanya saya balas dalam 1×24 jam.</div>
+            </div>
+          </div>
+
+          <form id="contact-form" class="space-y-3.5">
+            <select id="topic" aria-label="Ini soal apa?" class="field-input">
+              <option value="Bangun sistem AI untuk perusahaan saya">Bangun sistem AI untuk perusahaan saya</option>
+              <option value="Kerja sama brand / sponsorship">Kerja sama brand / sponsorship</option>
+              <option value="Podcast / liputan / pembicara">Podcast / liputan / pembicara</option>
+              <option value="Hal lainnya">Hal lainnya</option>
+            </select>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <input type="text" id="sender-name" required placeholder="Nama kamu" class="field-input" />
+              <input type="text" id="sender-biz" placeholder="Bisnis / Peran" class="field-input" />
+            </div>
+            <textarea id="sender-msg" rows="4" required placeholder="Ini soal apa? Ceritakan singkat..." class="field-input"></textarea>
+            <button type="submit" class="hk-btn w-full sm:w-auto px-8 py-3.5 text-[15px]">
+              Kirim →
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t-[1.5px] border-line py-9">
+    <div class="max-w-[1280px] mx-auto px-6 sm:px-9 flex flex-wrap items-center justify-between gap-4">
+      <div class="text-[14px] text-muted">
+        <strong class="text-ink font-semibold">Jordan <em class="not-italic font-normal text-sub">Engo</em><span class="text-clay">.</span></strong>
+        <span class="mx-2">/</span>
+        <span>© 2026</span>
+      </div>
+      <div class="flex items-center gap-2.5">
+        <a href="https://instagram.com/jordan_engo" target="_blank" rel="noopener" aria-label="IG Instagram" class="w-9 h-9 rounded-[10px] border-[1.5px] border-line flex items-center justify-center text-sub hover:text-clay hover:border-clay-border transition-colors">IG</a>
+        <a href="https://www.youtube.com/@jordanengolo" target="_blank" rel="noopener" aria-label="YT YouTube" class="w-9 h-9 rounded-[10px] border-[1.5px] border-line flex items-center justify-center text-sub hover:text-clay hover:border-clay-border transition-colors">YT</a>
+        <a href="https://www.linkedin.com/in/jordan-engo/" target="_blank" rel="noopener" aria-label="IN LinkedIn" class="w-9 h-9 rounded-[10px] border-[1.5px] border-line flex items-center justify-center text-sub hover:text-clay hover:border-clay-border transition-colors">IN</a>
       </div>
     </div>
+  </footer>
 
-    <script>
-      (function() {
-        const ua = navigator.userAgent || navigator.vendor || window.opera || '';
-        const isInApp = /Instagram|FBAN|FBAV|TikTok|Bytedance|musical_ly|Line|Snapchat/i.test(ua);
-        
-        if (isInApp) {
-          const banner = document.getElementById('inapp-browser-notice');
-          if (banner) {
-            banner.style.display = 'block';
-            document.body.style.paddingTop = '60px';
+  <!-- Agent Detail Modal -->
+  <div id="agent-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/40 backdrop-blur-xs">
+    <div class="bg-white border-[1.5px] border-line-strong rounded-[24px] max-w-[460px] w-full p-7 shadow-2xl">
+      <div class="flex items-center justify-between gap-3 mb-4">
+        <span id="modal-badge" class="font-mono text-[11px] uppercase tracking-wider text-clay bg-[#d97757]/10 px-2.5 py-0.5 rounded-full"></span>
+        <button onclick="closeAgentModal()" class="text-muted hover:text-ink text-[20px] leading-none">&times;</button>
+      </div>
+      <h3 id="modal-title" class="text-[22px] font-semibold text-ink mb-2"></h3>
+      <p id="modal-desc" class="text-[15px] leading-[1.6] text-sub mb-6"></p>
+      <div class="flex items-center gap-3">
+        <a id="modal-wa" href="#" target="_blank" rel="noopener" class="hk-btn flex-1 py-3 text-[14px]">
+          Pasang Agen Ini →
+        </a>
+        <button onclick="closeAgentModal()" class="px-4 py-3 rounded-[12px] border-[1.5px] border-line text-[14px] text-sub hover:text-ink">
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- UTM Parameter Capture & Attribution (No 3rd-party required) ---
+    const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_content', 'utm_campaign', 'utm_term'];
+    function loadUtm() {
+      const params = new URLSearchParams(window.location.search);
+      let stored = {};
+      try { stored = JSON.parse(sessionStorage.getItem('agentz_utm') || '{}'); } catch {}
+      const current = { ...stored };
+      let hasNew = false;
+      UTM_KEYS.forEach((k) => {
+        const val = params.get(k);
+        if (val && val.trim()) {
+          current[k] = val.trim().toLowerCase();
+          hasNew = true;
+        }
+      });
+      if (hasNew) {
+        current.landing_path = window.location.pathname;
+        current.captured_at = new Date().toISOString();
+        try { sessionStorage.setItem('agentz_utm', JSON.stringify(current)); } catch {}
+      }
+      return current;
+    }
+
+    const activeUtm = loadUtm();
+    window.__AGENTZ_UTM__ = activeUtm;
+
+    function getUtmTag() {
+      const parts = UTM_KEYS.map((k) => activeUtm[k] ? `${k.replace('utm_', '')}=${activeUtm[k]}` : null).filter(Boolean);
+      return parts.length ? `\n[Sumber: ${parts.join(' | ')}]` : '';
+    }
+
+    function recordUtmEvent(eventName, meta = {}) {
+      try {
+        const log = JSON.parse(localStorage.getItem('agentz_utm_events') || '[]');
+        log.push({ event: eventName, utm: activeUtm, meta, ts: new Date().toISOString() });
+        if (log.length > 100) log.shift();
+        localStorage.setItem('agentz_utm_events', JSON.stringify(log));
+      } catch {}
+    }
+
+    recordUtmEvent('pageview', { referrer: document.referrer || 'direct' });
+
+    // Append UTM attribution automatically to all static wa.me links on the page
+    document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
+      const utmTag = getUtmTag();
+      if (utmTag) {
+        try {
+          const url = new URL(link.href);
+          const existingText = url.searchParams.get('text') || 'Halo Jordan, saya tertarik dengan sistem AGentZ.';
+          url.searchParams.set('text', `${existingText}${utmTag}`);
+          link.href = url.toString();
+        } catch {}
+      }
+      link.addEventListener('click', () => recordUtmEvent('wa_click', { href: link.href }));
+    });
+
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 12) header.classList.add('header-scrolled');
+      else header.classList.remove('header-scrolled');
+    });
+
+    document.querySelectorAll('#top .reveal').forEach((el) => el.classList.add('in'));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add('in');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    document.querySelectorAll('.newsletter-form').forEach((form) => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const input = form.querySelector('.newsletter-email');
+        const btn = form.querySelector('button[type="submit"]');
+        const email = input ? input.value.trim() : '';
+        if (!email) return;
+
+        const origBtnText = btn ? btn.textContent : '';
+        if (btn) {
+          btn.disabled = true;
+          btn.textContent = 'Mendaftar...';
+        }
+        recordUtmEvent('newsletter_submit', { email, list: 'learnz' });
+
+        try {
+          const res = await fetch('https://mail.jordanengo.com/api/public/subscription', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email,
+              name: email.split('@')[0],
+              list_uuids: ['f5156c6b-b010-47a7-9024-f2f699d24199']
+            })
+          });
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          if (input) input.value = '';
+          if (btn) btn.textContent = 'Terdaftar ✓';
+          recordUtmEvent('newsletter_subscribed', { email, list: 'learnz' });
+        } catch (err) {
+          recordUtmEvent('newsletter_fallback_wa', { email, err: String(err) });
+          const msg = `Halo Jordan, saya mau langganan AGentZ Notes gratis. Email saya: ${email}${getUtmTag()}`;
+          window.open(`https://wa.me/15556523818?text=${encodeURIComponent(msg)}`, '_blank');
+          if (btn) btn.textContent = origBtnText;
+        } finally {
+          if (btn) {
+            setTimeout(() => {
+              btn.disabled = false;
+              btn.textContent = origBtnText;
+            }, 3000);
           }
         }
-      })();
-    </script>
-</body></html>
+      });
+    });
+
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const topic = document.getElementById('topic').value;
+      const name = document.getElementById('sender-name').value.trim();
+      const biz = document.getElementById('sender-biz').value.trim();
+      const msg = document.getElementById('sender-msg').value.trim();
+      recordUtmEvent('contact_submit', { topic });
+      const fullText = `Halo Jordan, saya ${name}${biz ? ` (${biz})` : ''}.\nTopik: ${topic}\n\n${msg}${getUtmTag()}`;
+      window.open(`https://wa.me/15556523818?text=${encodeURIComponent(fullText)}`, '_blank');
+    });
+
+    function openAgentModal(title, desc, badge) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-desc').textContent = desc;
+      document.getElementById('modal-badge').textContent = badge;
+      recordUtmEvent('agent_open', { title });
+      const msg = `Halo Jordan, saya tertarik pasang agen "${title}" dari AGentZ Member Vault.${getUtmTag()}`;
+      document.getElementById('modal-wa').href = `https://wa.me/15556523818?text=${encodeURIComponent(msg)}`;
+      const modal = document.getElementById('agent-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeAgentModal() {
+      const modal = document.getElementById('agent-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    document.getElementById('agent-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'agent-modal') closeAgentModal();
+    });
+  </script>
+</body>
+</html>
