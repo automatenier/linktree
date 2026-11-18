@@ -1,4 +1,4 @@
-# Security + caching headers (Cloudflare Workers static assets). Generated 2026-11-17 audit.
+# Security + caching headers (Cloudflare Workers static assets). Updated 2026-11-17.
 /*
   Strict-Transport-Security: max-age=31536000
   X-Content-Type-Options: nosniff
@@ -6,7 +6,32 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
   Cross-Origin-Opener-Policy: same-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self'; connect-src 'self' https://mail.jordanengo.com https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://wa.me; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self'; connect-src 'self' https://mail.jordanengo.com https://cloudflareinsights.com https://engo-1.jordanengo.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://wa.me; object-src 'none'; upgrade-insecure-requests
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/llms*.txt
+  Content-Type: text/plain; charset=utf-8
+  X-Robots-Tag: all
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: all
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.avif
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
 /*.webp
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
@@ -31,6 +56,7 @@
 
 /*.webm
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
 /*.css
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Department · Kami Menjadi Departemen AI Perusahaanmu — Jordan Engo</title>
+  <meta name="description" content="Untuk perusahaan yang ingin sistem AI kustom dibangun, diintegrasikan ke WhatsApp/CRM, dan dijalankan bersama Jordan Engo. Dibatasi 4 perusahaan baru per bulan." />
+  <link rel="icon" href="agentzlogo.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/site.css" />
+  <style>
+    :root {
+      --canvas: #ffffff;
+      --ink: #16130f;
+      --sub: #5f5a53;
+      --muted: #a59e95;
+      --line: #efe9e2;
+      --line-strong: #e2ddd6;
+      --clay: #d97757;
+      --clay-soft: rgba(217, 119, 87, 0.12);
+      --clay-border: rgba(217, 119, 87, 0.52);
+      --tile-shadow: 0 20px 44px -18px rgba(40, 30, 20, 0.24), 0 4px 12px -6px rgba(40, 30, 20, 0.12), inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+      --tile-shadow-sm: 0 16px 36px -16px rgba(40, 30, 20, 0.22), inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--ink); font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .font-fraunces { font-family: 'Fraunces', serif; }
+    .field-input {
+      width: 100%; border: 1.5px solid var(--line-strong); border-radius: 12px;
+      padding: 14px 16px; font-size: 15px; font-family: inherit; background: #fff; color: var(--ink);
+    }
+    .field-input:focus { outline: none; border-color: var(--clay); box-shadow: 0 0 0 4px var(--clay-soft); }
+    .hk-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--clay); color: #ffffff; font-weight: 600; border-radius: 12px;
+      padding: 15px 26px; text-decoration: none; font-size: 15.5px; border: none; cursor: pointer;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="sticky top-0 z-50 border-b" style="background:rgba(255,255,255,0.88);backdrop-filter:blur(12px);border-color:var(--line)">
+    <div class="max-w-[1280px] mx-auto px-6 sm:px-9 h-[64px] flex items-center justify-between gap-4">
+      <div class="flex items-center gap-6">
+        <a href="/index.html" class="flex items-baseline whitespace-nowrap font-fraunces" style="text-decoration:none">
+          <span style="color:var(--ink);font-size:17px;font-weight:500">Jordan</span>
+          <span style="color:var(--sub);font-size:16.5px;font-style:italic;margin-left:0.3em">Engo</span>
+          <span style="color:var(--clay);font-size:17px;font-weight:600">.</span>
+        </a>
+        <span class="hidden sm:inline-block text-xs font-mono uppercase tracking-widest px-2.5 py-1 rounded-full" style="background:var(--clay-soft);color:var(--clay)">AI Department</span>
+      </div>
+      <nav class="flex items-center gap-4 sm:gap-6 text-xs font-mono uppercase tracking-[0.15em]">
+        <a href="/library.html" style="color:var(--sub);text-decoration:none">Library (135)</a>
+        <a href="/example-map.html" style="color:var(--sub);text-decoration:none" class="hidden md:inline">Peta Bisnis</a>
+        <a href="/pricing.html" style="color:var(--sub);text-decoration:none">Harga</a>
+        <a href="/ai-department.html" style="color:var(--clay);text-decoration:none;font-weight:600">AI Department</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-[1140px] w-full mx-auto px-6 sm:px-9 py-14 md:py-20">
+    <!-- Hero Section (1:1 Angus AI Department) -->
+    <div class="max-w-[760px] mb-14">
+      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full mb-5" style="background:var(--clay-soft);border:1px solid var(--clay-border)">
+        <span class="w-2 h-2 rounded-full" style="background:var(--clay)"></span>
+        <span class="font-mono text-[11.5px] uppercase tracking-wider font-semibold" style="color:var(--clay)">Sisa 4 dari 4 Slot untuk Bulan Ini</span>
+      </div>
+      <h1 style="font-size:clamp(38px,5.4vw,64px);font-weight:600;line-height:0.98;letter-spacing:-0.03em;margin:0">
+        Kami menjadi <span style="color:var(--clay)">departemen AI</span> perusahaanmu.
+      </h1>
+      <p style="font-size:18px;line-height:1.6;color:var(--sub);margin-top:20px">
+        Untuk perusahaan mana pun yang ingin sistem AI kustom dibangun, diintegrasikan ke WhatsApp/CRM/ERP, dan dijaga berjalan bersama tim kami. Scoping langsung bersama Jordan di call, lalu kami bangun di atas aplikasi yang sudah dipakai timmu.
+      </p>
+      <p class="text-[14px] mt-4" style="color:var(--muted)">
+        Lebih suka pasang sendiri secara self-serve untuk hingga 12 orang? <a href="/pricing.html" class="underline" style="color:var(--ink)">Paket Team ($399/bln) bisa dimulai langsung di sini.</a>
+      </p>
+    </div>
+
+    <!-- 3 Pillars What You Get -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      <div class="p-7 rounded-[22px]" style="border:1.5px solid var(--line);background:#ffffff;box-shadow:var(--tile-shadow-sm)">
+        <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">01 · Dibangun untuk Alur Kerjamu</div>
+        <h3 class="text-[20px] font-semibold mt-2 mb-3">Arsitektur &amp; Skill Privat</h3>
+        <ul class="pl-0 list-none space-y-2 text-[14px]" style="color:var(--sub)">
+          <li>✓ Dibangun mengikuti SOP cara timmu bekerja sekarang</li>
+          <li>✓ Berjalan di atas tools yang sudah kamu gunakan (WA, CRM, Sheets, Database)</li>
+          <li>✓ 100% milik perusahaanmu—tidak pernah masuk ke library publik</li>
+        </ul>
+      </div>
+
+      <div class="p-7 rounded-[22px]" style="border:1.5px solid var(--line);background:#ffffff;box-shadow:var(--tile-shadow-sm)">
+        <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">02 · Jalur Langsung ke Builder</div>
+        <h3 class="text-[20px] font-semibold mt-2 mb-3">Akses Langsung ke Jordan</h3>
+        <ul class="pl-0 list-none space-y-2 text-[14px]" style="color:var(--sub)">
+          <li>✓ Kamu bicara langsung dengan orang yang merancang sistemnya</li>
+          <li>✓ Kanal Slack / WhatsApp Grup Eksekutif bersama</li>
+          <li>✓ Review performa &amp; metrik konversi setiap bulan</li>
+        </ul>
+      </div>
+
+      <div class="p-7 rounded-[22px]" style="border:1.5px solid var(--line);background:#ffffff;box-shadow:var(--tile-shadow-sm)">
+        <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">03 · Semua Fitur Paket Team</div>
+        <h3 class="text-[20px] font-semibold mt-2 mb-3">Untuk Seluruh Karyawan</h3>
+        <ul class="pl-0 list-none space-y-2 text-[14px]" style="color:var(--sub)">
+          <li>✓ Akses penuh 135+ AI Agent untuk setiap anggota tim</li>
+          <li>✓ Satu Peta Bisnis terpusat, pengaturan role &amp; invite</li>
+          <li>✓ Leaderboard adopsi &amp; pelacak jam kerja yang dihemat</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Intake Form with Hard Budget Anchor (1:1 Angus AI Department Form) -->
+    <section class="rounded-[28px] p-8 md:p-14" style="border:1.5px solid var(--line-strong);background:linear-gradient(135deg,#ffffff 55%,var(--clay-soft) 145%);box-shadow:var(--tile-shadow)">
+      <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start">
+        <div>
+          <span class="font-mono text-[11px] uppercase tracking-[0.2em]" style="color:var(--clay)">Langkah Pertama · Sekitar 2 Menit</span>
+          <h2 class="text-[32px] md:text-[40px] font-semibold mt-2 mb-4" style="letter-spacing:-0.025em;line-height:1.05">
+            Ceritakan sistem apa yang ingin kamu bangun.
+          </h2>
+          <p class="text-[15.5px] leading-relaxed" style="color:var(--sub)">
+            Jordan membaca setiap pengajuan secara pribadi dan membalas dalam <strong>maksimal 2 hari kerja</strong>. Jika cocok, kita akan melakukan scoping sistem pertama bersama dan menyepakati biaya bulanan sebelum pekerjaan dimulai.
+          </p>
+
+          <div class="mt-8 p-5 rounded-[18px] bg-white" style="border:1.5px solid var(--line)">
+            <div class="font-mono text-[11px] uppercase tracking-wider mb-2" style="color:var(--clay)">Alur Kerja (6 Tahap)</div>
+            <ol class="pl-4 m-0 space-y-1.5 text-[13.5px]" style="color:var(--ink)">
+              <li>Kamu kirim form pengajuan ini (2 menit)</li>
+              <li>Jordan membalas dalam 2 hari kerja</li>
+              <li>Kita scoping build pertama bersama di call</li>
+              <li>Tim AGentZ membangun &amp; menguji sistemnya</li>
+              <li>Sistem berjalan live di aplikasi perusahaanmu</li>
+              <li>Review hasil &amp; ekspansi agen setiap bulan</li>
+            </ol>
+          </div>
+        </div>
+
+        <form id="dept-form" class="bg-white p-7 sm:p-9 rounded-[22px] space-y-4" style="border:1.5px solid var(--line)">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[13px] font-medium mb-1.5">Nama Lengkap</label>
+              <input id="dept-name" type="text" required placeholder="Budi Santoso" class="field-input" />
+            </div>
+            <div>
+              <label class="block text-[13px] font-medium mb-1.5">Email Kerja / WhatsApp</label>
+              <input id="dept-contact" type="text" required placeholder="budi@perusahaan.com / 0812..." class="field-input" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[13px] font-medium mb-1.5">Nama Perusahaan</label>
+              <input id="dept-company" type="text" required placeholder="PT Nusantara..." class="field-input" />
+            </div>
+            <div>
+              <label class="block text-[13px] font-medium mb-1.5">Ukuran Tim</label>
+              <select id="dept-size" required class="field-input">
+                <option value="1-5 orang (Founder + Tim Inti)">1–5 orang (Founder + Tim Inti)</option>
+                <option value="6-15 orang">6–15 orang</option>
+                <option value="16-50 orang">16–50 orang</option>
+                <option value="> 50 orang">&gt; 50 orang</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[13px] font-medium mb-1.5">Pekerjaan apa yang ingin diotomasi pertama kali?</label>
+            <textarea id="dept-job" rows="4" required placeholder="Satu pekerjaan saja sudah cukup. Jelaskan apa pekerjaannya, siapa yang mengerjakannya sekarang, dan aplikasi apa yang dipakai (misal: 3 admin kewalahan follow-up 400 lead WA/bulan & rekap SPK)..." class="field-input"></textarea>
+          </div>
+
+          <div>
+            <label class="block text-[13px] font-medium mb-1">Estimasi Anggaran Bulanan (Monthly Budget)</label>
+            <p class="text-[12.5px] mt-0 mb-2" style="color:var(--muted)">
+              Implementasi AI Department kustom biasanya dimulai dari Rp 25jt/bln ($2,500–$4,000/mo). Pilih rentang yang sesuai dengan rencana perusahaanmu:
+            </p>
+            <select id="dept-budget" required class="field-input">
+              <option value="" disabled selected>Pilih rentang anggaran...</option>
+              <option value="Rp 25.000.000 - Rp 40.000.000 / bulan ($2,500 - $4,000/mo)">Rp 25.000.000 – Rp 40.000.000 / bulan ($2,500 – $4,000/mo)</option>
+              <option value="Rp 40.000.000 - Rp 75.000.000 / bulan ($4,000 - $6,000/mo)">Rp 40.000.000 – Rp 75.000.000 / bulan ($4,000 – $6,000/mo)</option>
+              <option value="> Rp 75.000.000 / bulan ($6,000 - $10,000+/mo)">&gt; Rp 75.000.000 / bulan ($6,000 – $10,000+/mo)</option>
+              <option value="Paket Max / Team Self-Serve ($149 - $399/mo)">Belum siap untuk AI Department — Tertarik Paket Max/Team ($149–$399/bln)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="hk-btn w-full">
+            Kirim Pengajuan ke Jordan →
+          </button>
+          <p class="text-center text-[12.5px] m-0" style="color:var(--muted)">
+            Jordan membaca setiap pengajuan secara langsung. Balasan dalam 1–2 hari kerja.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t py-9 mt-auto" style="border-color:var(--line)">
+    <div class="max-w-[1280px] mx-auto px-6 sm:px-9 flex flex-wrap items-center justify-between gap-4 text-[13.5px]" style="color:var(--muted)">
+      <div>
+        <strong style="color:var(--ink)">Jordan Engo.</strong> · AGentZ Member Vault © 2026
+      </div>
+      <div class="flex gap-5">
+        <a href="/index.html" style="color:var(--sub);text-decoration:none">Beranda</a>
+        <a href="/library.html" style="color:var(--sub);text-decoration:none">Library</a>
+        <a href="/example-map.html" style="color:var(--sub);text-decoration:none">Contoh Peta</a>
+        <a href="/pricing.html" style="color:var(--sub);text-decoration:none">Harga</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('dept-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('dept-name').value.trim();
+      const contact = document.getElementById('dept-contact').value.trim();
+      const company = document.getElementById('dept-company').value.trim();
+      const size = document.getElementById('dept-size').value;
+      const job = document.getElementById('dept-job').value.trim();
+      const budget = document.getElementById('dept-budget').value;
+
+      const text = `[PENGAJUAN AI DEPARTMENT]\nNama: ${name}\nKontak: ${contact}\nPerusahaan: ${company} (${size})\nAnggaran: ${budget}\n\nPrioritas Build Pertama:\n${job}`;
+      window.open(`https://wa.me/15556523818?text=${encodeURIComponent(text)}`, '_blank');
+    });
+  </script>
+</body>
+</html>

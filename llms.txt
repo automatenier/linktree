@@ -1,0 +1,24 @@
+# Jordan Engo — AGentZ Member Vault, AI Agents & Business Automation
+
+> Cara kerja nyata membangun dengan AI. Pustaka 135+ AI Agent dan 107+ panduan milik Jordan Engo (`jordanengo.com`). Bekerja langsung dengan Claude, ChatGPT, Gemini, Grok, Perplexity, Manus, dan OpenClaw melalui konektor AGentZ MCP atau instruksi `SKILL.md`. Membaca seluruh library gratis tanpa akun. Memasang membutuhkan akun gratis untuk 1 AI Agent gratis pilihanmu ($0, cukup email), atau Member ($20/bulan · Rp 299.000/bulan) untuk membuka seluruh 135+ AI Agent & Peta Lengkap Bisnis.
+
+## Mulai dari sini (Start here)
+
+- [Library (135 AI Agent & 107 Prompt)](https://jordanengo.com/library.html): seluruh AI agent dan panduan, lengkap dengan output, 2-prompt architecture, dan aplikasi yang digunakan
+- [Harga & Paket (Markdown)](https://jordanengo.com/pricing.md): rincian lengkap paket Gratis ($0), Member ($20/bln), Max ($149/bln), Team ($399/bln), dan AI Department
+- [Halaman Harga Interaktif](https://jordanengo.com/pricing.html): perbandingan 5 paket dalam USD & IDR (QRIS/VA/Stripe)
+- [Mulai Gratis (1 Agent Pilihanmu)](https://jordanengo.com/gabung.html?plan=free): akun gratis, cukup email tanpa kartu kredit
+- [Contoh Peta Operasional Bisnis](https://jordanengo.com/example-map.html): simulasi bagaimana AI menghemat ~19 jam/minggu dari 73 jam kerja tim
+- [AI Department (Done-For-You)](https://jordanengo.com/ai-department.html): kami menjadi departemen AI perusahaanmu (dibatasi 4 perusahaan/bulan)
+
+## Featured Agents
+
+- [Quiz Funnel Builder (Mind-Reading Funnel)](https://jordanengo.com/library.html?agent=mind-reading-funnel-builder): Membangun kuis interaktif dengan A/B test mandiri (PostHog + Jev) yang mengarahkan 4 tipe pembeli ke penawaran yang tepat. (Bisa jadi 1 Agent gratismu)
+- [700-Clipper Army Scout & Outreach](https://jordanengo.com/library.html?agent=clipper-army-recruiter): Menyisir akun clipping dari Suggested Accounts kreator besar & menyiapkan penawaran RPM otomatis. (Bisa jadi 1 Agent gratismu)
+- [AI Sales Call & WA Tonality Auditor](https://jordanengo.com/library.html?agent=sales-call-tonality-coach): Menggantikan sales coach Rp 15 juta dengan mengaudit intonasi rekaman call & chat WA yang closing vs batal. (Bisa jadi 1 Agent gratismu)
+- [Video Recut & Retention Prediction Coach](https://jordanengo.com/library.html?agent=hormozi-retention-recut-coach): Menemukan kalimat tepat yang membuat penonton kabur dari videomu dan merancang ulang Trial Reels pemenangnya. (Bisa jadi 1 Agent gratismu)
+- [Business Numbers & Blind-Spot Coach](https://jordanengo.com/library.html?agent=founder-blindspot-numbers-coach): Membaca data software bisnismu untuk menemukan kebocoran tersembunyi & mencari cara praktisi lain menyelesaikannya. (Bisa jadi 1 Agent gratismu)
+- [Inbox & WhatsApp Gatekeeper](https://jordanengo.com/library.html?agent=inbox-wa-gatekeeper): Menyaring ratusan chat WhatsApp & email masuk, lalu merangkum 3 pesan paling penting hari ini. (Bisa jadi 1 Agent gratismu)
+- [CEO's Chief of Staff](https://jordanengo.com/library.html?agent=ceos-chief-of-staff): Menyiapkan brief sebelum setiap meeting dan langsung menulis draf follow-up begitu selesai. (Bisa jadi 1 Agent gratismu)
+- [Past-Client & Old Lead Rekindler](https://jordanengo.com/library.html?agent=past-client-rekindler): Memberi tahu klien lama mana yang paling tepat untuk kamu sapa lagi minggu ini. (Bisa jadi 1 Agent gratismu)
+- [Direct Price Scout & AI Voice Negotiator](https://jordanengo.com/library.html?agent=direct-booking-voice-negotiator): Melewati markup agregator 30% dengan mencari situs direct & menegosiasikan fasilitas VIP. (Bisa jadi 1 Agent gratismu)

@@ -1,0 +1,26 @@
+# Jordan Engo — AI Agents, Member Vault & Business Automation (Full Context)
+
+> Cara kerja nyata membangun dengan AI. Ekosistem Jordan Engo (`jordanengo.com`, `agentz.jordanengo.com`, `belajar.jordanengo.com`) menyediakan agen AI siap pakai, pelatihan closing proyek AI, dan otomasi operasional bisnis.
+
+## Subdomain Ekosistem
+
+1. **https://jordanengo.com/** — Hub utama Jordan Engo: demo sistem AI nyata (AI Video Editor, Lead-Magnet DM Automation, WhatsApp Chatbot CRM, Social Media Posting Agent) dan router ke Member Vault.
+2. **https://agentz.jordanengo.com/** — AGentZ Member Vault: pustaka 135+ agen AI dan 107+ panduan yang bisa dipasang langsung oleh AI Anda (Claude, ChatGPT, Gemini, Grok, Perplexity, Manus, OpenClaw).
+3. **https://belajar.jordanengo.com/** — Program Belajar AI Bersama Jordan Engo: cara closing proyek AI bernilai tinggi dengan dukungan sistem AGentZ dan developer berpengalaman.
+
+## Ringkasan Penawaran & Harga
+
+- **Gratis ($0):** 1 agen gratis pilihan Anda, tanpa kartu kredit.
+- **Member ($20/bulan atau $180/tahun):** Akses penuh ke seluruh pustaka agen & prompt, peta bisnis lengkap, garansi uang kembali 2 minggu.
+- **Max ($149/bulan):** Semua fitur Member + skill kustom untuk bisnis Anda + office hours bulanan.
+- **Team ($399/bulan untuk 10 orang):** Agen dan peta bisnis bersama untuk tim.
+- **Departemen AI (Kustom):** Pembangunan dan pengelolaan sistem AI privat untuk perusahaan.
+
+Detail harga lengkap: https://agentz.jordanengo.com/pricing.md
+
+## Pemetaan Entitas Bilingual (Indonesian ↔ English)
+
+- **jasa pembuatan AI agent Indonesia** ↔ AGentZ AI Agent Vault & Done-For-You AI Department
+- **belajar AI agent / closing proyek AI** ↔ Belajar AI Bersama Jordan Engo (`belajar.jordanengo.com`)
+- **otomasi WhatsApp CRM & DM Instagram** ↔ Lead-magnet DM automation & WhatsApp chatbot CRM
+- **Jordan Engo** ↔ `@jordan_engo` (Instagram, TikTok), `@jordanengolo` (YouTube)

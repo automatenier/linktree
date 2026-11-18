@@ -510,16 +510,17 @@
       </a>
 
       <nav class="flex items-center gap-1">
-        <a href="#latest" class="hidden md:inline-block font-mono text-[10.5px] font-medium tracking-[0.16em] uppercase text-cream-2 hover:text-cream px-3 py-2 transition-colors">Agents</a>
-        <a href="#channels" class="hidden md:inline-block font-mono text-[10.5px] font-medium tracking-[0.16em] uppercase text-cream-2 hover:text-cream px-3 py-2 transition-colors">Ikuti</a>
-        <a href="#vault" class="hidden md:inline-block font-mono text-[10.5px] font-semibold tracking-[0.16em] uppercase text-cream hover:text-clay px-3 py-2 transition-colors">Vault</a>
-        <a href="#top" class="ml-2 inline-flex items-center gap-2 bg-clay text-white font-sans text-[12.5px] font-semibold pl-3.5 pr-3.5 py-2 rounded-[11px] hover:brightness-[1.04] transition-all border-none cursor-pointer" style="box-shadow:0 1px 2px rgba(40,30,20,0.12), inset 0 1.5px 0 rgba(255,255,255,0.25)">
+        <a href="/library.html" class="hidden md:inline-block font-mono text-[10.5px] font-medium tracking-[0.16em] uppercase text-cream-2 hover:text-cream px-3 py-2 transition-colors">Library (135)</a>
+        <a href="/example-map.html" class="hidden lg:inline-block font-mono text-[10.5px] font-medium tracking-[0.16em] uppercase text-cream-2 hover:text-cream px-3 py-2 transition-colors">Peta Bisnis</a>
+        <a href="/pricing.html" class="hidden md:inline-block font-mono text-[10.5px] font-medium tracking-[0.16em] uppercase text-cream-2 hover:text-cream px-3 py-2 transition-colors">Harga</a>
+        <a href="/ai-department.html" class="hidden lg:inline-block font-mono text-[10.5px] font-semibold tracking-[0.16em] uppercase text-cream hover:text-clay px-3 py-2 transition-colors">AI Dept</a>
+        <a href="/gabung.html?plan=free" class="ml-2 inline-flex items-center gap-2 bg-clay text-white font-sans text-[12.5px] font-semibold pl-3.5 pr-3.5 py-2 rounded-[11px] hover:brightness-[1.04] transition-all border-none cursor-pointer" style="box-shadow:0 1px 2px rgba(40,30,20,0.12), inset 0 1.5px 0 rgba(255,255,255,0.25)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff">
             <rect x="3" y="4" width="18" height="2.6"></rect>
             <rect x="3" y="9.2" width="18" height="2.6"></rect>
             <path d="M3 14.4H21V21L12 16.4 3 21z"></path>
           </svg>
-          <span>Langganan</span>
+          <span>Mulai Gratis</span>
         </a>
       </nav>
     </div>
@@ -614,15 +615,22 @@
             <p class="font-sans text-[16px] leading-[1.6] text-cream-2 mt-4 max-w-[46ch]">
               Semua sistem yang saya jalankan dan bahas di video, siap dipasang oleh AI agent-mu ke dalam bisnismu. Cukup ceritakan apa yang kamu kerjakan. Sisanya biar dia yang urus.
             </p>
-            <a
-              href="https://wa.me/15556523818?text=Halo%20Jordan,%20saya%20mau%20gabung%20AGentZ%20Member%20Vault"
-              target="_blank"
-              rel="noopener"
-              class="mt-7 inline-flex items-center gap-2 bg-cream text-white font-sans text-[15px] font-semibold px-5 py-3.5 rounded-[13px] hover:brightness-[1.04] transition-all"
-              style="background:var(--ink);box-shadow:0 1px 2px rgba(40,30,20,0.12), inset 0 1.5px 0 rgba(255,255,255,0.25)"
-            >
-              Gabung ke Vault <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
-            </a>
+            <div class="mt-7 flex flex-wrap items-center gap-3">
+              <a
+                href="/gabung.html?plan=member"
+                class="inline-flex items-center gap-2 bg-cream text-white font-sans text-[15px] font-semibold px-5 py-3.5 rounded-[13px] hover:brightness-[1.04] transition-all"
+                style="background:var(--ink);box-shadow:0 1px 2px rgba(40,30,20,0.12), inset 0 1.5px 0 rgba(255,255,255,0.25)"
+              >
+                Gabung ke Vault ($20/bln) <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+              </a>
+              <a
+                href="/gabung.html?plan=free"
+                class="inline-flex items-center gap-2 font-sans text-[14.5px] font-semibold px-5 py-3.5 rounded-[13px] transition-all"
+                style="background:#ffffff;color:var(--ink);border:1.5px solid var(--line-strong)"
+              >
+                Klaim 1 Agent Gratis ($0) →
+              </a>
+            </div>
           </div>
 
           <div class="vault-art" aria-hidden="true">
@@ -915,11 +923,15 @@
         </div>
 
         <!-- 1:1 Angus See All Agents Link -->
-        <div class="reveal agent-all">
-          <button type="button" onclick="openAgentModal('Katalog 130+ AI Agent', 'Semua blueprint, prompt workflow, dan otomasi n8n/Python siap pakai di Member Vault.', 'Member Vault')" class="agent-all-link">
-            <span>Lihat semua 130+ AI Agent</span>
+        <div class="reveal agent-all gap-3 flex-wrap">
+          <a href="/library.html" class="agent-all-link">
+            <span>Lihat semua 135+ AI Agent &amp; 107+ Prompt</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
-          </button>
+          </a>
+          <a href="/example-map.html" class="agent-all-link" style="color:var(--clay);border-color:var(--clay-border)">
+            <span>Lihat Contoh Peta Bisnis (~19 Jam/Minggu Dihemat)</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+          </a>
         </div>
       </div>
     </section>
@@ -1083,17 +1095,19 @@
               </div>
               <select id="topic" name="topic" class="field-input" required="" style="appearance:none">
                 <option value="" disabled="" selected="">Ini soal apa?</option>
+                <option value="AI Department — Bangun & jalankan sistem AI perusahaan ($2,500–$6,000+/bln)">AI Department — Bangun &amp; jalankan sistem AI perusahaan (Rp 25jt–60jt+/bln)</option>
+                <option value="Paket Max / Team — Custom Skill Queue ($149–$399/bln)">Paket Max / Team — Custom Skill Queue ($149–$399/bln)</option>
                 <option value="Kerja sama brand / sponsorship">Kerja sama brand / sponsorship</option>
                 <option value="Podcast / undangan pembicara">Podcast / undangan pembicara</option>
-                <option value="Pemasangan sistem AI untuk bisnis saya">Pemasangan sistem AI untuk bisnis saya</option>
                 <option value="Pertanyaan lainnya">Pertanyaan lainnya</option>
               </select>
-              <textarea id="sender-msg" name="message" class="field-input resize-y" rows="4" placeholder="Ceritakan sedikit lebih banyak..." required="" style="min-height:120px"></textarea>
-              <div class="flex items-center gap-4">
+              <textarea id="sender-msg" name="message" class="field-input resize-y" rows="4" placeholder="Ceritakan sedikit lebih banyak (pekerjaan apa yang ingin dilepas ke AI & aplikasi yang dipakai sekarang)..." required="" style="min-height:120px"></textarea>
+              <div class="flex flex-wrap items-center gap-4">
                 <button type="submit" class="inline-flex items-center gap-2 bg-clay text-white text-[14.5px] font-semibold px-7 py-3.5 rounded-[12px] hover:brightness-[1.04] transition-all disabled:opacity-70 cursor-pointer border-none" style="box-shadow:0 1px 2px rgba(40,30,20,0.12), inset 0 1.5px 0 rgba(255,255,255,0.25)">
                   <span>Kirim Pesan</span>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
                 </button>
+                <a href="/ai-department.html" class="font-mono text-[11.5px] uppercase tracking-wider underline" style="color:var(--sub)">Lihat detail AI Department →</a>
               </div>
             </form>
           </div>
@@ -1105,14 +1119,21 @@
   <!-- Footer -->
   <footer class="max-w-[1280px] mx-auto px-6 sm:px-9">
     <div class="py-10 flex flex-col md:flex-row items-center justify-between gap-6 border-t" style="border-color:var(--line)">
-      <div class="flex items-center text-cream-3 text-[13px]">
+      <div class="flex flex-wrap items-center gap-3 text-cream-3 text-[13px]">
         <span class="flex items-baseline whitespace-nowrap font-fraunces">
           <span class="text-cream-2" style="font-size:16px;font-weight:500;letter-spacing:-0.004em">Jordan</span>
           <span class="text-cream-3" style="font-size:15.5px;font-weight:400;font-style:italic;margin-left:0.30em">Engo</span>
           <span style="color:var(--clay);font-size:16px;font-weight:600;margin-left:0.01em">.</span>
         </span>
-        <span class="mx-3 opacity-40">/</span>
+        <span class="opacity-40">/</span>
         <span>© 2026</span>
+        <span class="opacity-40">·</span>
+        <a href="/library.html" class="hover:text-cream underline">Library (135)</a>
+        <a href="/example-map.html" class="hover:text-cream underline">Peta Bisnis</a>
+        <a href="/pricing.html" class="hover:text-cream underline">Harga</a>
+        <a href="/ai-department.html" class="hover:text-cream underline">AI Department</a>
+        <a href="/pricing.md" class="hover:text-cream underline">pricing.md</a>
+        <a href="/llms.txt" class="hover:text-cream underline">llms.txt</a>
       </div>
 
       <div class="flex items-center gap-1.5">
@@ -1151,22 +1172,25 @@
     </div>
   </footer>
 
-  <!-- Agent Detail Modal -->
+  <!-- Agent Detail Modal (Routes to Self-Serve Library Spec & Free 1-Agent Claim) -->
   <div id="agent-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/40 backdrop-blur-xs">
-    <div class="bg-white border-[1.5px] border-line-strong rounded-[24px] max-w-[460px] w-full p-7 shadow-2xl">
+    <div class="bg-white border-[1.5px] border-line-strong rounded-[24px] max-w-[500px] w-full p-7 shadow-2xl">
       <div class="flex items-center justify-between gap-3 mb-4">
         <span id="modal-badge" class="font-mono text-[11px] uppercase tracking-wider text-clay bg-[#d97757]/10 px-2.5 py-0.5 rounded-full"></span>
         <button onclick="closeAgentModal()" class="text-muted hover:text-ink text-[20px] leading-none cursor-pointer border-none bg-transparent">&times;</button>
       </div>
       <h3 id="modal-title" class="text-[22px] font-semibold text-ink mb-2"></h3>
-      <p id="modal-desc" class="text-[15px] leading-[1.6] text-sub mb-6"></p>
-      <div class="flex items-center gap-3">
-        <a id="modal-wa" href="#" target="_blank" rel="noopener" class="hk-btn flex-1 py-3 text-[14px]">
-          Pasang AI Agent Ini →
+      <p id="modal-desc" class="text-[15px] leading-[1.6] text-sub mb-4"></p>
+      <div class="p-3.5 rounded-[14px] mb-5 text-[13px]" style="background:#faf9f7;border:1px solid var(--line);color:var(--sub)">
+        <strong style="color:var(--ink)">Gratis sebagai 1 Agent pilihanmu</strong> (cukup email, tanpa kartu kredit) atau buka semua 135+ Agent dengan <strong>Member ($20/bln)</strong>.
+      </div>
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+        <a id="modal-wa" href="/library.html" class="hk-btn flex-1 py-3 text-[14px] text-center">
+          Buka Prompt &amp; Pasang di AI-ku →
         </a>
-        <button onclick="closeAgentModal()" class="px-4 py-3 rounded-[12px] border-[1.5px] border-line text-[14px] text-sub hover:text-ink cursor-pointer bg-transparent">
-          Tutup
-        </button>
+        <a href="/gabung.html?plan=member" class="px-4 py-3 rounded-[12px] border-[1.5px] border-line-strong text-[13.5px] font-semibold text-ink hover:text-clay text-center" style="text-decoration:none">
+          Member ($20/bln)
+        </a>
       </div>
     </div>
   </div>
@@ -1241,14 +1265,18 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
+    // Self-Serve Newsletter + Free 1-Agent Unlock (No forced WhatsApp bounce)
     document.querySelectorAll('.newsletter-form').forEach((form) => {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = form.querySelector('.newsletter-email').value.trim();
         if (!email) return;
         recordUtmEvent('newsletter_submit', { email });
-        const msg = `Halo Jordan, saya mau langganan AGentZ Notes gratis. Email saya: ${email}${getUtmTag()}`;
-        window.open(`https://wa.me/15556523818?text=${encodeURIComponent(msg)}`, '_blank');
+        try {
+          const prev = JSON.parse(localStorage.getItem('agentz_free_vault') || '{}');
+          localStorage.setItem('agentz_free_vault', JSON.stringify({ ...prev, email, subscribedAt: new Date().toISOString() }));
+        } catch {}
+        window.location.href = `/gabung.html?plan=free&email=${encodeURIComponent(email)}`;
       });
     });
 
@@ -1263,13 +1291,28 @@
       window.open(`https://wa.me/15556523818?text=${encodeURIComponent(fullText)}`, '_blank');
     });
 
+    const TITLE_TO_SLUG = {
+      'Inbox & WA Gatekeeper': 'inbox-wa-gatekeeper',
+      "CEO's Chief of Staff": 'ceos-chief-of-staff',
+      'Quiz Funnel Builder': 'mind-reading-funnel-builder',
+      'Reels & Video Producer': 'hormozi-retention-recut-coach',
+      'Local Prospector': 'clipper-army-recruiter',
+      'Order & Nota Planner': 'founder-blindspot-numbers-coach',
+      'Business Numbers Coach': 'founder-blindspot-numbers-coach',
+      'Viral Format Finder': 'hormozi-retention-recut-coach',
+      'Business Buying Scout': 'direct-booking-voice-negotiator',
+      'Video Recut Coach': 'hormozi-retention-recut-coach',
+      'Past-Client Rekindler': 'past-client-rekindler',
+      'Waitlist Pitch Tester': 'mind-reading-funnel-builder'
+    };
+
     function openAgentModal(title, desc, badge) {
       document.getElementById('modal-title').textContent = title;
       document.getElementById('modal-desc').textContent = desc;
       document.getElementById('modal-badge').textContent = badge;
       recordUtmEvent('agent_open', { title });
-      const msg = `Halo Jordan, saya tertarik pasang AI Agent "${title}" dari AGentZ Member Vault.${getUtmTag()}`;
-      document.getElementById('modal-wa').href = `https://wa.me/15556523818?text=${encodeURIComponent(msg)}`;
+      const slug = TITLE_TO_SLUG[title] || 'mind-reading-funnel-builder';
+      document.getElementById('modal-wa').href = `/library.html?agent=${encodeURIComponent(slug)}`;
       const modal = document.getElementById('agent-modal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');

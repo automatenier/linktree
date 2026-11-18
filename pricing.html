@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harga & Paket · AGentZ Member Vault — Jordan Engo</title>
+  <meta name="description" content="Pilih paket AGentZ Member Vault: Gratis (1 Agent pilihanmu), Member ($20/bln untuk semua 135+ Agent), Max ($149/bln Custom Skill), Team ($399/bln), atau AI Department." />
+  <link rel="icon" href="agentzlogo.webp" />
+  <link rel="alternate" type="text/plain" title="Pricing Markdown" href="/pricing.md" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/site.css" />
+  <style>
+    :root {
+      --canvas: #ffffff;
+      --ink: #16130f;
+      --sub: #5f5a53;
+      --muted: #a59e95;
+      --line: #efe9e2;
+      --line-strong: #e2ddd6;
+      --clay: #d97757;
+      --clay-soft: rgba(217, 119, 87, 0.12);
+      --clay-border: rgba(217, 119, 87, 0.52);
+      --tile-shadow: 0 20px 44px -18px rgba(40, 30, 20, 0.24), 0 4px 12px -6px rgba(40, 30, 20, 0.12), inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+      --tile-shadow-sm: 0 16px 36px -16px rgba(40, 30, 20, 0.22), inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+      --featured-tile-shadow: 0 28px 58px -22px rgba(217, 119, 87, 0.34), 0 12px 30px -18px rgba(40, 30, 20, 0.22), inset 0 1.5px 0 rgba(255, 255, 255, 0.95);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: 'Geist', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-fraunces { font-family: 'Fraunces', serif; }
+    .grain {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      opacity: 0.03;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+    .plan-card {
+      background: #ffffff;
+      border: 1.5px solid var(--line);
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: var(--tile-shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .plan-card:hover { transform: translateY(-4px); border-color: var(--line-strong); }
+    .plan-card.featured {
+      border-color: var(--clay-border);
+      background: linear-gradient(155deg, #ffffff 55%, var(--clay-soft) 140%);
+      box-shadow: var(--featured-tile-shadow);
+    }
+    .hk-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--clay);
+      color: #ffffff;
+      font-weight: 600;
+      border-radius: 12px;
+      padding: 13px 20px;
+      text-decoration: none;
+      font-size: 14.5px;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .hk-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+    .hk-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #ffffff;
+      color: var(--ink);
+      font-weight: 600;
+      border-radius: 12px;
+      padding: 13px 20px;
+      text-decoration: none;
+      font-size: 14.5px;
+      border: 1.5px solid var(--line-strong);
+      transition: border-color 0.18s ease, color 0.18s ease;
+    }
+    .hk-btn-outline:hover { border-color: var(--clay); color: var(--clay); }
+    table.compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    table.compare-table th, table.compare-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+    table.compare-table th {
+      font-family: 'Geist Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--sub);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <div class="grain"></div>
+
+  <!-- Top Navigation matching vault.angussewell.com -->
+  <header class="sticky top-0 z-50 border-b" style="background:rgba(255,255,255,0.88);backdrop-filter:blur(12px);border-color:var(--line)">
+    <div class="max-w-[1280px] mx-auto px-6 sm:px-9 h-[64px] flex items-center justify-between gap-4">
+      <div class="flex items-center gap-6">
+        <a href="/index.html" class="flex items-baseline whitespace-nowrap font-fraunces" style="text-decoration:none">
+          <span style="color:var(--ink);font-size:17px;font-weight:500">Jordan</span>
+          <span style="color:var(--sub);font-size:16.5px;font-style:italic;margin-left:0.3em">Engo</span>
+          <span style="color:var(--clay);font-size:17px;font-weight:600">.</span>
+        </a>
+        <span class="hidden sm:inline-block text-xs font-mono uppercase tracking-widest px-2.5 py-1 rounded-full" style="background:var(--clay-soft);color:var(--clay)">Member Vault</span>
+      </div>
+
+      <nav class="flex items-center gap-4 sm:gap-6 text-xs font-mono uppercase tracking-[0.15em]">
+        <a href="/library.html" style="color:var(--sub);text-decoration:none" class="hover:text-black">Library (135)</a>
+        <a href="/example-map.html" style="color:var(--sub);text-decoration:none" class="hidden md:inline hover:text-black">Peta Bisnis</a>
+        <a href="/pricing.html" style="color:var(--clay);text-decoration:none;font-weight:600">Harga</a>
+        <a href="/ai-department.html" style="color:var(--sub);text-decoration:none" class="hidden sm:inline hover:text-black">AI Department</a>
+        <a href="/gabung.html?plan=free" class="hk-btn" style="padding:8px 14px;font-size:12px;letter-spacing:0.06em">Mulai Gratis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-[1280px] w-full mx-auto px-6 sm:px-9 py-14 md:py-20">
+    <!-- Hero Header -->
+    <div class="max-w-[740px] mb-12">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="font-mono text-[11px] uppercase tracking-[0.2em]" style="color:var(--clay)">Harga &amp; Paket · Member Vault</span>
+      </div>
+      <h1 style="font-size:clamp(36px,5vw,60px);font-weight:600;line-height:1.02;letter-spacing:-0.03em;margin:0;color:var(--ink)">
+        AI Agent siap pakai.<br />Atau dibangun khusus untukmu.
+      </h1>
+      <p style="font-size:17.5px;line-height:1.6;color:var(--sub);margin-top:18px">
+        Paket <strong>Gratis</strong> memberimu 1 AI Agent pilihanmu secara penuh. <strong>Member</strong> membuka seluruh 135+ AI Agent &amp; 107+ prompt. <strong>Max</strong> dan <strong>Team</strong> menambahkan pembuatan <em>Custom Skill</em> khusus untuk operasional bisnismu.
+      </p>
+
+      <!-- Currency / Billing Switcher -->
+      <div class="mt-7 inline-flex items-center gap-2 p-1.5 rounded-[14px]" style="border:1.5px solid var(--line);background:#faf9f7">
+        <button id="btn-usd" onclick="setCurrency('usd')" class="px-4 py-2 rounded-[10px] text-[13px] font-semibold cursor-pointer border-none" style="background:var(--ink);color:#fff">
+          USD ($ / Bulan)
+        </button>
+        <button id="btn-idr" onclick="setCurrency('idr')" class="px-4 py-2 rounded-[10px] text-[13px] font-medium cursor-pointer border-none" style="background:transparent;color:var(--sub)">
+          IDR (Rp / QRIS &amp; VA)
+        </button>
+      </div>
+    </div>
+
+    <!-- 5-Tier Grid (1:1 Angus Sewell Structure) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 mb-16">
+      <!-- 1. FREE -->
+      <div class="plan-card">
+        <div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em]" style="color:var(--sub)">Gratis</div>
+          <div class="mt-3 flex items-baseline gap-1">
+            <span class="price-val font-bold text-[36px]" data-usd="$0" data-idr="Rp 0">$0</span>
+            <span class="text-[13px]" style="color:var(--muted)">/ selamanya</span>
+          </div>
+          <div class="text-[12.5px] font-mono mt-1" style="color:var(--clay)">Tanpa kartu kredit</div>
+          <p class="text-[14px] leading-relaxed mt-4" style="color:var(--sub)">
+            Satu AI Agent gratis pilihanmu. Coba langsung di pekerjaanmu hari ini.
+          </p>
+          <ul class="mt-5 pl-0 list-none space-y-2.5 text-[13.5px]" style="color:var(--ink)">
+            <li>✓ <strong>1 AI Agent gratis</strong>, bebas pilih</li>
+            <li>✓ Petakan 1 bagian bisnismu</li>
+            <li>✓ Baca seluruh 135+ Agent &amp; 107 prompt</li>
+            <li>✓ Dipasang langsung oleh AI-mu (MCP)</li>
+          </ul>
+        </div>
+        <div class="mt-8 pt-4 border-t" style="border-color:var(--line)">
+          <a href="/gabung.html?plan=free" class="hk-btn-outline w-full">Mulai Gratis →</a>
+        </div>
+      </div>
+
+      <!-- 2. MEMBER -->
+      <div class="plan-card featured">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[11px] uppercase tracking-[0.18em]" style="color:var(--clay);font-weight:600">Member</span>
+            <span class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full" style="background:var(--clay);color:#fff">Paling Populer</span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-1">
+            <span class="price-val font-bold text-[36px]" data-usd="$20" data-idr="Rp 299rb">$20</span>
+            <span class="text-[13px]" style="color:var(--muted)">/ bulan</span>
+          </div>
+          <div class="price-sub text-[12px] font-mono mt-1" style="color:var(--sub)" data-usd="atau $180/thn · hemat 3 bulan" data-idr="atau Rp 2,7jt/thn · hemat 3 bulan">atau $180/thn · hemat 3 bulan</div>
+          <p class="text-[14px] leading-relaxed mt-4" style="color:var(--sub)">
+            Usulkan skill baru. Jika Jordan membangunnya, semua member mendapatkannya.
+          </p>
+          <ul class="mt-5 pl-0 list-none space-y-2.5 text-[13.5px]" style="color:var(--ink)">
+            <li>✓ <strong>Pasang semua 135+ AI Agent</strong></li>
+            <li>✓ Semua 107+ prompt &amp; template n8n gratis</li>
+            <li>✓ <strong>Peta Lengkap Bisnismu</strong> (Full Map)</li>
+            <li>✓ Request skill untuk library komunitas</li>
+            <li>✓ Garansi uang kembali 14 hari</li>
+          </ul>
+        </div>
+        <div class="mt-8 pt-4 border-t" style="border-color:var(--line)">
+          <a href="/gabung.html?plan=member" class="hk-btn w-full">Gabung Member →</a>
+        </div>
+      </div>
+
+      <!-- 3. MAX -->
+      <div class="plan-card">
+        <div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em]" style="color:var(--sub)">Max</div>
+          <div class="mt-3 flex items-baseline gap-1">
+            <span class="price-val font-bold text-[36px]" data-usd="$149" data-idr="Rp 2,25jt">$149</span>
+            <span class="text-[13px]" style="color:var(--muted)">/ bulan</span>
+          </div>
+          <div class="price-sub text-[12px] font-mono mt-1" style="color:var(--sub)" data-usd="atau $1,490/thn · hemat 2 bulan" data-idr="atau Rp 22,5jt/thn · hemat 2 bulan">atau $1,490/thn · hemat 2 bulan</div>
+          <p class="text-[14px] leading-relaxed mt-4" style="color:var(--sub)">
+            Custom AI skill dibangun khusus mengikuti alur kerja bisnismu.
+          </p>
+          <ul class="mt-5 pl-0 list-none space-y-2.5 text-[13.5px]" style="color:var(--ink)">
+            <li>✓ Semua fitur di <strong>Member</strong></li>
+            <li>✓ <strong>Custom Skills dibangun khusus untuk bisnismu</strong> (1 request aktif, SLA 2 hari)</li>
+            <li>✓ Group Office Hours bulanan bersama Jordan (direkam)</li>
+            <li>✓ Laporan AI Bulanan &amp; peta prioritas</li>
+            <li>✓ Dukungan Slack / WA Prioritas</li>
+          </ul>
+        </div>
+        <div class="mt-8 pt-4 border-t" style="border-color:var(--line)">
+          <a href="/gabung.html?plan=max" class="hk-btn-outline w-full">Pilih Paket Max →</a>
+        </div>
+      </div>
+
+      <!-- 4. TEAM -->
+      <div class="plan-card">
+        <div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.18em]" style="color:var(--sub)">Team</div>
+          <div class="mt-3 flex items-baseline gap-1">
+            <span class="price-val font-bold text-[36px]" data-usd="$399" data-idr="Rp 5,9jt">$399</span>
+            <span class="text-[13px]" style="color:var(--muted)">/ bulan</span>
+          </div>
+          <div class="text-[12px] font-mono mt-1" style="color:var(--sub)">Termasuk 10 orang (+$29/org s/d 12)</div>
+          <p class="text-[14px] leading-relaxed mt-4" style="color:var(--sub)">
+            Seluruh timmu dalam satu peta bisnis dan satu sistem AI yang seragam.
+          </p>
+          <ul class="mt-5 pl-0 list-none space-y-2.5 text-[13.5px]" style="color:var(--ink)">
+            <li>✓ Semua fitur Member untuk <strong>10 orang</strong></li>
+            <li>✓ <strong>2 Custom Skills paralel</strong> untuk timmu</li>
+            <li>✓ Shared Agents &amp; Peta Bisnis Tim</li>
+            <li>✓ Role Owner &amp; Admin</li>
+            <li>✓ <strong>Leaderboard Adopsi &amp; Penggunaan AI Tim</strong></li>
+          </ul>
+        </div>
+        <div class="mt-8 pt-4 border-t" style="border-color:var(--line)">
+          <a href="/gabung.html?plan=team" class="hk-btn-outline w-full">Mulai Paket Team →</a>
+        </div>
+      </div>
+
+      <!-- 5. AI DEPARTMENT -->
+      <div class="plan-card" style="background:#16130f;color:#ffffff;border-color:#2a2520">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[11px] uppercase tracking-[0.18em]" style="color:var(--clay)">AI Department</span>
+            <span class="font-mono text-[10px] px-2 py-0.5 rounded-full" style="background:rgba(217,119,87,0.2);color:var(--clay)">Sisa 4 Slot</span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-1">
+            <span class="font-bold text-[30px]">Mari Bicara</span>
+          </div>
+          <div class="price-sub text-[12px] font-mono mt-1" style="color:#a59e95" data-usd="Mulai $2,500–$6,000+/bln" data-idr="Mulai Rp 25jt–60jt+/bln">Mulai $2,500–$6,000+/bln</div>
+          <p class="text-[14px] leading-relaxed mt-4" style="color:#d5cfc7">
+            Kami menjadi departemen AI perusahaanmu. Dibangun, diintegrasikan ke CRM/WA, dan dijaga berjalan.
+          </p>
+          <ul class="mt-5 pl-0 list-none space-y-2.5 text-[13.5px]" style="color:#f5f2ed">
+            <li>✓ Scoping langsung bersama Jordan</li>
+            <li>✓ Sistem &amp; Agen Privat di tools perusahaanmu</li>
+            <li>✓ Grup Slack / WA Eksekutif langsung</li>
+            <li>✓ Review ROI &amp; performa bulanan</li>
+            <li>✓ Akses penuh Vault untuk seluruh tim</li>
+          </ul>
+        </div>
+        <div class="mt-8 pt-4 border-t" style="border-color:#2e2923">
+          <a href="/ai-department.html" class="hk-btn w-full">Ajukan AI Department →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- How Custom Skills Work (Productized Queue Rules like Angus) -->
+    <section class="rounded-[26px] p-8 md:p-12 mb-16" style="border:1.5px solid var(--line);background:#faf9f7">
+      <div class="max-w-[680px] mb-8">
+        <span class="font-mono text-[11px] uppercase tracking-[0.2em]" style="color:var(--clay)">Aturan Antrean Custom Skill (Max &amp; Team)</span>
+        <h2 style="font-size:clamp(26px,3.2vw,38px);font-weight:600;letter-spacing:-0.02em;margin:10px 0 0">
+          Bagaimana pembuatan Custom Skill bekerja.
+        </h2>
+        <p style="color:var(--sub);font-size:15.5px;line-height:1.6;margin-top:10px">
+          Di paket <strong>Member ($20)</strong>, kamu bisa mengusulkan skill untuk dibangun bagi seluruh komunitas. Di paket <strong>Max ($149)</strong> dan <strong>Team ($399)</strong>, Jordan dan tim AGentZ membangun skill privat khusus untuk alur kerja bisnismu.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-[18px] bg-white" style="border:1.5px solid var(--line)">
+          <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">01 · Apa yang dihitung 1 Request</div>
+          <h3 class="text-[18px] font-semibold mt-2 mb-2">Satu pekerjaan spesifik yang ingin kamu lepas</h3>
+          <p class="text-[14px] leading-relaxed m-0" style="color:var(--sub)">
+            Contoh: <em>"Rekap semua chat WA sales setiap Senin pagi, cari lead yang ghosting >3 hari, dan siapkan draf follow-up berdasarkan histori keberatan mereka."</em> Kirim request sebanyak apa pun ke antreanmu.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-[18px] bg-white" style="border:1.5px solid var(--line)">
+          <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">02 · SLA &amp; Kecepatan Build</div>
+          <h3 class="text-[18px] font-semibold mt-2 mb-2">Respon 2 hari kerja · Selesai 1–2 minggu</h3>
+          <p class="text-[14px] leading-relaxed m-0" style="color:var(--sub)">
+            Paket <strong>Max</strong> mengerjakan 1 skill aktif dalam satu waktu (<strong>Team</strong> mengerjakan 2 sekaligus). Jordan meninjau dalam 2 hari kerja, dan skill siap dipasang ke AI-mu dalam 1–2 minggu beserta maksimal 2x revisi.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-[18px] bg-white" style="border:1.5px solid var(--line)">
+          <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">03 · Privasi &amp; Instalasi</div>
+          <h3 class="text-[18px] font-semibold mt-2 mb-2">100% Privat di Aplikasi Milikmu</h3>
+          <p class="text-[14px] leading-relaxed m-0" style="color:var(--sub)">
+            Custom skill milikmu bersifat privat dan tidak pernah dimasukkan ke library publik kecuali kamu mengizinkannya. AI-mu memasangnya lewat <strong>AGentZ MCP</strong> dan berjalan di akun Google/WA/CRM milikmu sendiri.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Matrix -->
+    <section class="mb-16 overflow-x-auto rounded-[24px] p-6 md:p-10" style="border:1.5px solid var(--line);background:#ffffff;box-shadow:var(--tile-shadow-sm)">
+      <h2 class="text-[24px] font-semibold mb-6">Bandingkan semua paket</h2>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Fitur</th>
+            <th>Gratis ($0)</th>
+            <th style="color:var(--clay)">Member ($20)</th>
+            <th>Max ($149)</th>
+            <th>Team ($399)</th>
+            <th>AI Department</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>AI Agent yang bisa dipasang</strong></td>
+            <td>1 Agent pilihanmu</td>
+            <td><strong>Semua 135+ Agent</strong></td>
+            <td>Semua 135+ Agent</td>
+            <td>Semua 135+ Agent</td>
+            <td>Semua + Agen Privat</td>
+          </tr>
+          <tr>
+            <td><strong>Untuk siapa skill baru dibuat</strong></td>
+            <td>—</td>
+            <td>Komunitas</td>
+            <td><strong>Khusus Bisnismu (1 aktif)</strong></td>
+            <td><strong>Khusus Timmu (2 aktif)</strong></td>
+            <td>Arsitektur Privat Penuh</td>
+          </tr>
+          <tr>
+            <td><strong>Jumlah Pengguna</strong></td>
+            <td>1 orang</td>
+            <td>1 orang</td>
+            <td>1 orang</td>
+            <td>10 orang (maks 12)</td>
+            <td>Bebas (Seluruh Perusahaan)</td>
+          </tr>
+          <tr>
+            <td><strong>Peta Operasional Bisnis</strong></td>
+            <td>1 Bagian Bisnis</td>
+            <td>Peta Bisnis Lengkap</td>
+            <td>Peta Bisnis Lengkap</td>
+            <td>Peta Tim Bersama + Leaderboard</td>
+            <td>Custom Audit &amp; Blueprint</td>
+          </tr>
+          <tr>
+            <td><strong>Live Office Hours dgn Jordan</strong></td>
+            <td>—</td>
+            <td>—</td>
+            <td>Bulanan (Direkam)</td>
+            <td>Bulanan (Direkam)</td>
+            <td>1-on-1 Review Bulanan</td>
+          </tr>
+          <tr>
+            <td><strong>Garansi Uang Kembali</strong></td>
+            <td>—</td>
+            <td>14 Hari Penuh</td>
+            <td>14 Hari Penuh</td>
+            <td>14 Hari Penuh</td>
+            <td>Sesuai Kontrak SLA</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="border-t py-9 mt-auto" style="border-color:var(--line)">
+    <div class="max-w-[1280px] mx-auto px-6 sm:px-9 flex flex-wrap items-center justify-between gap-4 text-[13.5px]" style="color:var(--muted)">
+      <div>
+        <strong style="color:var(--ink)">Jordan Engo.</strong> · AGentZ Member Vault © 2026 · <a href="/pricing.md" class="underline" style="color:var(--sub)">pricing.md</a> · <a href="/llms.txt" class="underline" style="color:var(--sub)">llms.txt</a>
+      </div>
+      <div class="flex gap-5">
+        <a href="/index.html" style="color:var(--sub);text-decoration:none">Beranda</a>
+        <a href="/library.html" style="color:var(--sub);text-decoration:none">Library</a>
+        <a href="/example-map.html" style="color:var(--sub);text-decoration:none">Contoh Peta</a>
+        <a href="/ai-department.html" style="color:var(--sub);text-decoration:none">AI Department</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setCurrency(curr) {
+      const btnUsd = document.getElementById('btn-usd');
+      const btnIdr = document.getElementById('btn-idr');
+      if (curr === 'idr') {
+        btnIdr.style.background = 'var(--ink)';
+        btnIdr.style.color = '#fff';
+        btnUsd.style.background = 'transparent';
+        btnUsd.style.color = 'var(--sub)';
+      } else {
+        btnUsd.style.background = 'var(--ink)';
+        btnUsd.style.color = '#fff';
+        btnIdr.style.background = 'transparent';
+        btnIdr.style.color = 'var(--sub)';
+      }
+      document.querySelectorAll('.price-val').forEach(el => {
+        el.textContent = el.getAttribute('data-' + curr);
+      });
+      document.querySelectorAll('.price-sub').forEach(el => {
+        el.textContent = el.getAttribute('data-' + curr);
+      });
+    }
+  </script>
+</body>
+</html>

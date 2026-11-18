@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library (135 AI Agent & 107 Prompt) · AGentZ Member Vault</title>
+  <meta name="description" content="Pilih 1 pekerjaan yang ingin kamu lepas. AI-mu yang akan memasang agennya untukmu. Klaim 1 AI Agent gratis, atau buka semua 135+ dengan Member ($20/bln)." />
+  <link rel="icon" href="agentzlogo.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/site.css" />
+  <style>
+    :root {
+      --canvas: #ffffff;
+      --ink: #16130f;
+      --sub: #5f5a53;
+      --muted: #a59e95;
+      --line: #efe9e2;
+      --line-strong: #e2ddd6;
+      --clay: #d97757;
+      --clay-soft: rgba(217, 119, 87, 0.12);
+      --clay-border: rgba(217, 119, 87, 0.52);
+      --tile-shadow: 0 20px 44px -18px rgba(40, 30, 20, 0.24), 0 4px 12px -6px rgba(40, 30, 20, 0.12), inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+      --tile-shadow-sm: 0 16px 36px -16px rgba(40, 30, 20, 0.22), inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: 'Geist', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-fraunces { font-family: 'Fraunces', serif; }
+    .grain {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      opacity: 0.03;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+    .filter-pill {
+      border: 1.5px solid var(--line);
+      background: #ffffff;
+      color: var(--sub);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .filter-pill:hover { border-color: var(--line-strong); color: var(--ink); }
+    .filter-pill.active {
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
+    }
+    .lib-card {
+      background: #ffffff;
+      border: 1.5px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--tile-shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+    .lib-card:hover { transform: translateY(-3px); border-color: var(--clay-border); }
+    .hk-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--clay);
+      color: #ffffff;
+      font-weight: 600;
+      border-radius: 12px;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.18s ease;
+    }
+    .hk-btn:hover { opacity: 0.92; }
+    .dep-row {
+      display: grid;
+      grid-template-columns: 110px 85px 1fr;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13.5px;
+      align-items: baseline;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <div class="grain"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b" style="background:rgba(255,255,255,0.88);backdrop-filter:blur(12px);border-color:var(--line)">
+    <div class="max-w-[1280px] mx-auto px-6 sm:px-9 h-[64px] flex items-center justify-between gap-4">
+      <div class="flex items-center gap-6">
+        <a href="/index.html" class="flex items-baseline whitespace-nowrap font-fraunces" style="text-decoration:none">
+          <span style="color:var(--ink);font-size:17px;font-weight:500">Jordan</span>
+          <span style="color:var(--sub);font-size:16.5px;font-style:italic;margin-left:0.3em">Engo</span>
+          <span style="color:var(--clay);font-size:17px;font-weight:600">.</span>
+        </a>
+        <span class="hidden sm:inline-block text-xs font-mono uppercase tracking-widest px-2.5 py-1 rounded-full" style="background:var(--clay-soft);color:var(--clay)">Member Vault</span>
+      </div>
+
+      <nav class="flex items-center gap-4 sm:gap-6 text-xs font-mono uppercase tracking-[0.15em]">
+        <a href="/library.html" style="color:var(--clay);text-decoration:none;font-weight:600">Library (135)</a>
+        <a href="/example-map.html" style="color:var(--sub);text-decoration:none" class="hidden md:inline hover:text-black">Peta Bisnis</a>
+        <a href="/pricing.html" style="color:var(--sub);text-decoration:none" class="hover:text-black">Harga</a>
+        <a href="/ai-department.html" style="color:var(--sub);text-decoration:none" class="hidden sm:inline hover:text-black">AI Department</a>
+        <a href="/gabung.html?plan=member" class="hk-btn" style="padding:8px 14px;font-size:12px">Buka Semua ($20)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-[1280px] w-full mx-auto px-6 sm:px-9 py-12 md:py-16">
+    <!-- Hero Banner -->
+    <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 items-end mb-12 pb-10 border-b" style="border-color:var(--line)">
+      <div>
+        <div class="font-mono text-[11px] uppercase tracking-[0.2em] mb-3" style="color:var(--clay)">The Library · 135 AI Agents &amp; 107 Prompts</div>
+        <h1 style="font-size:clamp(34px,4.6vw,56px);font-weight:600;line-height:1.03;letter-spacing:-0.03em;margin:0">
+          Semua yang sudah saya bangun, siap dipasang oleh AI-mu.
+        </h1>
+        <p style="font-size:17px;line-height:1.6;color:var(--sub);margin-top:16px;max-width:58ch">
+          Pilih satu pekerjaan yang ingin kamu lepas dari pundakmu. Setiap agen adalah sistem nyata yang saya jalankan di video—dan AI-mu (Claude, ChatGPT, Gemini, OpenClaw) yang akan memasangnya langsung ke aplikasimu.
+        </p>
+      </div>
+
+      <!-- Free Agent Status Banner -->
+      <div class="p-6 rounded-[22px]" style="border:1.5px solid var(--clay-border);background:linear-gradient(135deg,#ffffff 40%,var(--clay-soft) 140%);box-shadow:var(--tile-shadow-sm)">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">Status Slot Gratis Kamu</span>
+          <span id="free-slot-badge" class="font-mono text-[11px] px-2.5 py-0.5 rounded-full" style="background:#16130f;color:#fff">1 Agent Gratis Tersedia</span>
+        </div>
+        <p id="free-slot-desc" class="text-[14px] leading-relaxed m-0" style="color:var(--ink)">
+          <strong>Pilih 1 AI Agent mana saja secara gratis</strong> (cukup email, tanpa kartu kredit). Paket <strong>Member ($20/bln)</strong> membuka seluruh 135+ AI Agent.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2.5">
+          <a href="/gabung.html?plan=member" class="hk-btn" style="padding:9px 16px;font-size:13px">Buka Semua 135 Agent ($20/bln) →</a>
+          <button id="reset-free-btn" onclick="resetFreeAgentOnce()" class="hidden text-[12.5px] underline bg-transparent border-0 cursor-pointer" style="color:var(--sub)">Ganti 1x pilihan Agent Gratisku</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search & Filters -->
+    <div class="mb-10 space-y-5">
+      <div class="flex flex-col sm:flex-row gap-4">
+        <input
+          id="search-input"
+          type="search"
+          oninput="renderLibrary()"
+          placeholder="Cari agen atau masalah bisnis (misal: Quiz Funnel, Sales Call, WhatsApp, Hormozi, Clipping, Dealer)..."
+          class="flex-1 rounded-[14px] px-5 py-3.5 text-[15px]"
+          style="border:1.5px solid var(--line-strong);outline:none"
+        />
+      </div>
+
+      <div>
+        <div class="font-mono text-[10.5px] uppercase tracking-[0.18em] mb-2.5" style="color:var(--muted)">Filter Pekerjaan (Job)</div>
+        <div id="job-filters" class="flex flex-wrap gap-2">
+          <button class="filter-pill active" onclick="setJobFilter('all', this)">Semua (242)</button>
+          <button class="filter-pill" onclick="setJobFilter('sales', this)">Sales &amp; WA Closing</button>
+          <button class="filter-pill" onclick="setJobFilter('content', this)">Konten, Reels &amp; Clipping</button>
+          <button class="filter-pill" onclick="setJobFilter('funnel', this)">Quiz &amp; Offer Funnel</button>
+          <button class="filter-pill" onclick="setJobFilter('ops', this)">Operasional, CEO &amp; Finance</button>
+          <button class="filter-pill" onclick="setJobFilter('local', this)">Bisnis Lokal &amp; Dealership</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="font-mono text-[10.5px] uppercase tracking-[0.18em] mb-2.5" style="color:var(--muted)">Aplikasi yang Digunakan</div>
+        <div id="app-filters" class="flex flex-wrap gap-2">
+          <button class="filter-pill active" onclick="setAppFilter('all', this)">Semua Aplikasi</button>
+          <button class="filter-pill" onclick="setAppFilter('WhatsApp CRM', this)">WhatsApp CRM (48)</button>
+          <button class="filter-pill" onclick="setAppFilter('Google Sheets', this)">Google Sheets (42)</button>
+          <button class="filter-pill" onclick="setAppFilter('Gmail', this)">Gmail (40)</button>
+          <button class="filter-pill" onclick="setAppFilter('Apify', this)">Apify (27)</button>
+          <button class="filter-pill" onclick="setAppFilter('n8n', this)">n8n (19)</button>
+          <button class="filter-pill" onclick="setAppFilter('PostHog', this)">PostHog (12)</button>
+          <button class="filter-pill" onclick="setAppFilter('TypeSafe (Jev)', this)">TypeSafe / Jev (9)</button>
+          <button class="filter-pill" onclick="setAppFilter('Gemini / Claude', this)">Gemini / Claude (64)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agents Grid -->
+    <div id="agents-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </main>
+
+  <!-- Full Angus Sewell Agent Spec Modal -->
+  <div id="spec-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur-xs overflow-y-auto">
+    <div class="bg-white rounded-[26px] max-w-[760px] w-full p-6 sm:p-9 my-8 shadow-2xl" style="border:1.5px solid var(--line-strong);max-height:90vh;overflow-y:auto">
+      <div class="flex items-start justify-between gap-4 pb-5 border-b" style="border-color:var(--line)">
+        <div>
+          <div class="flex items-center gap-2.5 mb-2">
+            <span id="sm-category" class="font-mono text-[11px] uppercase tracking-wider px-2.5 py-0.5 rounded-full" style="background:var(--clay-soft);color:var(--clay)"></span>
+            <span id="sm-users" class="font-mono text-[11px]" style="color:var(--muted)"></span>
+          </div>
+          <h2 id="sm-title" class="text-[26px] sm:text-[32px] font-semibold m-0" style="letter-spacing:-0.025em"></h2>
+          <p id="sm-tagline" class="text-[16px] mt-1.5 mb-0" style="color:var(--sub)"></p>
+        </div>
+        <button onclick="closeSpecModal()" class="text-[26px] leading-none bg-transparent border-0 cursor-pointer" style="color:var(--muted)">&times;</button>
+      </div>
+
+      <!-- 3-Step Behavior Strip (01 What it sends / 02 On its own / 03 Checks with you) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
+        <div class="p-4 rounded-[16px]" style="background:#faf9f7;border:1px solid var(--line)">
+          <div class="font-mono text-[10.5px] uppercase tracking-wider" style="color:var(--clay)">01 · Apa yang dikirim</div>
+          <div id="sm-step1" class="text-[13.5px] font-medium mt-1.5 leading-snug"></div>
+        </div>
+        <div class="p-4 rounded-[16px]" style="background:#faf9f7;border:1px solid var(--line)">
+          <div class="font-mono text-[10.5px] uppercase tracking-wider" style="color:var(--clay)">02 · Jalan otomatis</div>
+          <div id="sm-step2" class="text-[13.5px] font-medium mt-1.5 leading-snug"></div>
+        </div>
+        <div class="p-4 rounded-[16px]" style="background:#faf9f7;border:1px solid var(--line)">
+          <div class="font-mono text-[10.5px] uppercase tracking-wider" style="color:var(--clay)">03 · Minta izinmu dulu</div>
+          <div id="sm-step3" class="text-[13.5px] font-medium mt-1.5 leading-snug"></div>
+        </div>
+      </div>
+
+      <!-- Gate / Unlock Box -->
+      <div id="sm-gate-box" class="p-6 rounded-[20px] my-6" style="border:1.5px solid var(--clay-border);background:linear-gradient(135deg,#ffffff 45%,var(--clay-soft) 145%)"></div>
+
+      <!-- Unlocked Prompt & MCP Install Box -->
+      <div id="sm-unlocked-box" class="hidden my-6 space-y-4">
+        <div class="p-5 rounded-[18px]" style="background:#16130f;color:#f5f2ed">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">1-Line AGentZ MCP Installer (Tempel ke Claude / ChatGPT / OpenClaw)</span>
+            <button onclick="copyText('sm-mcp-cmd')" class="font-mono text-[11px] px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 text-white border-0 cursor-pointer">Copy</button>
+          </div>
+          <pre id="sm-mcp-cmd" class="font-mono text-[13px] whitespace-pre-wrap m-0" style="color:#fff"></pre>
+        </div>
+
+        <div class="p-5 rounded-[18px]" style="background:#faf9f7;border:1.5px solid var(--line)">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--ink)">Full 2-Prompt Architecture (Dari Video)</span>
+            <button onclick="copyText('sm-full-prompt')" class="font-mono text-[11px] px-2.5 py-1 rounded border cursor-pointer bg-white" style="border-color:var(--line-strong)">Copy Prompt</button>
+          </div>
+          <pre id="sm-full-prompt" class="font-mono text-[12.5px] whitespace-pre-wrap m-0 leading-relaxed" style="color:var(--ink)"></pre>
+        </div>
+      </div>
+
+      <!-- What You Need (Tool Stack + Affiliate Links like Angus) -->
+      <div class="mt-6">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-[16px] font-semibold m-0">Aplikasi yang dibutuhkan (What you need)</h3>
+          <span class="text-[12px]" style="color:var(--muted)">Beberapa tautan adalah link afiliasi partner</span>
+        </div>
+        <div id="sm-deps" class="border-t" style="border-color:var(--line)"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t py-9 mt-auto" style="border-color:var(--line)">
+    <div class="max-w-[1280px] mx-auto px-6 sm:px-9 flex flex-wrap items-center justify-between gap-4 text-[13.5px]" style="color:var(--muted)">
+      <div>
+        <strong style="color:var(--ink)">Jordan Engo.</strong> · AGentZ Member Vault © 2026 · <a href="/pricing.md" class="underline" style="color:var(--sub)">pricing.md</a> · <a href="/llms.txt" class="underline" style="color:var(--sub)">llms.txt</a>
+      </div>
+      <div class="flex gap-5">
+        <a href="/index.html" style="color:var(--sub);text-decoration:none">Beranda</a>
+        <a href="/example-map.html" style="color:var(--sub);text-decoration:none">Contoh Peta</a>
+        <a href="/pricing.html" style="color:var(--sub);text-decoration:none">Harga</a>
+        <a href="/ai-department.html" style="color:var(--sub);text-decoration:none">AI Department</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const AGENTS = [
+      {
+        slug: 'mind-reading-funnel-builder',
+        name: 'Quiz Funnel Builder (Mind-Reading Funnel)',
+        job: 'funnel',
+        categoryLabel: 'Funnels · JOB-015 & JOB-016',
+        users: 'Digunakan oleh 29 member',
+        tagline: 'Membangun kuis interaktif dengan A/B test mandiri yang mengarahkan 4 tipe pembeli ke halaman penawaran yang paling pas.',
+        apps: ['PostHog', 'TypeSafe (Jev)', 'WhatsApp CRM', 'Gemini / Claude'],
+        step1: 'Halaman penawaran berbeda untuk 4 arketipe pembeli + 15 draf pesan follow-up.',
+        step2: 'Menganalisis histori pelanggan di CRM & menguji A/B setiap pertanyaan kuis di PostHog.',
+        step3: 'Meminta persetujuanmu sebelum mempublikasikan perubahan pertanyaan atau mengirim broadcast.',
+        mcpCmd: 'Using AGentZ MCP, set up the Mind-Reading Quiz Funnel Builder on my CRM and PostHog.',
+        prompt: `PROMPT 1 (CRM Buyer Archetype Extractor):\n"Bedah seluruh data kontak dan riwayat transaksi di CRM saya. Kelompokkan pembeli yang paling menguntungkan ke dalam 4 Arketipe Pembeli berdasarkan masalah utama, anggaran, dan alasan mereka membeli. Buat 5 pertanyaan kuis diagnostik untuk mengidentifikasi arketipe prospek dalam 45 detik."\n\nPROMPT 2 (PostHog Self-Improving A/B Loop + Jev Router):\n"Hubungkan kuis ke PostHog & model klasifikasi Jev. Setelah prospek menjawab tiap pertanyaan, prediksi arketipe mereka dan arahkan ke landing page + penawaran WhatsApp yang paling relevan. Setiap minggu, evaluasi pertanyaan mana yang membuat pengunjung drop-off, tulis ulang variasinya, dan jalankan A/B test otomatis."`,
+        deps: [
+          ['AI Utama', 'Wajib', 'Claude, ChatGPT, atau OpenClaw (Koneksi sekali ke AGentZ Vault)'],
+          ['Decision Model', 'Wajib', '<a href="https://openrouter.ai/?ref=agentz" target="_blank" class="underline text-clay">TypeSafe (Jev) via OpenRouter</a> · Menebak arketipe pembeli per jawaban ($0.042/1M token)'],
+          ['Analytics & A/B', 'Opsional', '<a href="https://posthog.com/?utm_source=agentz" target="_blank" class="underline text-clay">PostHog (Free Tier)</a> · Melacak titik drop-off per pertanyaan kuis'],
+          ['App Builder', 'Opsional', '<a href="https://lovable.dev/?via=agentz" target="_blank" class="underline text-clay">Lovable</a> / Next.js · Membangun halaman kuis interaktif dalam 12 menit']
+        ]
+      },
+      {
+        slug: 'clipper-army-recruiter',
+        name: '700-Clipper Army Scout & Outreach',
+        job: 'content',
+        categoryLabel: 'Content & Distribution · JOB-014',
+        users: 'Digunakan oleh 41 member',
+        tagline: 'Menemukan ratusan akun clipping di niche-mu dan menyiapkan draf tawaran kerja sama berbasis jumlah views (RPM).',
+        apps: ['Apify', 'Gmail', 'Google Sheets', 'Gemini / Claude'],
+        step1: 'Daftar akun clipper aktif lengkap dengan email bio & draf email/DM siap kirim.',
+        step2: 'Menyisir bagian Suggested Accounts dari kreator besar yang ditonton audiensmu via Apify.',
+        step3: 'Menunggu persetujuanmu sebelum mengirim email/DM ke akun clipper.',
+        mcpCmd: 'Using AGentZ MCP, set up the 700-Clipper Army Scout with Apify and Gmail.',
+        prompt: `PROMPT 1 (Suggested Clipper Graph Scraper):\n"Ini profil bisnis saya dan target audiens saya. Identifikasi 15 akun kreator terbesar yang paling sering ditonton target audiens saya. Gunakan Apify untuk membuka halaman profil mereka, ambil seluruh akun di bagian 'Suggested Accounts', lalu filter hanya akun fan-page / clipping yang memposting potongan video pendek."\n\nPROMPT 2 (Bio Email Extractor & RPM Pitch Drafter):\n"Ekstrak alamat email atau kontak WA dari bio seluruh akun clipping tersebut ke Google Sheets. Buat draf email personal yang mengarahkan mereka ke folder Google Drive berisi rekaman podcast / A-roll mentah saya dengan skema komisi per 1.000 tayangan (RPM)."`,
+        deps: [
+          ['AI Utama', 'Wajib', 'Claude, ChatGPT, atau OpenClaw'],
+          ['Scraper Engine', 'Wajib', '<a href="https://apify.com/?fpr=agentz" target="_blank" class="underline text-clay">Apify</a> · Mengambil daftar Suggested Accounts & bio Instagram/TikTok'],
+          ['Database', 'Wajib', 'Google Sheets · Menyimpan daftar clipper, email, dan status balasan'],
+          ['Outreach', 'Opsional', 'Gmail / Instantly / WhatsApp · Mengirim draf yang sudah kamu setujui']
+        ]
+      },
+      {
+        slug: 'sales-call-tonality-coach',
+        name: 'AI Sales Call & WA Tonality Auditor',
+        job: 'sales',
+        categoryLabel: 'Sales & Closing · JOB-017',
+        users: 'Digunakan oleh 36 member',
+        tagline: 'Menggantikan sales coach Rp 15 juta dengan membedah rekaman call & chat WA yang closing vs yang gagal.',
+        apps: ['Gemini / Claude', 'TypeSafe (Jev)', 'WhatsApp CRM', 'Google Sheets'],
+        step1: 'Laporan perbandingan: apa yang dilakukan berbeda saat closing vs saat batal/ghosting.',
+        step2: 'Mentranskripsi rekaman call dengan tag intonasi (Gemini) dan mengaudit tiap tahap keberatan.',
+        step3: 'Mengirimkan ringkasan coaching pribadi tanpa mengubah data CRM tanpa izin.',
+        mcpCmd: 'Using AGentZ MCP, set up the Sales Call & WA Tonality Auditor.',
+        prompt: `PROMPT 1 (Gemini Multimodal Tonality Transcriber):\n"Ambil seluruh rekaman sales call dan log chat WhatsApp minggu ini. Panggil Gemini 2.5 Pro untuk mentranskripsi setiap percakapan lengkap dengan tag intonasi, jeda keraguan, perubahan nada bicara prospek saat harga disebutkan, dan kecepatan respon."\n\nPROMPT 2 (Win vs Loss Differential Matrix):\n"Bandingkan secara berdampingan percakapan yang berakhir CLOSING/SPK melawan yang berakhir GHOSTING/BATAL. Jawab 5 pertanyaan diagnostik ini: (1) Di menit ke berapa rapport turun? (2) Apakah sales terlalu cepat memberi diskon sebelum mengunci urgensi? (3) Kalimat keberatan apa yang gagal dijawab? Berikan 3 koreksi spesifik untuk call besok."`,
+        deps: [
+          ['AI Utama', 'Wajib', 'Claude / ChatGPT + <a href="https://aistudio.google.com" target="_blank" class="underline text-clay">Google Gemini API</a> (Multimodal Audio Tonality)'],
+          ['Classifier', 'Opsional', '<a href="https://openrouter.ai/?ref=agentz" target="_blank" class="underline text-clay">TypeSafe (Jev)</a> · Mengklasifikasi titik patah keberatan di tiap call'],
+          ['Call Recorder', 'Opsional', '<a href="https://fathom.video/?ref=agentz" target="_blank" class="underline text-clay">Fathom (Free Plan)</a> / Rekaman WA & Zoom']
+        ]
+      },
+      {
+        slug: 'hormozi-retention-recut-coach',
+        name: 'Video Recut & Retention Prediction Coach',
+        job: 'content',
+        categoryLabel: 'Content Analytics · JOB-018',
+        users: 'Digunakan oleh 33 member',
+        tagline: 'Menemukan kalimat tepat yang membuat penonton kabur dari videomu dan merancang ulang Trial Reels pemenangnya.',
+        apps: ['PostHog', 'Google Sheets', 'Gemini / Claude', 'n8n'],
+        step1: 'Peta detik drop-off penonton + naskah recut A/B untuk diuji di Trial Reels.',
+        step2: 'Menarik grafik retensi TikTok/IG dan mencocokkannya kata-per-kata dengan transkrip video.',
+        step3: 'Menyimpan pola pemenang ke tabel pengetahuan (NotebookLM/Vault) untuk syuting berikutnya.',
+        mcpCmd: 'Using AGentZ MCP, set up the Video Recut & Retention Prediction Coach.',
+        prompt: `PROMPT 1 (Retention Drop-Off Phrase Mapper):\n"Ambil kurva retensi detik-demi-detik dan transkrip timestamp dari 2 video terakhir saya. Petakan secara presisi kalimat atau transisi visual mana yang menyebabkan penurunan penonton terbesar di 10 detik pertama dan pertengahan video. Susun ulang urutan hook dan potong kalimat filler untuk versi Trial Reel B."\n\nPROMPT 2 (Cumulative Pattern Table & NotebookLM Coach):\n"Analisis seluruh riwayat analitik video saya di tabel ini. Ekstrak pola definitif (format hook, durasi cut, topik, kata kunci) yang selalu menghasilkan watch-time tertinggi vs terendah, lalu simpan sebagai aturan produksi wajib sebelum saya menulis naskah baru."`,
+        deps: [
+          ['AI Utama', 'Wajib', 'Claude, ChatGPT, atau NotebookLM'],
+          ['Workflow', 'Opsional', '<a href="https://n8n.io/?ref=agentz" target="_blank" class="underline text-clay">n8n</a> · Menarik metrik retensi IG/TikTok otomatis ke Google Sheets'],
+          ['Database', 'Wajib', 'Google Sheets / Notion · Tabel histori eksperimen A/B video']
+        ]
+      },
+      {
+        slug: 'founder-blindspot-numbers-coach',
+        name: 'Business Numbers & Blind-Spot Coach',
+        job: 'ops',
+        categoryLabel: 'Operations & Strategy · JOB-019',
+        users: 'Digunakan oleh 31 member',
+        tagline: 'Membaca data software bisnismu untuk menemukan kebocoran tersembunyi, lalu mencari bagaimana praktisi lain menyelesaikannya.',
+        apps: ['Google Sheets', 'WhatsApp CRM', 'Apify', 'Gemini / Claude'],
+        step1: 'Tabel kebocoran bisnis minggu ini + studi kasus nyata cara founder lain memperbaikinya.',
+        step2: 'Mengaudit seluruh metrik CRM, pengeluaran iklan, response time, dan margin mingguan.',
+        step3: 'Melaporkan 3 blind-spot paling kritis setiap Senin pagi.',
+        mcpCmd: 'Using AGentZ MCP, set up the Business Numbers & Blind-Spot Coach.',
+        prompt: `PROMPT 1 (Brutal Business Blind-Spot Audit):\n"Baca seluruh data dari software operasional saya minggu ini (kecepatan balas lead di CRM, rasio konversi per sales, biaya iklan vs kas masuk, dan produk yang mandek). Jangan beri saran normatif—temukan 'kebenaran brutal' (blind spot) di mana uang dan waktu tim saya bocor paling parah minggu ini, lalu simpan ke tabel diagnostik."\n\nPROMPT 2 (Practitioner Forum Solution Scraper):\n"Untuk setiap masalah di tabel diagnostik tersebut, cari diskusi praktisi nyata di komunitas industri, forum, dan transkrip podcast niche terkait. Temukan contoh founder/operator yang pernah mengalami kebocoran persis seperti ini dan rangkum langkah teknis bagaimana mereka menyelesaikannya."`,
+        deps: [
+          ['AI Utama', 'Wajib', 'Claude, ChatGPT, atau OpenClaw'],
+          ['Data Source', 'Wajib', 'Google Sheets / HubSpot / WhatsApp CRM'],
+          ['Research Engine', 'Opsional', '<a href="https://exa.ai/?ref=agentz" target="_blank" class="underline text-clay">Exa AI</a> / Apify · Mencari solusi praktisi di komunitas & forum teknis']
+        ]
+      },
+      {
+        slug: 'inbox-wa-gatekeeper',
+        name: 'Inbox & WhatsApp Gatekeeper',
+        job: 'ops',
+        categoryLabel: 'Productivity & Triage',
+        users: 'Digunakan oleh 39 member',
+        tagline: 'Menyaring ratusan chat WhatsApp & email masuk, lalu merangkum 3 pesan paling penting yang butuh keputusanmu hari ini.',
+        apps: ['WhatsApp CRM', 'Gmail', 'Gemini / Claude'],
+        step1: 'Ringkasan 3 pesan berprioritas tinggi beserta draf balasannya setiap pukul 08.00 pagi.',
+        step2: 'Memisahkan chat prospek siap bayar dari spam, vendor, dan pertanyaan rutin.',
+        step3: 'Tidak pernah mengirim balasan sebelum kamu menekan Setuju.',
+        mcpCmd: 'Using AGentZ MCP, set up the Inbox & WhatsApp Gatekeeper.',
+        prompt: `PROMPT 1 (VIP Signal Filter):\n"Pindai seluruh pesan WhatsApp dan email yang belum dibalas dalam 24 jam terakhir. Kategorikan ke dalam: (A) Revenue/Deal Mendesak yang butuh keputusan Owner, (B) Operasional Tim yang bisa didelegasikan, (C) Noise/Newsletter. Tampilkan hanya 3 pesan kategori A teratas."\n\nPROMPT 2 (Voice-Matched Reply Drafter):\n"Berdasarkan gaya bahasa balasan saya sebelumnya, tulis draf balasan singkat, tegas, dan sopan untuk ke-3 pesan utama tersebut. Tunggu konfirmasi saya sebelum mengirim."`,
+        deps: [
+          ['AI Utama', 'Wajib', 'Claude, ChatGPT, atau OpenClaw'],
+          ['Email / Chat', 'Wajib', 'Gmail / Outlook / WhatsApp Web Bridge']
+        ]
+      },
+      {
+        slug: 'ceos-chief-of-staff',
+        name: "CEO's Chief of Staff",
+        job: 'ops',
+        categoryLabel: 'Executive Ops',
+        users: 'Digunakan oleh 34 member',
+        tagline: 'Menyiapkan brief 1 halaman sebelum setiap meeting dan langsung menulis draf follow-up begitu meeting selesai.',
+        apps: ['Google Sheets', 'Gmail', 'WhatsApp CRM', 'Gemini / Claude'],
+        step1: 'Briefing profil lawan bicara 15 menit sebelum call + draf action items setelah call.',
+        step2: 'Menarik histori chat, transaksi terakhir, dan profil LinkedIn peserta meeting.',
+        step3: 'Menunggu review kamu sebelum mengirim rincian tindak lanjut ke klien.',
+        mcpCmd: "Using AGentZ MCP, set up the CEO's Chief of Staff on Calendar and Gmail.",
+        prompt: `PROMPT 1 (Pre-Meeting Intelligence Brief):\n"Cek jadwal Google Calendar saya hari ini. Untuk setiap meeting eksternal, tarik riwayat email, chat WhatsApp terakhir, dan latar belakang bisnis mereka. Kirimkan rangkuman 5 poin: siapa mereka, angka/konteks terakhir, dan tujuan utama yang harus saya kunci di call ini."\n\nPROMPT 2 (Post-Call Follow-Up & Task Extractor):\n"Dari transkrip/catatan meeting yang baru selesai, ekstrak semua janji deliverables, tenggat waktu, dan langkah berikutnya. Siapkan draf pesan WhatsApp & email follow-up ke klien untuk saya setujui."`,
+        deps: [
+          ['AI Utama', 'Wajib', 'Claude Pro / ChatGPT Plus / OpenClaw'],
+          ['Kalender & Email', 'Wajib', 'Google Calendar & Gmail']
+        ]
+      },
+      {
+        slug: 'past-client-rekindler',
+        name: 'Past-Client & Old Lead Rekindler',
+        job: 'sales',
+        categoryLabel: 'Sales & Retention',
+        users: 'Digunakan oleh 28 member',
+        tagline: 'Memberi tahu klien lama atau prospek tertunda mana yang paling tepat untuk kamu sapa lagi minggu ini.',
+        apps: ['WhatsApp CRM', 'Google Sheets', 'Gemini / Claude'],
+        step1: '5 nama prospek/klien lama setiap Rabu dengan alasan kontekstual untuk menyapa.',
+        step2: 'Mengecek siklus repeat order, masa habis kontrak/servis, atau alasan tunda beli 3–6 bulan lalu.',
+        step3: 'Menyiapkan pesan pembuka natural (anti-broadcast kaku) untuk kamu kirim.',
+        mcpCmd: 'Using AGentZ MCP, set up the Past-Client Rekindler on my CRM.',
+        prompt: `PROMPT 1 (Dormant Goldmine Scanner):\n"Analisis database pelanggan lama dan prospek yang pernah tanya harga 60–180 hari lalu tapi belum transaksi. Pilih 10 kontak dengan nilai potensi tertinggi yang memiliki alasan alami untuk dihubungi minggu ini (siklus servis/perpanjangan, perubahan harga, atau fitur baru yang menjawab keberatan lama mereka)."\n\nPROMPT 2 (Zero-Pressure Contextual Opener):\n"Tulis 1 kalimat pembuka WhatsApp yang merujuk langsung ke percakapan terakhir kami tanpa terlihat seperti pesan blast promosi."`,
+        deps: [
+          ['AI Utama', 'Wajib', 'Claude, ChatGPT, atau OpenClaw'],
+          ['CRM', 'Wajib', 'Google Sheets / HubSpot / WhatsApp CRM']
+        ]
+      },
+      {
+        slug: 'direct-booking-voice-negotiator',
+        name: 'Direct Price Scout & AI Voice Negotiator',
+        job: 'local',
+        categoryLabel: 'Sourcing & Travel · JOB-020',
+        users: 'Digunakan oleh 22 member',
+        tagline: 'Melewati markup platform pihak ketiga (30%+) dengan mencari situs direct dan menegosiasikan harga/fasilitas VIP.',
+        apps: ['Apify', 'Gemini / Claude', 'n8n'],
+        step1: 'Perbandingan harga direct vs OTA/platform + skrip negosiasi asisten pribadi.',
+        step2: 'Mengambil daftar properti/vendor, mencari situs resmi mereka, dan membandingkan selisih harga.',
+        step3: 'Meminta konfirmasi sebelum menghubungi pengelola/vendor.',
+        mcpCmd: 'Using AGentZ MCP, set up the Direct Price Scout & Negotiator.',
+        prompt: `PROMPT 1 (Aggregator Markup Bypass):\n"Ambil daftar properti/vendor yang sedang saya incar di platform agregator. Cari situs web resmi atau kontak langsung pemilik/pengelolanya, lalu bandingkan harga asli sebelum komisi platform 15–30%."\n\nPROMPT 2 (Executive Assistant VIP Pitch):\n"Siapkan pesan/skrip telepon atas nama asisten eksekutif yang menanyakan ketersediaan pemesanan langsung (direct booking) beserta tambahan upgrade fasilitas untuk klien reguler."`,
+        deps: [
+          ['AI Utama', 'Wajib', 'Claude, ChatGPT, atau OpenClaw'],
+          ['Web Search', 'Opsional', 'Exa / Apify / Browser Tool']
+        ]
+      }
+    ];
+
+    let activeJob = 'all';
+    let activeApp = 'all';
+    let currentModalSlug = null;
+
+    function getFreeAgentState() {
+      try {
+        return JSON.parse(localStorage.getItem('agentz_free_vault') || '{}');
+      } catch {
+        return {};
+      }
+    }
+
+    function saveFreeAgentState(state) {
+      try {
+        localStorage.setItem('agentz_free_vault', JSON.stringify(state));
+      } catch {}
+      updateBanner();
+    }
+
+    function updateBanner() {
+      const state = getFreeAgentState();
+      const badge = document.getElementById('free-slot-badge');
+      const desc = document.getElementById('free-slot-desc');
+      const resetBtn = document.getElementById('reset-free-btn');
+
+      if (state.claimedSlug) {
+        const found = AGENTS.find(a => a.slug === state.claimedSlug);
+        const title = found ? found.name : state.claimedSlug;
+        badge.textContent = '1 Slot Gratis Terpakai';
+        badge.style.background = 'var(--clay)';
+        desc.innerHTML = `Agent Gratismu: <strong>${title}</strong> (${state.email}). Untuk memasang seluruh 134+ AI Agent lainnya, upgrade ke <strong>Member ($20/bln)</strong>.`;
+        if (!state.swappedOnce) {
+          resetBtn.classList.remove('hidden');
+        } else {
+          resetBtn.classList.add('hidden');
+        }
+      } else {
+        badge.textContent = '1 Agent Gratis Tersedia';
+        badge.style.background = '#16130f';
+        desc.innerHTML = `<strong>Pilih 1 AI Agent mana saja secara gratis</strong> (cukup email, tanpa kartu kredit). Paket <strong>Member ($20/bln)</strong> membuka seluruh 135+ AI Agent.`;
+        resetBtn.classList.add('hidden');
+      }
+    }
+
+    function resetFreeAgentOnce() {
+      const state = getFreeAgentState();
+      if (state.swappedOnce) return;
+      saveFreeAgentState({ email: state.email, claimedSlug: null, swappedOnce: true });
+      alert('Slot 1 AI Agent Gratismu telah di-reset (kesempatan ganti 1x). Silakan pilih AI Agent baru!');
+    }
+
+    function setJobFilter(job, btn) {
+      activeJob = job;
+      document.querySelectorAll('#job-filters .filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderLibrary();
+    }
+
+    function setAppFilter(app, btn) {
+      activeApp = app;
+      document.querySelectorAll('#app-filters .filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderLibrary();
+    }
+
+    function renderLibrary() {
+      const q = (document.getElementById('search-input').value || '').toLowerCase().trim();
+      const state = getFreeAgentState();
+      const container = document.getElementById('agents-container');
+
+      const filtered = AGENTS.filter(a => {
+        if (activeJob !== 'all' && a.job !== activeJob) return false;
+        if (activeApp !== 'all' && !a.apps.includes(activeApp)) return false;
+        if (q && !(a.name.toLowerCase().includes(q) || a.tagline.toLowerCase().includes(q) || a.categoryLabel.toLowerCase().includes(q))) return false;
+        return true;
+      });
+
+      container.innerHTML = filtered.map(a => {
+        const isUnlockedFree = state.claimedSlug === a.slug;
+        return `
+          <button type="button" onclick="openSpecModal('${a.slug}')" class="lib-card">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="font-mono text-[10.5px] uppercase tracking-wider px-2.5 py-0.5 rounded-full" style="background:var(--clay-soft);color:var(--clay)">${a.categoryLabel}</span>
+                ${isUnlockedFree ? `<span class="font-mono text-[10px] uppercase px-2 py-0.5 rounded-full" style="background:#16130f;color:#fff">✓ Agent Gratismu</span>` : `<span class="font-mono text-[10.5px]" style="color:var(--muted)">Bisa jadi 1 Agent Gratis</span>`}
+              </div>
+              <h3 class="text-[20px] font-semibold m-0" style="color:var(--ink);letter-spacing:-0.02em">${a.name}</h3>
+              <p class="text-[14.5px] leading-relaxed mt-2.5 mb-4" style="color:var(--sub)">${a.tagline}</p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-4">
+                ${a.apps.map(app => `<span class="font-mono text-[11px] px-2 py-0.5 rounded" style="background:#f5f2ed;color:var(--sub)">${app}</span>`).join('')}
+              </div>
+              <div class="pt-3.5 border-t flex items-center justify-between text-[13px] font-medium" style="border-color:var(--line);color:var(--ink)">
+                <span>${a.users}</span>
+                <span style="color:var(--clay)">Buka Spesifikasi &amp; Prompt →</span>
+              </div>
+            </div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function openSpecModal(slug) {
+      const a = AGENTS.find(x => x.slug === slug);
+      if (!a) return;
+      currentModalSlug = slug;
+
+      document.getElementById('sm-category').textContent = a.categoryLabel;
+      document.getElementById('sm-users').textContent = a.users;
+      document.getElementById('sm-title').textContent = a.name;
+      document.getElementById('sm-tagline').textContent = a.tagline;
+      document.getElementById('sm-step1').textContent = a.step1;
+      document.getElementById('sm-step2').textContent = a.step2;
+      document.getElementById('sm-step3').textContent = a.step3;
+      document.getElementById('sm-mcp-cmd').textContent = a.mcpCmd;
+      document.getElementById('sm-full-prompt').textContent = a.prompt;
+
+      document.getElementById('sm-deps').innerHTML = a.deps.map(d => `
+        <div class="dep-row">
+          <div class="font-medium" style="color:var(--ink)">${d[0]}</div>
+          <div><span class="font-mono text-[11px] px-2 py-0.5 rounded" style="background:${d[1]==='Wajib'?'var(--clay-soft)':'#f5f2ed'};color:${d[1]==='Wajib'?'var(--clay)':'var(--sub)'}">${d[1]}</span></div>
+          <div style="color:var(--sub)">${d[2]}</div>
+        </div>
+      `).join('');
+
+      renderModalGateState();
+      const modal = document.getElementById('spec-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function renderModalGateState() {
+      const state = getFreeAgentState();
+      const gateBox = document.getElementById('sm-gate-box');
+      const unlockedBox = document.getElementById('sm-unlocked-box');
+
+      if (state.claimedSlug === currentModalSlug) {
+        // Unlocked as their 1 free agent!
+        gateBox.classList.add('hidden');
+        unlockedBox.classList.remove('hidden');
+      } else if (!state.claimedSlug) {
+        // Can claim this as their 1 free agent with email only!
+        unlockedBox.classList.add('hidden');
+        gateBox.classList.remove('hidden');
+        gateBox.innerHTML = `
+          <div class="font-mono text-[11px] uppercase tracking-wider mb-1.5" style="color:var(--clay)">Pasang di AI-mu · Gratis sebagai 1 Agent Pilihanmu</div>
+          <h4 class="text-[20px] font-semibold m-0">Klaim AI Agent ini secara gratis (Tanpa Kartu Kredit)</h4>
+          <p class="text-[14px] mt-1.5 mb-4" style="color:var(--sub)">
+            Masukkan emailmu untuk langsung membuka perintah instalasi <strong>AGentZ MCP</strong> dan rangkaian <strong>Full 2-Prompt</strong> dari video ini.
+          </p>
+          <form onsubmit="claimFreeAgent(event)" class="flex flex-col sm:flex-row gap-3">
+            <input id="claim-email" type="email" required value="${state.email || ''}" placeholder="nama@email.com" class="flex-1 rounded-[12px] px-4 py-3 text-[15px]" style="border:1.5px solid var(--line-strong);background:#fff" />
+            <button type="submit" class="hk-btn">Buka Agent &amp; Prompt Gratis →</button>
+          </form>
+        `;
+      } else {
+        // Already used their 1 free agent on another slug -> Trigger Angus's $20/mo Member upgrade gate!
+        const prev = AGENTS.find(x => x.slug === state.claimedSlug);
+        unlockedBox.classList.add('hidden');
+        gateBox.classList.remove('hidden');
+        gateBox.innerHTML = `
+          <div class="font-mono text-[11px] uppercase tracking-wider mb-1.5" style="color:var(--clay)">Slot 1 Agent Gratis Sudah Digunakan</div>
+          <h4 class="text-[20px] font-semibold m-0">Buka semua 135+ AI Agent dengan AGentZ Member ($20/bln)</h4>
+          <p class="text-[14px] mt-2 mb-4 leading-relaxed" style="color:var(--sub)">
+            Kamu sudah mengklaim <strong>${prev ? prev.name : state.claimedSlug}</strong> sebagai 1 AI Agent gratismu. Gabung <strong>Member ($20/bulan atau Rp 299rb/bulan)</strong> untuk membuka seluruh 135+ AI Agent, 107+ prompt, dan Peta Lengkap Bisnismu (Garansi uang kembali 14 hari).
+          </p>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="/gabung.html?plan=member&email=${encodeURIComponent(state.email || '')}" class="hk-btn">Gabung Member ($20/bln) — Buka Semua →</a>
+            <a href="/pricing.html" class="text-[13.5px] font-medium underline" style="color:var(--ink)">Lihat perbandingan paket</a>
+          </div>
+        `;
+      }
+    }
+
+    function claimFreeAgent(e) {
+      e.preventDefault();
+      const email = document.getElementById('claim-email').value.trim();
+      if (!email) return;
+      const prev = getFreeAgentState();
+      saveFreeAgentState({
+        email,
+        claimedSlug: currentModalSlug,
+        swappedOnce: !!prev.swappedOnce,
+        claimedAt: new Date().toISOString()
+      });
+      renderModalGateState();
+      renderLibrary();
+    }
+
+    function closeSpecModal() {
+      const modal = document.getElementById('spec-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function copyText(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text);
+      alert('Berhasil disalin ke clipboard!');
+    }
+
+    document.getElementById('spec-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'spec-modal') closeSpecModal();
+    });
+
+    // Check URL hash or query param ?agent=slug
+    window.addEventListener('DOMContentLoaded', () => {
+      updateBanner();
+      renderLibrary();
+      const params = new URLSearchParams(window.location.search);
+      const agentParam = params.get('agent');
+      if (agentParam) openSpecModal(agentParam);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contoh Peta Bisnis (Business Map) · AGentZ Member Vault</title>
+  <meta name="description" content="Lihat ke mana perginya jam kerja timmu dalam seminggu. Paket Gratis memetakan 1 bagian bisnismu; Member memetakan seluruhnya." />
+  <link rel="icon" href="agentzlogo.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/site.css" />
+  <style>
+    :root {
+      --canvas: #ffffff;
+      --ink: #16130f;
+      --sub: #5f5a53;
+      --muted: #a59e95;
+      --line: #efe9e2;
+      --line-strong: #e2ddd6;
+      --clay: #d97757;
+      --clay-soft: rgba(217, 119, 87, 0.12);
+      --clay-border: rgba(217, 119, 87, 0.52);
+      --tile-shadow-sm: 0 16px 36px -16px rgba(40, 30, 20, 0.22), inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--ink); font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .font-fraunces { font-family: 'Fraunces', serif; }
+    .hk-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--clay); color: #ffffff; font-weight: 600; border-radius: 12px;
+      padding: 13px 22px; text-decoration: none; font-size: 14.5px; border: none; cursor: pointer;
+    }
+    .map-row {
+      background: #ffffff;
+      border: 1.5px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--tile-shadow-sm);
+    }
+    .bar-bg {
+      height: 12px;
+      border-radius: 999px;
+      background: #f2ece4;
+      overflow: hidden;
+      display: flex;
+    }
+    .bar-people { background: #16130f; height: 100%; }
+    .bar-agent { background: var(--clay); height: 100%; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="sticky top-0 z-50 border-b" style="background:rgba(255,255,255,0.88);backdrop-filter:blur(12px);border-color:var(--line)">
+    <div class="max-w-[1280px] mx-auto px-6 sm:px-9 h-[64px] flex items-center justify-between gap-4">
+      <div class="flex items-center gap-6">
+        <a href="/index.html" class="flex items-baseline whitespace-nowrap font-fraunces" style="text-decoration:none">
+          <span style="color:var(--ink);font-size:17px;font-weight:500">Jordan</span>
+          <span style="color:var(--sub);font-size:16.5px;font-style:italic;margin-left:0.3em">Engo</span>
+          <span style="color:var(--clay);font-size:17px;font-weight:600">.</span>
+        </a>
+        <span class="hidden sm:inline-block text-xs font-mono uppercase tracking-widest px-2.5 py-1 rounded-full" style="background:var(--clay-soft);color:var(--clay)">Member Vault</span>
+      </div>
+      <nav class="flex items-center gap-4 sm:gap-6 text-xs font-mono uppercase tracking-[0.15em]">
+        <a href="/library.html" style="color:var(--sub);text-decoration:none">Library (135)</a>
+        <a href="/example-map.html" style="color:var(--clay);text-decoration:none;font-weight:600">Peta Bisnis</a>
+        <a href="/pricing.html" style="color:var(--sub);text-decoration:none">Harga</a>
+        <a href="/ai-department.html" style="color:var(--sub);text-decoration:none" class="hidden sm:inline">AI Department</a>
+        <a href="/gabung.html?plan=free" class="hk-btn" style="padding:8px 14px;font-size:12px">Petakan Bisnisku</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-[1140px] w-full mx-auto px-6 sm:px-9 py-14 md:py-20">
+    <!-- Hero -->
+    <div class="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 items-end mb-14">
+      <div>
+        <div class="font-mono text-[11px] uppercase tracking-[0.2em] mb-3" style="color:var(--clay)">Contoh Peta Operasional Bisnis · Example Business Map</div>
+        <h1 style="font-size:clamp(36px,4.8vw,58px);font-weight:600;line-height:1.02;letter-spacing:-0.03em;margin:0">
+          Lihat ke mana perginya 1 minggu kerja timmu.
+        </h1>
+        <p style="font-size:17px;line-height:1.6;color:var(--sub);margin-top:16px">
+          Contoh bisnis dengan <strong>6 anggota tim</strong>, dipetakan persis seperti cara AI memetakan bisnismu. Pekerjaan yang butuh empati &amp; negosiasi tetap dipegang manusia—follow-up rutin, rekap CRM, riset konten, dan invoice diserahkan ke AI Agent.
+        </p>
+      </div>
+
+      <!-- Summary Stat Box (1:1 Angus Harbor & Main 16h/71h card) -->
+      <div class="p-7 rounded-[24px]" style="border:1.5px solid var(--clay-border);background:linear-gradient(135deg,#ffffff 40%,var(--clay-soft) 140%);box-shadow:var(--tile-shadow-sm)">
+        <div class="font-mono text-[11px] uppercase tracking-widest" style="color:var(--sub)">Simulasi: Nusantara Auto &amp; Agency · 6 Orang</div>
+        <div class="mt-3 flex items-baseline gap-3">
+          <span class="font-extrabold text-[46px] leading-none" style="color:var(--clay);letter-spacing:-0.03em">~19 jam</span>
+          <span class="text-[15px] font-medium" style="color:var(--ink)">dihemat per minggu</span>
+        </div>
+        <div class="mt-5 bar-bg">
+          <div class="bar-people" style="width:74%"></div>
+          <div class="bar-agent" style="width:26%"></div>
+        </div>
+        <div class="mt-2.5 flex justify-between font-mono text-[11.5px]" style="color:var(--sub)">
+          <span>■ Manusia: 54 jam</span>
+          <span style="color:var(--clay)">■ AI Agent: 19 jam (dari 73 jam terpetakan)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Department Breakdown Cards -->
+    <div class="space-y-5 mb-14">
+      <!-- Area 1 -->
+      <div class="map-row">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+          <div>
+            <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">01 · Respon Lead &amp; Kualifikasi WhatsApp</div>
+            <h3 class="text-[20px] font-semibold m-0 mt-1">Raka Pratama (Inside Sales / Admin WA)</h3>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-[13px] px-3 py-1 rounded-full" style="background:var(--clay-soft);color:var(--clay);font-weight:600">+6 jam hemat / minggu</span>
+            <span class="font-mono text-[12.5px]" style="color:var(--sub)">14 jam tetap dgn manusia</span>
+          </div>
+        </div>
+        <p class="text-[14.5px] m-0 mb-4" style="color:var(--sub)">
+          <strong>Sebelum Agent:</strong> Menghabiskan 3 jam/hari menyaring chat tanya harga pasif, lupa follow-up lead H+3, dan manual input ke spreadsheet.<br />
+          <strong>Dengan AGentZ:</strong> <a href="/library.html?agent=mind-reading-funnel-builder" class="underline" style="color:var(--clay)">Quiz Funnel Builder</a> + <a href="/library.html?agent=inbox-wa-gatekeeper" class="underline" style="color:var(--clay)">Inbox &amp; WA Gatekeeper</a> menyaring arketipe buyer otomatis dan menyiapkan 3 prioritas pagi.
+        </p>
+      </div>
+
+      <!-- Area 2 -->
+      <div class="map-row">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+          <div>
+            <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">02 · Closing &amp; Evaluasi Sales Call</div>
+            <h3 class="text-[20px] font-semibold m-0 mt-1">Dimas &amp; Sarah (Account Executive / Closer)</h3>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-[13px] px-3 py-1 rounded-full" style="background:var(--clay-soft);color:var(--clay);font-weight:600">+4 jam hemat / minggu</span>
+            <span class="font-mono text-[12.5px]" style="color:var(--sub)">12 jam tetap dgn manusia</span>
+          </div>
+        </div>
+        <p class="text-[14.5px] m-0" style="color:var(--sub)">
+          <strong>Dengan AGentZ:</strong> <a href="/library.html?agent=sales-call-tonality-coach" class="underline" style="color:var(--clay)">AI Sales Call Tonality Auditor</a> membaca rekaman call yang gagal vs berhasil dan <a href="/library.html?agent=past-client-rekindler" class="underline" style="color:var(--clay)">Past-Client Rekindler</a> memberi tahu 5 prospek lama yang siap dihubungi minggu ini.
+        </p>
+      </div>
+
+      <!-- Area 3 -->
+      <div class="map-row">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+          <div>
+            <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">03 · Produksi Konten, Reels &amp; Distribusi Clipper</div>
+            <h3 class="text-[20px] font-semibold m-0 mt-1">Kevin (Content Producer &amp; Editor)</h3>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-[13px] px-3 py-1 rounded-full" style="background:var(--clay-soft);color:var(--clay);font-weight:600">+5 jam hemat / minggu</span>
+            <span class="font-mono text-[12.5px]" style="color:var(--sub)">10 jam tetap dgn manusia</span>
+          </div>
+        </div>
+        <p class="text-[14.5px] m-0" style="color:var(--sub)">
+          <strong>Dengan AGentZ:</strong> <a href="/library.html?agent=hormozi-retention-recut-coach" class="underline" style="color:var(--clay)">Video Recut &amp; Retention Coach</a> mendeteksi kalimat yang bikin penonton drop-off di detik ke-4, sementara <a href="/library.html?agent=clipper-army-recruiter" class="underline" style="color:var(--clay)">700-Clipper Army Scout</a> merekrut akun clipper secara otomatis.
+        </p>
+      </div>
+
+      <!-- Area 4 -->
+      <div class="map-row">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+          <div>
+            <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">04 · Operasional CEO, Meeting &amp; Audit Mingguan</div>
+            <h3 class="text-[20px] font-semibold m-0 mt-1">Owner / Managing Director</h3>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-[13px] px-3 py-1 rounded-full" style="background:var(--clay-soft);color:var(--clay);font-weight:600">+4 jam hemat / minggu</span>
+            <span class="font-mono text-[12.5px]" style="color:var(--sub)">18 jam tetap dgn manusia</span>
+          </div>
+        </div>
+        <p class="text-[14.5px] m-0" style="color:var(--sub)">
+          <strong>Dengan AGentZ:</strong> <a href="/library.html?agent=ceos-chief-of-staff" class="underline" style="color:var(--clay)">CEO's Chief of Staff</a> menyiapkan brief sebelum meeting + follow-up otomatis, dan <a href="/library.html?agent=founder-blindspot-numbers-coach" class="underline" style="color:var(--clay)">Business Numbers &amp; Blind-Spot Coach</a> melaporkan kebocoran metrik setiap Senin pagi.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="p-8 md:p-12 rounded-[26px] text-center" style="border:1.5px solid var(--line);background:#faf9f7">
+      <h2 class="text-[28px] md:text-[36px] font-semibold m-0" style="letter-spacing:-0.025em">
+        Mulai gratis dan petakan bisnismu hari ini.
+      </h2>
+      <p class="text-[16px] mt-3 mb-7 max-w-[54ch] mx-auto" style="color:var(--sub)">
+        Paket <strong>Gratis ($0)</strong> memetakan 1 bagian bisnismu dan memasang 1 AI Agent pilihanmu. Paket <strong>Member ($20/bln)</strong> memetakan seluruh bisnismu dan membuka 135+ AI Agent.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/gabung.html?plan=free" class="hk-btn">Mulai Gratis (Email Saja) →</a>
+        <a href="/pricing.html" class="px-6 py-3.5 rounded-[12px] font-semibold text-[14.5px]" style="border:1.5px solid var(--line-strong);color:var(--ink);text-decoration:none;background:#fff">Lihat Paket Member &amp; Team</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t py-9 mt-auto" style="border-color:var(--line)">
+    <div class="max-w-[1280px] mx-auto px-6 sm:px-9 flex flex-wrap items-center justify-between gap-4 text-[13.5px]" style="color:var(--muted)">
+      <div>
+        <strong style="color:var(--ink)">Jordan Engo.</strong> · AGentZ Member Vault © 2026
+      </div>
+      <div class="flex gap-5">
+        <a href="/index.html" style="color:var(--sub);text-decoration:none">Beranda</a>
+        <a href="/library.html" style="color:var(--sub);text-decoration:none">Library</a>
+        <a href="/pricing.html" style="color:var(--sub);text-decoration:none">Harga</a>
+        <a href="/ai-department.html" style="color:var(--sub);text-decoration:none">AI Department</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
