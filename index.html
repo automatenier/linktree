@@ -514,6 +514,8 @@
         <a href="/example-map.html" class="hidden lg:inline-block font-mono text-[10.5px] font-medium tracking-[0.16em] uppercase text-cream-2 hover:text-cream px-3 py-2 transition-colors">Peta Bisnis</a>
         <a href="/pricing.html" class="hidden md:inline-block font-mono text-[10.5px] font-medium tracking-[0.16em] uppercase text-cream-2 hover:text-cream px-3 py-2 transition-colors">Harga</a>
         <a href="/ai-department.html" class="hidden lg:inline-block font-mono text-[10.5px] font-semibold tracking-[0.16em] uppercase text-cream hover:text-clay px-3 py-2 transition-colors">AI Dept</a>
+        <a href="https://agentz.jordanengo.com/?utm_source=jordanengo&utm_medium=nav" class="hidden sm:inline-block font-mono text-[10.5px] font-semibold tracking-[0.16em] uppercase text-cream-2 hover:text-clay px-3 py-2 transition-colors">AGentZ</a>
+        <a href="https://belajar.jordanengo.com/?utm_source=jordanengo&utm_medium=nav" class="hidden sm:inline-block font-mono text-[10.5px] font-semibold tracking-[0.16em] uppercase text-clay hover:text-cream px-3 py-2 transition-colors">Belajar AI</a>
         <a href="/gabung.html?plan=free" class="ml-2 inline-flex items-center gap-2 bg-clay text-white font-sans text-[12.5px] font-semibold pl-3.5 pr-3.5 py-2 rounded-[11px] hover:brightness-[1.04] transition-all border-none cursor-pointer" style="box-shadow:0 1px 2px rgba(40,30,20,0.12), inset 0 1.5px 0 rgba(255,255,255,0.25)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff">
             <rect x="3" y="4" width="18" height="2.6"></rect>
@@ -568,7 +570,7 @@
             Sistem nyata yang saya bangun dan pakai di bisnis maupun keseharian. Mana yang berhasil, mana yang gagal—gratis tiap minggu.
           </p>
 
-          <div class="reveal mt-10" style="max-width:548px;transition-delay:190ms">
+          <div id="newsletter" class="reveal mt-10" style="max-width:548px;transition-delay:190ms">
             <!-- Mobile Form -->
             <form class="newsletter-form sm:hidden flex flex-col gap-3">
               <label class="hk-pill group flex items-center" style="height:58px;padding-left:20px;padding-right:18px">
@@ -630,6 +632,11 @@
               >
                 Klaim 1 Agent Gratis ($0) →
               </a>
+            </div>
+            <div class="mt-4 flex flex-wrap items-center gap-4 text-[13px] font-mono" style="color:var(--sub)">
+              <a href="https://agentz.jordanengo.com/?utm_source=jordanengo&utm_medium=vault_card" class="underline hover:text-clay transition-colors">Buka Web App AGentZ (agentz.jordanengo.com) →</a>
+              <span class="opacity-40">·</span>
+              <a href="https://belajar.jordanengo.com/?utm_source=jordanengo&utm_medium=vault_card" class="underline hover:text-clay transition-colors" style="color:var(--clay)">Ingin jual sistem AI ke klien? Belajar AI →</a>
             </div>
           </div>
 
@@ -1097,6 +1104,7 @@
                 <option value="" disabled="" selected="">Ini soal apa?</option>
                 <option value="AI Department — Bangun & jalankan sistem AI perusahaan ($2,500–$6,000+/bln)">AI Department — Bangun &amp; jalankan sistem AI perusahaan (Rp 25jt–60jt+/bln)</option>
                 <option value="Paket Max / Team — Custom Skill Queue ($149–$399/bln)">Paket Max / Team — Custom Skill Queue ($149–$399/bln)</option>
+                <option value="Belajar AI & Mentoring Agensi (belajar.jordanengo.com)">Belajar AI &amp; Mentoring Agensi (belajar.jordanengo.com)</option>
                 <option value="Kerja sama brand / sponsorship">Kerja sama brand / sponsorship</option>
                 <option value="Podcast / undangan pembicara">Podcast / undangan pembicara</option>
                 <option value="Pertanyaan lainnya">Pertanyaan lainnya</option>
@@ -1128,6 +1136,8 @@
         <span class="opacity-40">/</span>
         <span>© 2026</span>
         <span class="opacity-40">·</span>
+        <a href="https://agentz.jordanengo.com/?utm_source=jordanengo&utm_medium=footer" class="hover:text-cream underline font-medium" style="color:var(--ink)">AGentZ Vault</a>
+        <a href="https://belajar.jordanengo.com/?utm_source=jordanengo&utm_medium=footer" class="hover:text-cream underline font-medium" style="color:var(--clay)">Belajar AI</a>
         <a href="/library.html" class="hover:text-cream underline">Library (135)</a>
         <a href="/example-map.html" class="hover:text-cream underline">Peta Bisnis</a>
         <a href="/pricing.html" class="hover:text-cream underline">Harga</a>
@@ -1288,7 +1298,7 @@
       const msg = document.getElementById('sender-msg').value.trim();
       recordUtmEvent('contact_submit', { topic });
       const fullText = `Halo Jordan, saya ${name} (${email}).\nTopik: ${topic}\n\nPesan: ${msg}${getUtmTag()}`;
-      window.open(`https://wa.me/15556523818?text=${encodeURIComponent(fullText)}`, '_blank');
+      window.open(`https://wa.me/6287881647878?text=${encodeURIComponent(fullText)}`, '_blank');
     });
 
     const TITLE_TO_SLUG = {
