@@ -94,10 +94,10 @@
       <section class="join-card">
         <!-- Plan Selector Bar -->
         <div class="flex items-center gap-1 p-1 rounded-[13px] mb-6" style="background:#f5f2ed;border:1px solid var(--line)">
-          <button type="button" class="plan-pill" data-plan="free" onclick="selectPlan('free')">Gratis ($0)</button>
-          <button type="button" class="plan-pill active" data-plan="member" onclick="selectPlan('member')">Member ($20)</button>
-          <button type="button" class="plan-pill" data-plan="max" onclick="selectPlan('max')">Max ($149)</button>
-          <button type="button" class="plan-pill" data-plan="team" onclick="selectPlan('team')">Team ($399)</button>
+          <button type="button" class="plan-pill" data-plan="free" onclick="selectPlan('free')">Gratis (Rp 0)</button>
+          <button type="button" class="plan-pill active" data-plan="member" onclick="selectPlan('member')">Member (Rp 299rb)</button>
+          <button type="button" class="plan-pill" data-plan="max" onclick="selectPlan('max')">Max (Rp 2,25 Jt)</button>
+          <button type="button" class="plan-pill" data-plan="team" onclick="selectPlan('team')">Team (Rp 5,9 Jt)</button>
         </div>
 
         <span id="plan-badge" class="font-mono text-[10.5px] tracking-[0.2em] uppercase" style="color:var(--clay)">
@@ -105,11 +105,11 @@
         </span>
 
         <h1 id="page-title" class="mt-2.5 mb-0" style="font-size:clamp(26px,3.8vw,36px);font-weight:600;line-height:1.1;letter-spacing:-0.025em;color:var(--ink)">
-          Gabung Member: $20/bulan (Rp 299rb)
+          Gabung Member: Rp 299rb/bulan
         </h1>
 
         <p id="page-subtitle" class="mt-3 mb-0" style="font-size:15px;line-height:1.6;color:var(--sub)">
-          Buat akun dengan emailmu. Tanpa password—kami membuat kunci konektor MCP dan mengarahkanmu ke pemilihan metode pembayaran (Stripe / QRIS / VA).
+          Daftarkan emailmu tanpa password—kami siapkan aktivasi paket &amp; penerbitan invoice resmi via WhatsApp (QRIS / Virtual Account / Transfer).
         </p>
 
         <!-- Step 1: Email -->
@@ -146,28 +146,28 @@
 
           <!-- Paid Checkout Options -->
           <div id="paid-options" class="space-y-3">
-            <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--sub)">Pilih Metode Pembayaran Instan</div>
+            <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--sub)">Konfirmasi Paket &amp; Invoice Resmi via WhatsApp</div>
 
-            <button type="button" onclick="completeCheckout('Stripe (Kartu Kredit / Debit / Apple Pay)')" class="hk-btn w-full py-3.5 text-[15px]">
-              <span>Bayar dengan Kartu / Stripe (<span class="checkout-price-usd">$20/bln</span>)</span>
+            <button type="button" onclick="completeCheckout('Invoice QRIS / Virtual Account BCA-Mandiri (IDR)')" class="hk-btn w-full py-3.5 text-[15px]">
+              <span>Minta Invoice QRIS / Virtual Account (<span class="checkout-price-idr">Rp 299rb/bln</span>)</span>
               <span>→</span>
             </button>
 
-            <button type="button" onclick="completeCheckout('QRIS / Virtual Account BCA-Mandiri (IDR)')" class="w-full py-3.5 px-5 rounded-[12px] font-semibold text-[14.5px] cursor-pointer flex items-center justify-between" style="background:#16130f;color:#ffffff;border:none">
-              <span>Bayar via QRIS / Virtual Account (<span class="checkout-price-idr">Rp 299.000/bln</span>)</span>
+            <button type="button" onclick="completeCheckout('Invoice Transfer Bank / Kartu (IDR/USD)')" class="w-full py-3.5 px-5 rounded-[12px] font-semibold text-[14.5px] cursor-pointer flex items-center justify-between" style="background:#16130f;color:#ffffff;border:none">
+              <span>Minta Invoice Transfer / Kartu (<span class="checkout-price-idr">Rp 299rb/bln</span>)</span>
               <span>→</span>
             </button>
           </div>
 
           <!-- Confirmation Box -->
           <div id="checkout-confirm" class="hidden p-5 rounded-[16px] space-y-3" style="background:#faf9f7;border:1.5px solid var(--line-strong)">
-            <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">✓ Akses Sementara Dibuka · Invoice Dikirim</div>
+            <div class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--clay)">✓ Permintaan Dicatat · Lanjutkan Konfirmasi via WhatsApp</div>
             <p class="text-[14px] m-0 leading-relaxed" style="color:var(--ink)">
-              Sambil invoice pembayaran otomatis diproses untuk <strong id="confirm-email-text"></strong>, kamu sudah bisa langsung membuka Library &amp; menyalin prompt pertama sekarang:
+              Klik tombol WhatsApp di bawah agar tim Jordan mengirimkan invoice resmi untuk <strong id="confirm-email-text"></strong> dan mengaktifkan akun Vault-mu:
             </p>
             <div class="flex flex-wrap gap-2.5 pt-1">
-              <a href="/library.html" class="hk-btn py-2.5 px-4 text-[13.5px]">Buka Library 135+ Agent Sekarang →</a>
-              <a id="wa-receipt-link" href="#" target="_blank" rel="noopener" class="py-2.5 px-4 rounded-[10px] text-[13px] font-medium" style="border:1.5px solid var(--line-strong);color:var(--ink);text-decoration:none;background:#fff">Konfirmasi Cepat via WA</a>
+              <a id="wa-receipt-link" href="#" target="_blank" rel="noopener" class="hk-btn py-2.5 px-4 text-[13.5px]">Konfirmasi Paket &amp; Minta Invoice via WA →</a>
+              <a href="/library.html" class="py-2.5 px-4 rounded-[10px] text-[13px] font-medium" style="border:1.5px solid var(--line-strong);color:var(--ink);text-decoration:none;background:#fff">Lihat Katalog Library</a>
             </div>
           </div>
 
@@ -190,7 +190,7 @@
     const PLANS = {
       free: {
         badge: 'AGentZ Gratis · Tanpa Kartu Kredit',
-        title: 'Mulai Gratis: 1 AI Agent Pilihanmu ($0)',
+        title: 'Mulai Gratis: 1 AI Agent Pilihanmu (Rp 0)',
         subtitle: 'Masukkan emailmu untuk langsung membuka 1 AI Agent gratis pilihanmu di Library dan memetakan 1 bagian bisnismu.',
         btnText: 'Buka 1 AI Agent Gratisku →',
         note: 'Email saja, tanpa kartu kredit. Bisa upgrade ke Member kapan saja.',
@@ -205,12 +205,12 @@
       },
       member: {
         badge: 'AGentZ Member · Paling Banyak Dipilih',
-        title: 'Gabung Member: $20/bulan (Rp 299rb)',
+        title: 'Gabung Member: Rp 299rb/bulan',
         subtitle: 'Buka seluruh 135+ AI Agent & 107+ prompt sistem. Dipasang langsung oleh AI-mu (Claude, ChatGPT, Gemini, OpenClaw).',
-        btnText: 'Lanjutkan ke Pembayaran Member →',
+        btnText: 'Lanjutkan Konfirmasi Member →',
         note: 'Garansi uang kembali 100% dalam 14 hari. Batalkan kapan saja.',
         usd: '$20/bln ($180/thn)',
-        idr: 'Rp 299.000/bln',
+        idr: 'Rp 299rb/bln',
         includes: [
           'Pasang semua 135+ AI Agent tanpa batas. Semua prompt gratis',
           'Peta Lengkap Operasional Bisnismu (Full Business Map)',
@@ -219,31 +219,31 @@
         ]
       },
       max: {
-        badge: 'AGentZ Max · Custom Skill untuk Bisnismu',
-        title: 'Gabung Max: $149/bulan (Rp 2,25jt)',
-        subtitle: 'Semua fitur Member ditambah pembuatan Custom AI Skill khusus mengikuti alur kerja bisnismu (1 request aktif, selesai 1–2 minggu).',
-        btnText: 'Lanjutkan ke Paket Max →',
+        badge: 'AGentZ Max · Template Skill MCP Ringan',
+        title: 'Gabung Max: Rp 2,25 Jt/bulan',
+        subtitle: 'Semua fitur Member ditambah pembuatan template prompt & skill MCP ringan khusus alur kerja bisnismu (1 request aktif; bukan integrasi WA/POS/ERP kustom).',
+        btnText: 'Lanjutkan Konfirmasi Paket Max →',
         note: 'Termasuk Group Office Hours bulanan bersama Jordan & garansi 14 hari.',
         usd: '$149/bln',
-        idr: 'Rp 2.250.000/bln',
+        idr: 'Rp 2,25 Jt/bln',
         includes: [
           'Semua akses di paket Member (135+ AI Agent & Full Business Map)',
-          'Custom AI Skills dibangun khusus untuk bisnismu (1 request aktif sekaligus, respon 2 hari kerja)',
+          'Template prompt & skill MCP ringan khusus bisnismu (1 request aktif, respon 2 hari kerja; tidak mencakup integrasi WA/POS/ERP kustom)',
           'Group Office Hours bulanan bersama Jordan (direkam)',
           'Laporan AI bulanan & dukungan langsung via Slack / WhatsApp Prioritas'
         ]
       },
       team: {
         badge: 'AGentZ Team · Untuk 10 Anggota Tim',
-        title: 'Mulai Paket Team: $399/bulan (Rp 5,9jt)',
-        subtitle: 'Satu peta bisnis dan agen bersama untuk 10 orang anggota timmu (+2 Custom Skill dikerjakan paralel).',
-        btnText: 'Lanjutkan ke Paket Team →',
-        note: 'Termasuk 10 kursi (+$29/orang hingga 12 orang) & garansi 14 hari.',
+        title: 'Mulai Paket Team: Rp 5,9 Jt/bulan',
+        subtitle: 'Satu peta bisnis dan agen bersama untuk 10 orang anggota timmu (+2 template prompt/skill MCP ringan paralel; bukan integrasi WA/POS/ERP kustom).',
+        btnText: 'Lanjutkan Konfirmasi Paket Team →',
+        note: 'Termasuk 10 kursi (+Rp 450rb/orang hingga 12 orang) & garansi 14 hari.',
         usd: '$399/bln',
-        idr: 'Rp 5.900.000/bln',
+        idr: 'Rp 5,9 Jt/bln',
         includes: [
           'Semua akses Member untuk 10 anggota tim dalam satu tagihan',
-          '2 Custom AI Skills dikerjakan secara paralel khusus untuk timmu',
+          '2 template prompt & skill MCP ringan dikerjakan paralel untuk timmu (bukan integrasi WA/POS/ERP kustom)',
           'Shared Business Map, pengaturan role Owner/Admin, dan invite link',
           'Dashboard penggunaan & Leaderboard Adopsi AI Tim'
         ]
